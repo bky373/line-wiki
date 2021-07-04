@@ -27,3 +27,20 @@
    - 일관성 (`Consistency`)
    - 독립성 (`Isolation`)
    - 지속성 (`Durability`) 
+
+- **JPA `persist`, `flush`, `clear` 정의 및 이해**  &nbsp;( [출처](https://apalsl.github.io/2019/11/14/SpringJpaFlushClear/) )
+   ```java
+    public Long save(Member member) {
+        // 영속성 컨텍스트에 저장
+        em.persist(member);
+        
+        // 영속성 컨텍스트에 있는 데이터를 DB로 쿼리 전송 
+        // DB에 실제 쿼리를 날리지만 DB에 반영되지는 않는다. DB에 저장하기 위해선 commit을 해야 한다.
+        em.flush(); 
+        
+        // 영속성 컨텍스트에 있는 데이터를 제거
+        em.clear(); 
+        
+        return member.getId();
+    }
+   ```

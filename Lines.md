@@ -35,7 +35,8 @@
         em.persist(member);
         
         // 영속성 컨텍스트에 있는 데이터를 DB로 쿼리 전송 
-        // DB에 실제 쿼리를 날리지만 DB에 반영되지는 않는다. DB에 저장하기 위해선 commit을 해야 한다.
+        // DB에 실제 쿼리를 날리지만 DB에 반영되지는 않는다. 
+        // DB에 저장하기 위해선 commit을 해야 한다.
         em.flush(); 
         
         // 영속성 컨텍스트에 있는 데이터를 제거
@@ -44,3 +45,7 @@
         return member.getId();
     }
    ```
+   
+- **Optional 클래스** : `Optional<T>` 클래스는 `Integer`나 `Double` 클래스처럼 `T`타입의 객체를 포장해 주는 **래퍼 클래스**(`Wrapper class`)이다. 따라서 `Optional` 인스턴스는 **모든 타입의 참조 변수**를 저장할 수 있다.
+
+ 

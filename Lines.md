@@ -65,6 +65,8 @@
 
 - **Optional 클래스** : `Optional<T>` 클래스는 `Integer`나 `Double` 클래스처럼 `T`타입의 객체를 포장해 주는 **래퍼 클래스**(`Wrapper class`)이다. 따라서 `Optional` 인스턴스는 **모든 타입의 참조 변수**를 저장할 수 있다.
 
+- **JSP** (`Java Server Page`) : HTML내에 자바 코드를 삽입하여 웹 서버에서 **동적으로 웹 페이지를 생성**하여 웹 브라우저에 돌려주는 **서버 사이드 스크립트 언어**이다. Java EE 스펙 중 일부로 웹 애플리케이션 서버에서 동작한다. ( [출처](https://ko.wikipedia.org/wiki/%EC%9E%90%EB%B0%94%EC%84%9C%EB%B2%84_%ED%8E%98%EC%9D%B4%EC%A7%80) )
+
 ## Software Product
 
 - **JIRA** : 지라(JIRA)는 아틀라시안이 개발한 **사유 이슈 추적** 제품이다. **버그 추적**, **이슈 추적**, 프로젝트 관리 기능을 제공하는 소프트웨어이다. Jira는 Java 로 작성되어 있다. ( [출처](https://ko.wikipedia.org/wiki/%EC%A7%80%EB%9D%BC_(%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4)) )

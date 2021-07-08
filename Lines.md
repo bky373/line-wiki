@@ -133,6 +133,12 @@
     }
     ```
 
+- **DTO** ( `Data Transfer Object` ) : **데이터 전송 객체** , **계층( `Layer` ) 간** 데이터 교환을 위해 사용하는 객체이다. 로직을 가지고 있지 않은 순수한 객체이며, `getter/setter` 메소드만을 갖는다. 쉽게, 데이터를 전송할 때 사용하는 바구니라고 생각하자. ( [출처](https://www.youtube.com/watch?v=J_Dr6R0Ov8E) )
+  - `Entity`를 `DTO` 대신 사용할 수 있지 않을까?
+    - 사용할 수는 있지만.. `View`에서 표현하는 속성 값들이 요청에 따라 계속 달라질 수 있는데, 그 때마다 `Entity`의 속성값을 변경하면 영속성 모델을 표현한 `Entity`의 순수성이 모호해지기 때문에 `Controller` 에서 쓸 `DTO`와 `Entity`  클래스는 분리하는 게 좋다.
+    > **Entity** : 실제 DB의 테이블과 매핑되는 클래스로, `id`로 구분되며, 로직을 포함할 수 있다.
+  - client( browser ) <- **dto** -> controller( web ) - service - repository ( dao ) <- **domain(entity)** -> DB
+
 ## Architecture
 
 - **시스템** : **소프트웨어**(프로그램)와 **하드웨어**, **인프라**를 포함하는 개념이다.

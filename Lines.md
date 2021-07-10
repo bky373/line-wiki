@@ -61,6 +61,16 @@
 
 - **스위치** (`switch`, **스위칭 허브**) : 랜을 구성할 때 사용하는 **단말기 간 스위칭** 기능이 있는 통신망 **중계 장치**다. 컴퓨터(호스트)에서 특정한 **다른 단말기로 패킷을 보낼 수 있는** 기능이 있어 통신 효율이 향상된다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) )
 
+- **IP** ( `Internet Protocol`, **인터넷 프로토콜** ) : 인터넷에 있는 한 컴퓨터에서 다른 컴퓨터로 데이터를 보내는 데 사용되는 **네트워크 계층 프로토콜**이다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) )
+
+- **IP 주소** ( `IP Address` ) : 컴퓨터 네트워크에서 장치들이 서로를 인식하고 통신하기 위해 사용하는 주소다.   ( [출처](http://www.yes24.com/Product/Goods/61794014) )
+
+  - **다른 네트워크로 데이터를 전달**하려면 IP 주소가 필요하다. 
+  - IP 주소는 인터넷 서비스 공급자에게 할당받을 수 있다. 
+  - IPv4의 IP 주소는 32비트, IPv6의 IP 주소는 128비트로 구성되어 있다.
+  - IP 주소의 종류에는 공인 IP 주소와 사설 IP 주소가 있다.
+  - IP 주소는 네트워크 ID와 호스트 ID로 나누어진다. 
+
 
 ## Database
 
@@ -123,10 +133,15 @@
 - **DAO** ( `Data Access Object` )   ( [출처](https://gmlwjd9405.github.io/2018/12/25/difference-dao-dto-entity.html) )
 
   - 실제로 DB에 접근하는 객체으로, Persistence Layer (**DB에 data를 CRUD하는 계층**) 이다. 
+
   - `Service`와 `DB`를 연결하는 고리의 역할을 한다.
+
   - 개발자가 직접 코딩한 SQL을 사용하여 DB에 접근한 후 적절한 CRUD API를 제공한다.
+
     - JPA에서 대부분 기본적인 CRUD 메소드를 제공하고 있다. ( `extends JpaRepository<User, Long>` )
+
   - 예시( `JPA` 사용 시 )
+
     ```java
     public interface SampleRepository extends CrudRepository<Sample, Long> {
     
@@ -134,9 +149,13 @@
     ```
 
 - **DTO** ( `Data Transfer Object` ) : **데이터 전송 객체** , **계층( `Layer` ) 간** 데이터 교환을 위해 사용하는 객체이다. 로직을 가지고 있지 않은 순수한 객체이며, `getter/setter` 메소드만을 갖는다. 쉽게, 데이터를 전송할 때 사용하는 바구니라고 생각하자. ( [출처](https://www.youtube.com/watch?v=J_Dr6R0Ov8E) )
+
   - `Entity`를 `DTO` 대신 사용할 수 있지 않을까?
+
     - 사용할 수는 있지만.. `View`에서 표현하는 속성 값들이 요청에 따라 계속 달라질 수 있는데, 그 때마다 `Entity`의 속성값을 변경하면 영속성 모델을 표현한 `Entity`의 순수성이 모호해지기 때문에 `Controller` 에서 쓸 `DTO`와 `Entity`  클래스는 분리하는 게 좋다.
+
     > **Entity** : 실제 DB의 테이블과 매핑되는 클래스로, `id`로 구분되며, 로직을 포함할 수 있다.
+
   - client( browser ) <- **dto** -> controller( web ) - service - repository ( dao ) <- **domain(entity)** -> DB
 
 ## Architecture

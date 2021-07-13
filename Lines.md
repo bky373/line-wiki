@@ -164,6 +164,10 @@
 
   - client( browser ) <- **dto** -> controller( web ) - service - repository ( dao ) <- **domain(entity)** -> DB
 
+- **MockMvc** : 웹 애플리케이션을 애플리케이션 서버에 배포하지 않고도 스프링 MVC의 동작을 재현할 수 있는 클래스이다. ( [출처](https://itmore.tistory.com/entry/MockMvc-%EC%83%81%EC%84%B8%EC%84%A4%EB%AA%85) )
+
+- **Dispatcher Servlet** : 모든 **요청을 한곳에서 받아서 필요한 처리**들을 한 뒤, **요청에 맞는 handler로 요청을 Dispatch**하고, 해당 **Handler의 실행 결과를 Http Response 형태로 만드는 역할**을 한다. ( [출처](https://galid1.tistory.com/525) )
+
 ## Architecture
 
 - **시스템** : **소프트웨어**(프로그램)와 **하드웨어**, **인프라**를 포함하는 개념이다.

@@ -54,6 +54,8 @@
 
 ## Spring
 
+- **스프링** : 스프링이란 IoC와 AOP를 지원하는 경량의 컨테이너 프레임워크이다. ( [출처](https://devlog-wjdrbs96.tistory.com/165?category=882236) )
+
 - **Bean** ( 빈 ) : 스프링 IoC 컨테이너가 관리하는 객체 ( [출처](https://devlog-wjdrbs96.tistory.com/165) )
 
   - 빈으로 등록됐을 때의 장점

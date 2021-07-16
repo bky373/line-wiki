@@ -74,3 +74,5 @@
   - IPv4의 IP 주소는 32비트, IPv6의 IP 주소는 128비트로 구성되어 있다.
   - IP 주소의 종류에는 공인 IP 주소와 사설 IP 주소가 있다.
   - IP 주소는 네트워크 ID와 호스트 ID로 나누어진다. 
+
+- **DHCP** (`Dynamic Host Configuration Protocol`) : IP 주소를 자동으로 할당하는 프로토콜이다. 라우터는 DHCP 기능을 가지고 있다. ( [출처](http://www.yes24.com/Product/Goods/61794014) )

@@ -75,8 +75,12 @@
   - IP 주소의 종류에는 공인 IP 주소와 사설 IP 주소가 있다.
   - IP 주소는 네트워크 ID와 호스트 ID로 나누어진다. 
 
-- **DHCP** (`Dynamic Host Configuration Protocol`) : IP 주소를 자동으로 할당하는 프로토콜이다. 라우터는 DHCP 기능을 가지고 있다. ( [출처](http://www.yes24.com/Product/Goods/61794014) )
+- **DHCP** (`Dynamic Host Configuration Protocol`) : IP 주소를 자동으로 할당하는 프로토콜이다. 라우터는 DHCP 기능을 가지고 있다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) )
 
 - **네트워크 계층** ( `network layer`) : 네트워크 계층은 **서로 다른 네트워크 간 통신** 이 이루어지는 계층이다. 라우터를 통해 최적의 경로 설정 ( 라우팅 )을 하며 패킷 전송을 담당한다. 
 
-- **라우터(router)** : **서로 다른 네트워크를 연결해 주는 장치**로 현재의 네트워크에서 다른 네트워크로 **패킷을 전송**할 수 있도록 한다. ( [출처](http://www.yes24.com/Product/Goods/61794014) )
+- **라우터** ( `router` ) : **서로 다른 네트워크를 연결해 주는 장치**로 현재의 네트워크에서 다른 네트워크로 **패킷을 전송**할 수 있도록 한다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) )
+
+- **라우팅** ( `routing` ) : 네트워크에서 패킷을 목적지로 보낼 때 목적지까지 갈 수 있는 여러 가지 경로 중 **한 가지 경로를 설정**하는 과정이다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) )
+
+- **라우팅 테이블** ( `routing table` ) : 컴퓨터 네트워크에서 목적지 주소를, 목적지에 도달하기 위한 네트워크 노선으로 변환할 목적으로 사용된다. 다른 네트워크로 가기 위한 **가장 좋은 라우터의 정보**를 가지고 있다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) )

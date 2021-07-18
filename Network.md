@@ -78,3 +78,5 @@
 - **DHCP** (`Dynamic Host Configuration Protocol`) : IP 주소를 자동으로 할당하는 프로토콜이다. 라우터는 DHCP 기능을 가지고 있다. ( [출처](http://www.yes24.com/Product/Goods/61794014) )
 
 - **네트워크 계층** ( `network layer`) : 네트워크 계층은 **서로 다른 네트워크 간 통신** 이 이루어지는 계층이다. 라우터를 통해 최적의 경로 설정 ( 라우팅 )을 하며 패킷 전송을 담당한다. 
+
+- **라우터(router)** : **서로 다른 네트워크를 연결해 주는 장치**로 현재의 네트워크에서 다른 네트워크로 **패킷을 전송**할 수 있도록 한다. ( [출처](http://www.yes24.com/Product/Goods/61794014) )

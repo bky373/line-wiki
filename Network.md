@@ -101,6 +101,7 @@
 
 - **연결형** ( `connection-oriented` ) : 데이터를 교환하기 전에 **연결을 맺고** 데이터를 교환하는 동안 **계속 연결을 관리**하는 프로토콜의 한 형태이다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) )
 
-- **비연결형** ( `connectionless` ) : 연결(connection)에 대한 초기화 과정이 없는 통신을 말한다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) )
+- **비연결형** ( `connectionless` ) : 연결( `connection` )에 대한 초기화 과정이 없는 통신을 말한다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) )
 
-  
+- **TCP** ( `Transmission Control Protocol`, 전송 제어 프로토콜 ) : 전송 계층의 프로토콜은 **연결형**( `connection-oriented` ) 통신 방식이며 **신뢰할 수 있는 데이터 전송**을 보장한다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) )
+

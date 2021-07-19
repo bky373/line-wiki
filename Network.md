@@ -105,3 +105,5 @@
 
 - **TCP** ( `Transmission Control Protocol`, 전송 제어 프로토콜 ) : 전송 계층의 프로토콜은 **연결형**( `connection-oriented` ) 통신 방식이며 **신뢰할 수 있는 데이터 전송**을 보장한다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) )
 
+- **대역폭** ( `bandwidth` ) : 정해진 시간 동안 전송될 수 있는 데이터의 양 ( 주로 **속도**를 의미한다 ) 을 말한다. 대역폭은 제한적이다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) )
+

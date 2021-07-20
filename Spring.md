@@ -55,5 +55,8 @@
 
 - **@RequestParam** : 1개의 **HTTP 요청 파라미터** ( `Path Parameter` 또는 `Query Parameter` )를 받기 위해 사용한다. 사용시 필수 여부 ( `required` ) 의 기본값이 `true` 이기 때문에, 사용하려면 반드시 해당 파라미터가 전송되어야 한다. 해당 파라미터가 전송되지 않으면 `400 Error` 가 발생한다. 만약 반드시 필요한 변수가 아니라면 `required`의 값을 `false` 로 설정한다. 해당 변수가 없는 요청을 보낼 경우에 기본값을 설정하고 싶다면 `defaultValue` 값을 설정한다.  ( [출처](https://mangkyu.tistory.com/72) ) 
 
-- **@RequestBody** : 클라이언트가 전송하는 **JSON** ( `application/json` ) 형태의 **HTTP Body 내용**을 Java Object 로 변환해주는 역할을 한다. 만약 Body가 존재하지 않는 `GET` 메소드에 `@RequestBody` 를 활용하려고 하면 에러가 발생한다. `@RequestBody` 로 받는 데이터는 스프링에서 관리하는 `MessageConverter` 중 하나인 `MappingJackson2HttpMessageConverter` 를 통해 **Java Obejct** 로 변환된다.  ( [출처](https://mangkyu.tistory.com/72) )
+- **@RequestBody** : 클라이언트가 전송하는 **JSON** ( `application/json` ) 형태의 **HTTP Body 내용**을 **Java Object** 로 변환해주는 역할을 한다. 만약 Body가 존재하지 않는 `GET` 메소드에 `@RequestBody` 를 활용하려고 하면 에러가 발생한다. `@RequestBody` 로 받는 데이터는 스프링에서 관리하는 `MessageConverter` 중 하나인 `MappingJackson2HttpMessageConverter` 를 통해 **Java Obejct** 로 변환된다.  ( [출처](https://mangkyu.tistory.com/72) )
+
+- **@ModelAttribute** : 클라이언트가 전송하는 `multipart/form-data` 형태의 **HTTP Body 내용과 HTTP 파라미터들을 Setter 를 통해 1대1로 객체에 바인딩** 하기 위해 사용한다. `@ModelAttribute` 에는 매핑시키는 파라미터의 타입이 객체의 타입과 일치하는지를 포함한 다양한 검증 ( `Validation` ) 작업이 추가적으로 진행된다. 한 가지 예로, 게시물의 번호를 저장하는 `int` 형 `index` 변수에  "1번" 이라는 `String` 형을 넣으려고 하면, `BindException` 이 발생한다. `@ModelAttribute` 을 활용해서 특정 파라미터만을 받아올 수도 있다. 예를 들어 `{ country : "Korea" , capital : "Seoul" }` 형태의 데이터를 전송했다고 하면, 컨트롤러에서 `@ModelAttribute("capital") String captial` 의 형태로 `capital` 변수에  `Seoul`  만 바인딩시켜서 받아올 수 있다.  ( [출처](https://mangkyu.tistory.com/72) )
+- **@RequestBody** 와  **@ModelAttribute**의 차이 : **@RequestBody** 는 요청받은 데이터를 변환하는 것이기 때문에 `Setter` 함수가 없어도 값이 매핑되지만, **@ModelAttribute** 는 바인딩하는 어떤 데이터를 set 하는 `Setter` 함수가 없다면 매핑이 되지 않는다.  ( [출처](https://mangkyu.tistory.com/72) )
 

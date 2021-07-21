@@ -1,6 +1,37 @@
 # Spring
 
-- **스프링** : 스프링이란 IoC와 AOP를 지원하는 경량의 컨테이너 프레임워크이다. ( [출처](https://devlog-wjdrbs96.tistory.com/165?category=882236) )
+- **스프링** ( `Spring` ) : 스프링이란 IoC와 AOP를 지원하는 경량의 컨테이너 프레임워크이다. ( [출처](https://devlog-wjdrbs96.tistory.com/165?category=882236) )
+
+- **스프링 부트** ( `Spring Boot` ) : 스탠드 얼론한 스프링 기반의 애플리케이션을 프로덕션 수준까지 쉽게 만들고 실행할 수 있게 해준다. 대부분의 스프링 부트 애플리케이션은 최소한의 스프링 구성을 필요로 한다.  ( [출처](https://spring.io/projects/spring-boot) )
+
+  > Spring Boot makes it easy to create stand-alone, **production-grade Spring based Applications** that you can "just run".
+
+- **스프링 부트의 특징** ( `Features` )  ( [출처](https://spring.io/projects/spring-boot) )
+
+  - **자립형 ( 독립형 )  Spring 애플리케이션**을 생성함
+
+    > Create stand-alone Spring applications
+
+  - **`Tomcat`,  `Jetty` 또는 `Undertow `** 를 직접 포함함
+    ( `WAR` 파일을 배포할 필요 없음 )
+
+    > Embed Tomcat, Jetty or Undertow directly (no need to deploy WAR files)
+
+  - 빌드 구성을 단순화하기 위해 독자적인 **'스타터' 종속성**을 제공함
+
+    > Provide opinionated 'starter' dependencies to simplify your build configuration
+
+  - 가능할 때마다 **`Spring` 및 타사 라이브러리**를 자동으로 구성함
+
+    > Automatically configure Spring and 3rd party libraries whenever possible
+
+  - **메트릭, 헬스 체크 ( 상태 확인 ) 및 외부 구성** 과 같은 프로덕션 준비 기능을 제공함
+
+    > Provide production-ready features such as metrics, health checks, and externalized configuration
+
+  - **코드 생성 및 XML 구성 요구 사항이 없음**
+
+    > Absolutely no code generation and no requirement for XML configuration
 
 - **Bean** ( 빈 ) : 스프링 IoC 컨테이너가 관리하는 객체 ( [출처](https://devlog-wjdrbs96.tistory.com/165) )
 
@@ -73,4 +104,3 @@
     - 더 많은 어노테이션을 보고 싶다면, [자바 공식 문서](https://javaee.github.io/javaee-spec/javadocs/javax/validation/constraints/package-summary.html)(Java 8 기준)를 참고하자.
 
 - **@Validated** : 객체를 검증하는 방법은 경우에 따라 달라질 수 있다. 예를 들어 일반 사용자의 요청과 관리자의 요청을 보내는 경우에 같은 객체로 요청이 오지만 다른 방식의 검증이 필요할 수 있다. 이런 경우에는 검증에 사용할 제약 조건이 2가지로 나뉘어야 한다. JSR-303 에서는 이런 경우를 위해 제약 조건 **어노테이션에 조건이 적용될 검증 그룹을 지정하여 적용** 할 수 있도록 **@Validated** 를 제공한다.  ( [출처](https://mangkyu.tistory.com/174?category=761302) )
-

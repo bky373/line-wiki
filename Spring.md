@@ -12,11 +12,17 @@
   > Spring Boot makes it easy to create stand-alone, **production-grade Spring based Applications** that you can "just run".
 
 - **스프링 부트의 특징** ( `Features` )   ( [출처](https://spring.io/projects/spring-boot) )
+
   - **자립형 ( 독립형 )  Spring 애플리케이션**을 생성함
+
   - **`Tomcat`,  `Jetty` 또는 `Undertow `** 를 직접 포함함  ( `WAR` 파일을 배포할 필요 없음 )
+
   - 빌드 구성을 단순화하기 위해 **독자적인** **'스타터' 종속성**을 제공함
+
   - 가능할 때마다 **`Spring` 및 타사 라이브러리**를 자동으로 구성함
+
   - **메트릭, 헬스 체크 ( 상태 확인 ) 및 외부 구성** 과 같은 프로덕션 준비 기능을 제공함
+
   - **코드 생성 및 XML 구성 요구 사항이 없음**
 
     > - Create stand-alone Spring applications
@@ -61,13 +67,13 @@
     }
     ```
 
-- **DTO** ( `Data Transfer Object` ) : **데이터 전송 객체** , **계층( `Layer` ) 간** 데이터 교환을 위해 사용하는 객체이다. 로직을 가지고 있지 않은 순수한 객체이며, `getter/setter` 메소드만을 갖는다. 쉽게, 데이터를 전송할 때 사용하는 바구니라고 생각하자. ( [출처](https://www.youtube.com/watch?v=J_Dr6R0Ov8E) )
+- **데이터 전송 객체** ( `Data Transfer Object`, &nbsp; **DTO** ) :  **계층( `Layer` ) 간 데이터 교환을 위해 사용하는 객체** 이다. 로직을 가지고 있지 않은 **순수한 객체** 이며, **`getter/setter` 메소드만** 을 갖는다. 쉽게, 데이터를 전송할 때 사용하는 바구니라고 할 수 있다. ( [출처](https://www.youtube.com/watch?v=J_Dr6R0Ov8E) )
 
   - `Entity`를 `DTO` 대신 사용할 수 있지 않을까?
 
     - 사용할 수는 있지만.. `View`에서 표현하는 속성 값들이 요청에 따라 계속 달라질 수 있는데, 그 때마다 `Entity`의 속성값을 변경하면 영속성 모델을 표현한 `Entity`의 순수성이 모호해지기 때문에 `Controller` 에서 쓸 `DTO`와 `Entity`  클래스는 분리하는 게 좋다.
 
-    > **Entity** : 실제 DB의 테이블과 매핑되는 클래스로, `id`로 구분되며, 로직을 포함할 수 있다.
+    > **Entity** : **실제 DB의 테이블과 매핑되는 클래스**로,  **`id`로 구분** 되며, 로직을 포함할 수 있다.
 
   - client( browser ) <- **dto** -> controller( web ) - service - repository ( dao ) <- **domain(entity)** -> DB
 

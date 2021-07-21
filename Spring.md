@@ -11,34 +11,22 @@
 
   > Spring Boot makes it easy to create stand-alone, **production-grade Spring based Applications** that you can "just run".
 
-- **스프링 부트의 특징** ( `Features` )  ( [출처](https://spring.io/projects/spring-boot) )
-
+- **스프링 부트의 특징** ( `Features` )   ( [출처](https://spring.io/projects/spring-boot) )
   - **자립형 ( 독립형 )  Spring 애플리케이션**을 생성함
-
-    > Create stand-alone Spring applications
-
-  - **`Tomcat`,  `Jetty` 또는 `Undertow `** 를 직접 포함함
-    ( `WAR` 파일을 배포할 필요 없음 )
-
-    > Embed Tomcat, Jetty or Undertow directly (no need to deploy WAR files)
-
-  - 빌드 구성을 단순화하기 위해 독자적인 **'스타터' 종속성**을 제공함
-
-    > Provide opinionated 'starter' dependencies to simplify your build configuration
-
+  - **`Tomcat`,  `Jetty` 또는 `Undertow `** 를 직접 포함함  ( `WAR` 파일을 배포할 필요 없음 )
+  - 빌드 구성을 단순화하기 위해 **독자적인** **'스타터' 종속성**을 제공함
   - 가능할 때마다 **`Spring` 및 타사 라이브러리**를 자동으로 구성함
-
-    > Automatically configure Spring and 3rd party libraries whenever possible
-
   - **메트릭, 헬스 체크 ( 상태 확인 ) 및 외부 구성** 과 같은 프로덕션 준비 기능을 제공함
-
-    > Provide production-ready features such as metrics, health checks, and externalized configuration
-
   - **코드 생성 및 XML 구성 요구 사항이 없음**
 
-    > Absolutely no code generation and no requirement for XML configuration
+    > - Create stand-alone Spring applications
+    > - Embed Tomcat, Jetty or Undertow directly (no need to deploy WAR files)
+    > - Provide opinionated 'starter' dependencies to simplify your build configuration
+    > - Automatically configure Spring and 3rd party libraries whenever possible
+    > - Provide production-ready features such as metrics, health checks, and externalized configuration
+    > - Absolutely no code generation and no requirement for XML configuration
 
-- **Bean** ( 빈 ) : 스프링 IoC 컨테이너가 관리하는 객체 ( [출처](https://devlog-wjdrbs96.tistory.com/165) )
+- **빈** ( `Bean` ) : 스프링 IoC 컨테이너가 관리하는 객체 ( [출처](https://devlog-wjdrbs96.tistory.com/165) )
 
   - 빈으로 등록됐을 때의 장점
     - 스프링 IoC 컨테이너에 등록된 Bean 들은 **의존성 관리**가 수월해진다.

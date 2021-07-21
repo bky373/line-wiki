@@ -1,8 +1,14 @@
 # Line Wiki
 
-- **하루에 한 줄** 이라도 공부한 내용을 기록합니다. &nbsp;( 📓&nbsp;[**정보를 기록하는 공간**](https://github.com/bky373/line-snipets/blob/main/Lines.md#Lines)  )
+- **하루에 한 줄** 이라도 공부한 내용을 기록합니다.
 - **모든 걸 최소화** 한 아주 작은 습관이지만, 그렇기 때문에 **지속 가능**하며 <br>
   앞으로 장기적으로 이를 지속했을 때 **변화**를 만들어낼 수 있다고 믿습니다.
+
+## 📓 기록 공간
+
+- [Lines](https://github.com/bky373/line-snipets/blob/main/Lines.md#Lines)
+- [Spring](https://github.com/bky373/line-wiki/blob/main/Spring.md#Spring)
+- [Network](https://github.com/bky373/line-wiki/blob/main/Network.md#Network)
 
 # Rule of 1.01 ( 1.01의 법칙 )
 

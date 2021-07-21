@@ -1,9 +1,9 @@
 # Spring
 
-- **스프링 (프레임워크) ** ( `Spring (Framework)` ) 
+- **스프링 (프레임워크)** &nbsp;( `Spring (Framework)` ) 
 
   - 스프링이란 IoC와 AOP를 지원하는 경량의 컨테이너 프레임워크이다. ( [출처](https://devlog-wjdrbs96.tistory.com/165?category=882236) )
-  - 스프링 프레임워크 ( `Spring Framework` ) 최신 **Java 기반 엔터프라이즈 애플리케이션**을 위한 **포괄적인 프로그래밍과 구성 모델**을 제공한다. 모든 종류의 배포 플랫폼에서 이용 가능하다.  ( [출처](https://spring.io/projects/spring-framework) )
+  - 스프링 프레임워크 ( `Spring Framework` ) : 최신 **Java 기반 엔터프라이즈 애플리케이션**을 위한 **포괄적인 프로그래밍과 구성 모델**을 제공한다. 모든 종류의 배포 플랫폼에서 이용 가능하다.  ( [출처](https://spring.io/projects/spring-framework) )
 
   > The Spring Framework provides a comprehensive programming and configuration model for modern Java-based enterprise applications - on any kind of deployment platform.
 

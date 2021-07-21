@@ -63,7 +63,7 @@
 
 - **@Transactional** : 일반적으로 스프링에서 `Service Layer` 에서  `@Transactional` 을 사용하여 트랜잭션 처리를 한다. 데이터 조회만 일어나는 `select` 메소드에서는 `@Transactional` 을 활용하지 않지만, 값을 추가하거나 변경 또는 삭제하는 `insert` ,  `update`,  `delete`  메소드에서는 `@Transactional` 을 추가하여 트랜잭션을 설정한다.  ( [출처](https://mangkyu.tistory.com/50?category=761302) )
 
-- **@Valid** :  JSR-303 표준 스펙으로, **제약 조건이 부여된 객체**에 대해 빈 검증기 ( `Bean Validator` ) 가 검증하도록 지시하는 어노테이션이다. 스프링에서는 `LocalValidatorFactoryBean`을 이용해 JSR 표준의 검증 기능을 사용할 수 있는데, `LocalValidatorFactoryBean`은 JSR-303의 검증 기능을 이용할 수 있도록 도와주는 일종의 어댑터이다. JSR 표준의 빈 검증 기술의 특징은 객체의 필드에 달린 제약조건 어노테이션을 참고해 검증을 편리하게 할 수 있다는 것이다. 만약 검증에 오류가 있다면 `MethodArgumentNotValidException` 예외가 발생하고, 디스패처 서블릿에 기본으로 등록된 예외 리졸버 ( `Exception Resolver` ) 인 `DefaultHandlerExceptionResolver` 에 의해 `400 BadRequest` 에러가 발생한다. ( [출처](https://github.com/bky373/line-wiki/edit/main/Spring.md) ) 
+- **@Valid** :  JSR-303 표준 스펙으로, **제약 조건이 부여된 객체**에 대해 빈 검증기 ( `Bean Validator` ) 가 검증하도록 지시하는 어노테이션이다. 스프링에서는 `LocalValidatorFactoryBean`을 이용해 JSR 표준의 검증 기능을 사용할 수 있는데, `LocalValidatorFactoryBean`은 JSR-303의 검증 기능을 이용할 수 있도록 도와주는 일종의 어댑터이다. JSR 표준의 빈 검증 기술의 특징은 객체의 필드에 달린 제약조건 어노테이션을 참고해 검증을 편리하게 할 수 있다는 것이다. 만약 검증에 오류가 있다면 `MethodArgumentNotValidException` 예외가 발생하고, 디스패처 서블릿에 기본으로 등록된 예외 리졸버 ( `Exception Resolver` ) 인 `DefaultHandlerExceptionResolver` 에 의해 `400 BadRequest` 에러가 발생한다. ( [출처](https://mangkyu.tistory.com/174?category=761302) ) 
   - JSR 표준 스펙은 다양한 제약 조건 어노테이션을 제공한다. 대표적인 어노테이션은 아래와 같다.
     - `@NonNull` : 해당 값이 `null`이 아닌지 검증함
     - `@AssertTrue` : 해당 값이 `true`인지 검증함
@@ -72,5 +72,5 @@
     - `@Max` : 해당 값이 주어진 값보다 크지 않은지 검증함
     - 더 많은 어노테이션을 보고 싶다면, [자바 공식 문서](https://javaee.github.io/javaee-spec/javadocs/javax/validation/constraints/package-summary.html)(Java 8 기준)를 참고하자.
 
-- **@Validated** : 객체를 검증하는 방법은 경우에 따라 달라질 수 있다. 예를 들어 일반 사용자의 요청과 관리자의 요청을 보내는 경우에 같은 객체로 요청이 오지만 다른 방식의 검증이 필요할 수 있다. 이런 경우에는 검증에 사용할 제약 조건이 2가지로 나뉘어야 한다. JSR-303 에서는 이런 경우를 위해 제약 조건 **어노테이션에 조건이 적용될 검증 그룹을 지정하여 적용** 할 수 있도록 **@Validated** 를 제공한다.  ( [출처](https://github.com/bky373/line-wiki/edit/main/Spring.md) )
+- **@Validated** : 객체를 검증하는 방법은 경우에 따라 달라질 수 있다. 예를 들어 일반 사용자의 요청과 관리자의 요청을 보내는 경우에 같은 객체로 요청이 오지만 다른 방식의 검증이 필요할 수 있다. 이런 경우에는 검증에 사용할 제약 조건이 2가지로 나뉘어야 한다. JSR-303 에서는 이런 경우를 위해 제약 조건 **어노테이션에 조건이 적용될 검증 그룹을 지정하여 적용** 할 수 있도록 **@Validated** 를 제공한다.  ( [출처](https://mangkyu.tistory.com/174?category=761302) )
 

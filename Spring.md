@@ -1,8 +1,12 @@
 # Spring
 
 - [JPA](https://github.com/bky373/line-wiki/blob/main/Spring.md#JPA)
+
 - [Annotations](https://github.com/bky373/line-wiki/blob/main/Spring.md#Annotations)
-<br>
+  
+- [Spring Cloud](https://github.com/bky373/line-wiki/blob/main/Spring.md#Spring-Cloud)
+  
+  <br>
 
 - **스프링 (프레임워크)** &nbsp;( `Spring (Framework)` ) 
 
@@ -132,3 +136,27 @@
     - 더 많은 어노테이션을 보고 싶다면, [자바 공식 문서](https://javaee.github.io/javaee-spec/javadocs/javax/validation/constraints/package-summary.html)(Java 8 기준)를 참고하자.
 
 - **@Validated** : 객체를 검증하는 방법은 경우에 따라 달라질 수 있다. 예를 들어 일반 사용자의 요청과 관리자의 요청을 보내는 경우에 같은 객체로 요청이 오지만 다른 방식의 검증이 필요할 수 있다. 이런 경우에는 검증에 사용할 제약 조건이 2가지로 나뉘어야 한다. JSR-303 에서는 이런 경우를 위해 제약 조건 **어노테이션에 조건이 적용될 검증 그룹을 지정하여 적용** 할 수 있도록 **@Validated** 를 제공한다.  ( [출처](https://mangkyu.tistory.com/174?category=761302) )
+
+
+
+## Spring Cloud
+
+- 스프링 클라우드는 개발자가 **분산 시스템**에서 **공통 패턴**을 빠르게 구축할 수 있도록 도구를 제공한다.  ( [출처](https://spring.io/projects/spring-cloud#overview) )
+
+  > Spring Cloud provides tools for developers to quickly build some of the common patterns in distributed systems (e.g. configuration management, service discovery, circuit breakers, intelligent routing, micro-proxy, control bus, one-time tokens, global locks, leadership election, distributed sessions, cluster state).
+
+- **스프링 클라우드의 특징**
+
+  - **일반적인 유즈 케이스**에 대하여 우수한 경험을 제공하고, **확장성 있는 메커니즘**을 제공하는 데 중점을 둔다.   ( [출처](https://spring.io/projects/spring-cloud#overview) )
+
+    > Spring Cloud focuses on providing good out of box experience for typical use cases and extensibility mechanism to cover others.
+
+  - 분산/버전화된 구성  (  `Distributed/versioned configuration ` )
+  - 서비스 등록 및 검색  (  `Service registration and discovery`  )
+  - 라우팅  (  `Routing`  )
+  - 서비스 간 호출  (  `Service-to-service calls ` )
+  - 로드 밸런싱 ( 부하 분산 )  (  `Load balancing`  )
+  - 서킷 브레이커  (  `Circuit Breakers`  )
+  - 전역 잠금  (  `Global locks`  )
+  - 클러스터 상태  (  `Leadership election and cluster state`  )
+  - 분산 메시징  (  `Distributed messaging`  )

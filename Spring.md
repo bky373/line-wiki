@@ -1,5 +1,9 @@
 # Spring
 
+- [JPA](https://github.com/bky373/line-wiki/blob/main/Spring.md#JPA)
+- [Annotations](https://github.com/bky373/line-wiki/blob/main/Spring.md#Annotations)
+<br>
+
 - **스프링 (프레임워크)** &nbsp;( `Spring (Framework)` ) 
 
   - 스프링이란 IoC와 AOP를 지원하는 경량의 컨테이너 프레임워크이다. ( [출처](https://devlog-wjdrbs96.tistory.com/165?category=882236) )

@@ -2,10 +2,6 @@
 
 ## Database
 
-- **ORM** (`Object Relational Mapping`) : 객체 관계 매핑으로, 객체와 관계형 데이터베이스의 데이터를 매핑(연결)해주는 것을 말한다. 객체를 ORM 프레임워크에 저장하면, ORM 프레임워크가 SQL을 생성해서 DB에서 객체를 관리할 수 있게 해준다.
-
-- **JPA** (`Java Persistence API`) : 자바 진영의 ORM 기술 표준이다.
-
 - **트랜잭션** : 데이터베이스 관리 시스템 **상호작용의 단위**이다. 쉽게 데이터베이스의 **상태 변화**를 일으키는 단위라고 볼 수 있다. 
 
 - **트랜잭션의 4대 특징**
@@ -14,25 +10,6 @@
   - 일관성 (`Consistency`)
   - 독립성 (`Isolation`)
   - 지속성 (`Durability`) 
-
-- **JPA `persist`, `flush`, `clear` 정의 및 이해**  &nbsp;( [출처](https://apalsl.github.io/2019/11/14/SpringJpaFlushClear/) )
-
-  ```java
-   public Long save(Member member) {
-       // 영속성 컨텍스트에 저장
-       em.persist(member);
-       
-       // 영속성 컨텍스트에 있는 데이터를 DB로 쿼리 전송 
-       // DB에 실제 쿼리를 날리지만 DB에 반영되지는 않는다. 
-       // DB에 저장하기 위해선 commit을 해야 한다.
-       em.flush(); 
-       
-       // 영속성 컨텍스트에 있는 데이터를 제거
-       em.clear(); 
-       
-       return member.getId();
-   }
-  ```
 
 ## Java
 

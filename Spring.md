@@ -81,6 +81,31 @@
 
 - **Dispatcher Servlet** : 모든 **요청을 한곳에서 받아서 필요한 처리**들을 한 뒤, **요청에 맞는 handler로 요청을 Dispatch**하고, 해당 **Handler의 실행 결과를 Http Response 형태로 만드는 역할**을 한다. ( [출처](https://galid1.tistory.com/525) )
 
+## JPA
+
+- **ORM** (`Object Relational Mapping`) : 객체 관계 매핑으로, 객체와 관계형 데이터베이스의 데이터를 매핑(연결)해주는 것을 말한다. 객체를 ORM 프레임워크에 저장하면, ORM 프레임워크가 SQL을 생성해서 DB에서 객체를 관리할 수 있게 해준다.
+
+- **JPA** (`Java Persistence API`) : 자바 진영의 ORM 기술 표준이다.
+
+- **JPA `persist`, `flush`, `clear` 정의 및 이해**  &nbsp;( [출처](https://apalsl.github.io/2019/11/14/SpringJpaFlushClear/) )
+
+  ```java
+   public Long save(Member member) {
+       // 영속성 컨텍스트에 저장
+       em.persist(member);
+       
+       // 영속성 컨텍스트에 있는 데이터를 DB로 쿼리 전송 
+       // DB에 실제 쿼리를 날리지만 DB에 반영되지는 않는다. 
+       // DB에 저장하기 위해선 commit을 해야 한다.
+       em.flush(); 
+       
+       // 영속성 컨텍스트에 있는 데이터를 제거
+       em.clear(); 
+       
+       return member.getId();
+   }
+  ```
+
 ## Annotations
 
 - **@RequestParam** : 1개의 **HTTP 요청 파라미터** ( `Path Parameter` 또는 `Query Parameter` )를 받기 위해 사용한다. 사용시 필수 여부 ( `required` ) 의 기본값이 `true` 이기 때문에, 사용하려면 반드시 해당 파라미터가 전송되어야 한다. 해당 파라미터가 전송되지 않으면 `400 Error` 가 발생한다. 만약 반드시 필요한 변수가 아니라면 `required`의 값을 `false` 로 설정한다. 해당 변수가 없는 요청을 보낼 경우에 기본값을 설정하고 싶다면 `defaultValue` 값을 설정한다.  ( [출처](https://mangkyu.tistory.com/72) ) 

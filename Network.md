@@ -128,6 +128,8 @@
 
 - **[HTTP](https://velog.io/@bky373/Web-HTTP%EC%99%80-HTTPS-%EC%B4%88%EA%B0%84%EB%8B%A8-%EC%A0%95%EB%A6%AC)** ( `HyperText Transfer Protocol` ) : 웹 서비스에서 클라이언트(웹 브라우저)와 웹 서버 간에 정보를 주고 받기 위해 사용하는 네트워크 프로토콜을 말한다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) )
 
-- **DNS** ( `Domain Name System`, 도메인 이름 시스템 ) : 네트워크에서 **호스트 이름을 IP 주소로 변환** 하는 데 사용하는 시스템(서비스)이다. DNS 서비스가 동작하는 컴퓨터(서버)를 DNS 서버라고 한다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) )
+- **DNS** ( `Domain Name System`,  도메인 이름 시스템 ) : 네트워크에서 **호스트 이름을 IP 주소로 변환** 하는 데 사용하는 시스템(서비스)이다. DNS 서비스가 동작하는 컴퓨터(서버)를 DNS 서버라고 한다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) )
 
-- **FTP** ( `File Transfer Protocol`, 파일 전송 프로토콜 ) : 서버와 클라이언트 간에 **파일을 전송** 하기 위한 프로토콜이다. 일반적으로 통신 포트는, 데이터 전송 용도로 20번 포트, 제어 용도로 21번을 사용한다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) ) 
+- **FTP** ( `File Transfer Protocol`,  파일 전송 프로토콜 ) : 서버와 클라이언트 간에 **파일을 전송** 하기 위한 프로토콜이다. 일반적으로 통신 포트는 데이터 전송 용도로 20번 포트, 제어 용도로 21번을 사용한다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) ) 
+
+- **SMTP** ( `Simple Mail Transfer Protocol`,  단순 메일 전달 프로토콜 ) : 인터넷에서 메일을 송신하는 데 사용하는 프로토콜이다. 통신 포트는 일반적으로 25번을 사용한다. SMTP를 지원하는 서버를 SMTP 서버라고 한다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) ) 

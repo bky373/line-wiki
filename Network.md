@@ -132,4 +132,6 @@
 
 - **FTP** ( `File Transfer Protocol`,  파일 전송 프로토콜 ) : 서버와 클라이언트 간에 **파일을 전송** 하기 위한 프로토콜이다. 일반적으로 통신 포트는 데이터 전송 용도로 20번 포트, 제어 용도로 21번을 사용한다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) ) 
 
-- **SMTP** ( `Simple Mail Transfer Protocol`,  단순 메일 전달 프로토콜 ) : 인터넷에서 메일을 송신하는 데 사용하는 프로토콜이다. 통신 포트는 일반적으로 25번을 사용한다. SMTP를 지원하는 서버를 SMTP 서버라고 한다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) ) 
+- **SMTP** ( `Simple Mail Transfer Protocol`,  단순 메일 전달 프로토콜 ) : **인터넷에서 메일을 송신** 하는 데 사용하는 프로토콜이다. 통신 포트는 일반적으로 25번을 사용한다. SMTP를 지원하는 서버를 SMTP 서버라고 한다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) ) 
+
+- **POP3** ( `Post Office Protocol` ) : **인터넷에서 메일을 수신** 하는 데 사용하는 프로토콜이다. 통신 포트는 일반적으로 110번을 사용한다. POP3를 지원하는 서버를 POP3 서버라고 한다. ( [출처](http://www.yes24.com/Product/Goods/61794014) ) 

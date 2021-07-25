@@ -138,3 +138,5 @@
 - **POP3** ( `Post Office Protocol` ) : **인터넷에서 메일을 수신** 하는 데 사용하는 프로토콜이다. 통신 포트는 일반적으로 110번을 사용한다. POP3를 지원하는 서버를 POP3 서버라고 한다. ( [출처](http://www.yes24.com/Product/Goods/61794014) ) 
 
 - **HTML** ( `HyperText Markup Language` ) : 인터넷 서비스의 하나인 WWW 를 통해 볼 수 있는 문서를 만들기 위해 사용하는 프로그래밍 언어이다. 하이퍼텍스트를 작성하기 위해 개발되었다.  ( [출처](http://www.yes24.com/Product/Goods/61794014) )
+
+- **URL** ( `Uniform Resource Locator` ) : 인터넷에서 파일 위치를 지정하기 위해 기술된 주소이다. 웹 사이트주소를 지정하기 위해 사용한다.   ( [출처](http://www.yes24.com/Product/Goods/61794014) )

@@ -93,6 +93,8 @@
 
 - **MyBatis** : **XML로 쿼리를 작성** 하도록 지원하는 라이브러리다. 참고로 `mybatis-spring` 은 스프링과 `mybatis` 를 연동해주는 라이브러리이다.
 
+- **JDBC** ( `Java Database Connectivity` ) : **자바에서 데이터베이스에 접속하기 위한 API** 이다. `spring-jdbc` 는 스프링에서 JDBC를 통해 데이터베이스와 연결할 수 있게 해 준다. 
+
 ## JPA
 
 - **ORM** (`Object Relational Mapping`) : 객체 관계 매핑으로, 객체와 관계형 데이터베이스의 데이터를 매핑(연결)해주는 것을 말한다. 객체를 ORM 프레임워크에 저장하면, ORM 프레임워크가 SQL을 생성해서 DB에서 객체를 관리할 수 있게 해준다.

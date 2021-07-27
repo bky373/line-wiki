@@ -95,6 +95,8 @@
 
 - **JDBC** ( `Java Database Connectivity` ) : **자바에서 데이터베이스에 접속하기 위한 API** 이다. `spring-jdbc` 는 스프링에서 JDBC를 통해 데이터베이스와 연결할 수 있게 해 준다. 
 
+- **dbcp2 ** : **데이터베이스 커넥션 풀** ( `Database Connection Pool` ) 을 말한다. **데이터베이스 서버와 웹 서버** 는 서로 다른 프로그램이고, 실무에서는 전혀 다른 컴퓨터에 설치되어 있을 가능성이 높다. 서로 다른 컴퓨터와 프로그램이 통신을 하기 위해서는 서로 연결을 맺는 과정이 필요한데, 이때 들어가는 시간이나 네트워크 비용이 꽤 비싼 편이다. `dbcp2`  라이브러리는 **데이터베이스와 연동** 하기 위한 길을 미리 만들어준다. 최근에는 커넥션 풀로 `dbcp2` 대신 `hikaricp` 를 자주 쓰기도 한다. ( 출처-1 )
+
 ## JPA
 
 - **ORM** (`Object Relational Mapping`) : 객체 관계 매핑으로, 객체와 관계형 데이터베이스의 데이터를 매핑(연결)해주는 것을 말한다. 객체를 ORM 프레임워크에 저장하면, ORM 프레임워크가 SQL을 생성해서 DB에서 객체를 관리할 수 있게 해준다.
@@ -178,3 +180,9 @@
 - **Feign** :  `Feign`은  **Java to HTTP 클라이언트 바인더** 이다.  `Retrofit`,  `JAXRS-2.0` 및 `WebSocket` 에서 영감을 얻었다. `Feign` 은  [`Denominator`](https://github.com/Netflix/Denominator) 를  `HTTP API` 에 균일하게 바인딩하는 것의 복잡성을 줄이고자 한다.  ( [출처](https://github.com/OpenFeign/feign) )
 
   > Feign is a Java to HTTP client binder inspired by [Retrofit](https://github.com/square/retrofit), [JAXRS-2.0](https://jax-rs-spec.java.net/nonav/2.0/apidocs/index.html), and [WebSocket](http://www.oracle.com/technetwork/articles/java/jsr356-1937161.html). Feign's first goal was reducing the complexity of binding [Denominator](https://github.com/Netflix/Denominator) uniformly to HTTP APIs regardless of [ReSTfulness](http://www.slideshare.net/adrianfcole/99problems). 
+
+
+
+# References
+
+- [출처 - 1 : 스프링 MVC 하루만에 배우기 ( 연서은 지음 )](https://wikidocs.net/book/5792)

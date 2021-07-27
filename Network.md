@@ -179,7 +179,7 @@
     >
     > ![image](https://user-images.githubusercontent.com/49539592/127004841-5a6d6fc6-7362-487e-884b-77fb8873ca4c.png)
 
-
+- **액세스 포인트** ( `access point` ) : 무선 인터넷 사용자가 인터넷 서비스를 이용할 수 있도록 무선 인터넷 접속을 도와주는 중계 장치다.
 
 ## References
 

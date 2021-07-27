@@ -91,6 +91,8 @@
 
 - **Dispatcher Servlet** : 모든 **요청을 한곳에서 받아서 필요한 처리**들을 한 뒤, **요청에 맞는 handler로 요청을 Dispatch**하고, 해당 **Handler의 실행 결과를 Http Response 형태로 만드는 역할**을 한다. ( [출처](https://galid1.tistory.com/525) )
 
+- **MyBatis** : **XML로 쿼리를 작성** 하도록 지원하는 라이브러리다. 참고로 `mybatis-spring` 은 스프링과 `mybatis` 를 연동해주는 라이브러리이다.
+
 ## JPA
 
 - **ORM** (`Object Relational Mapping`) : 객체 관계 매핑으로, 객체와 관계형 데이터베이스의 데이터를 매핑(연결)해주는 것을 말한다. 객체를 ORM 프레임워크에 저장하면, ORM 프레임워크가 SQL을 생성해서 DB에서 객체를 관리할 수 있게 해준다.

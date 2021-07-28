@@ -21,3 +21,8 @@
   - 일관성 (`Consistency`)
   - 독립성 (`Isolation`)
   - 지속성 (`Durability`) 
+
+
+# References
+
+- [출처-1 : SQL Tutorial  ( w3schools.com )](https://www.w3schools.com/sql/default.asp) 

@@ -40,9 +40,3 @@
 
 - HTTP 파라미터 : 서버로 전달되는 **키와 값의 쌍** 을 말한다. ( `key` : `value` )
 - POST 방식은 HTTP 파라미터가 주소창에 노출되지 않는다. 즉, 주소창의 변화 없이 데이터만 서버로 전송할 수 있다.
-
-
-# References
-
-- [출처-1 : SQL Tutorial  ( w3schools.com )](https://www.w3schools.com/sql/default.asp) 
-

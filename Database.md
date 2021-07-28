@@ -11,6 +11,7 @@
   - `RDBMS` 는 관계형 데이터베이스 관리 시스템 ( `Relational Database Management System` ) 의 약자이다.
   - `RDBMS` 는 `SQL` 과 `MS SQL Server`,  `IBM DB2`,  `Oracle`,  `MySQL`  및  `Microsoft Access` 와 같은 모든 최신 데이터베이스 시스템의 기반이다.
   - `RDBMS` 의 데이터는 `테이블` 이라는 데이터베이스 개체 ( `object` ) 에 저장된다. `테이블`은 관련 데이터 항목 ( `entries` ) 의 모음이며 열과 행으로 구성된다.
+- **필드** ( `Field` ) : 모든 테이블은 필드라고 하는 더 작은 엔티티로 나뉜다. 이 작은 엔티티는 테이블의 **모든 레코드에 대한 특정 정보 **를 유지하도록 설계된 **테이블의 열** ( `column` ) 이기도 하다. 예를 들어 고객 ( `Customer` )  테이블이 있을 때, 이에 대한 필드는 고객 ID ( `CustomerID` ),  고객 이름 ( `CustomerName` ),  주소 ( `Address` )  등으로 구성할 수 있다.
 
 # SQL
 

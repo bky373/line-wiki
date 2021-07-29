@@ -96,6 +96,7 @@
   - **XML로 쿼리를 작성** 하도록 지원하는 라이브러리다. 참고로 `mybatis-spring` 은 스프링과 `mybatis` 를 연동해주는 라이브러리이다.
   - `<![CDATA[~~~]]>` : 이 항목은 **원시 ( `Raw` )  문자열** 을 나타낸다. `<![CDATA[` 안에 있는 문자열은 `<` 등의 태그 문자가 있더라도 **태그로 인식하지 않는다**. 원시 문자열은  `]]>` 로 끝낸다.
   - 마이바티스는 쿼리가 실행될 때 파라미터를 치환한다. 예를 들어,  `#{title}`  은 파라미터로 입력된 키를 값으로 치환한다. 즉,  파라미터  `map.get("title") == '피터팬'` 형태가 마이바티스 쿼리 XML에 전달되면 마이바티스는  `#{title}` 을  `피터팬` 으로 자동 변환해준다.
+  - `useGeneratedKeys="true"` 와   `keyProperty="book_id"` 는 한 쌍을 이룬다.  `useGeneratedKeys="true"` 가  `true` 로  설정되면 마이바티스는 `Insert`  쿼리 실행 후 생성된 PK 를 파라미터 객체의  `KeyProperty`  속성에 넣어준다.  
 
 - **JDBC** ( `Java Database Connectivity` ) : **자바에서 데이터베이스에 접속하기 위한 API** 이다. `spring-jdbc` 는 스프링에서 JDBC를 통해 데이터베이스와 연결할 수 있게 해 준다. 
 

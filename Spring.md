@@ -133,15 +133,10 @@
 ## Annotations
 
 - **@RequestParam** : 1개의 **HTTP 요청 파라미터** ( `Path Parameter` 또는 `Query Parameter` )를 받기 위해 사용한다. 사용시 필수 여부 ( `required` ) 의 기본값이 `true` 이기 때문에, 사용하려면 반드시 해당 파라미터가 전송되어야 한다. 해당 파라미터가 전송되지 않으면 `400 Error` 가 발생한다. 만약 반드시 필요한 변수가 아니라면 `required`의 값을 `false` 로 설정한다. 해당 변수가 없는 요청을 보낼 경우에 기본값을 설정하고 싶다면 `defaultValue` 값을 설정한다.  ( [출처](https://mangkyu.tistory.com/72) ) 
-
 - **@RequestBody** : 클라이언트가 전송하는 **JSON** ( `application/json` ) 형태의 **HTTP Body 내용**을 **Java Object** 로 변환해주는 역할을 한다. 만약 Body가 존재하지 않는 `GET` 메소드에 `@RequestBody` 를 활용하려고 하면 에러가 발생한다. `@RequestBody` 로 받는 데이터는 스프링에서 관리하는 `MessageConverter` 중 하나인 `MappingJackson2HttpMessageConverter` 를 통해 **Java Obejct** 로 변환된다.  ( [출처](https://mangkyu.tistory.com/72) )
-
 - **@ModelAttribute** : 클라이언트가 전송하는 `multipart/form-data` 형태의 **HTTP Body 내용과 HTTP 파라미터들을 Setter 를 통해 1대1로 객체에 바인딩** 하기 위해 사용한다. `@ModelAttribute` 에는 매핑시키는 파라미터의 타입이 객체의 타입과 일치하는지를 포함한 다양한 검증 ( `Validation` ) 작업이 추가적으로 진행된다. 한 가지 예로, 게시물의 번호를 저장하는 `int` 형 `index` 변수에  "1번" 이라는 `String` 형을 넣으려고 하면, `BindException` 이 발생한다. `@ModelAttribute` 을 활용해서 특정 파라미터만을 받아올 수도 있다. 예를 들어 `{ country : "Korea" , capital : "Seoul" }` 형태의 데이터를 전송했다고 하면, 컨트롤러에서 `@ModelAttribute("capital") String captial` 의 형태로 `capital` 변수에  `Seoul`  만 바인딩시켜서 받아올 수 있다.  ( [출처](https://mangkyu.tistory.com/72) )
-
 - **@RequestBody** 와  **@ModelAttribute**의 차이 : **@RequestBody** 는 요청받은 데이터를 변환하는 것이기 때문에 `Setter` 함수가 없어도 값이 매핑되지만, **@ModelAttribute** 는 바인딩하는 어떤 데이터를 set 하는 `Setter` 함수가 없다면 매핑이 되지 않는다.  ( [출처](https://mangkyu.tistory.com/72) )
-
 - **@Transactional** : 일반적으로 스프링에서 `Service Layer` 에서  `@Transactional` 을 사용하여 트랜잭션 처리를 한다. 데이터 조회만 일어나는 `select` 메소드에서는 `@Transactional` 을 활용하지 않지만, 값을 추가하거나 변경 또는 삭제하는 `insert` ,  `update`,  `delete`  메소드에서는 `@Transactional` 을 추가하여 트랜잭션을 설정한다.  ( [출처](https://mangkyu.tistory.com/50?category=761302) )
-
 - **@Valid** :  JSR-303 표준 스펙으로, **제약 조건이 부여된 객체**에 대해 빈 검증기 ( `Bean Validator` ) 가 검증하도록 지시하는 어노테이션이다. 스프링에서는 `LocalValidatorFactoryBean`을 이용해 JSR 표준의 검증 기능을 사용할 수 있는데, `LocalValidatorFactoryBean`은 JSR-303의 검증 기능을 이용할 수 있도록 도와주는 일종의 어댑터이다. JSR 표준의 빈 검증 기술의 특징은 객체의 필드에 달린 제약조건 어노테이션을 참고해 검증을 편리하게 할 수 있다는 것이다. 만약 검증에 오류가 있다면 `MethodArgumentNotValidException` 예외가 발생하고, 디스패처 서블릿에 기본으로 등록된 예외 리졸버 ( `Exception Resolver` ) 인 `DefaultHandlerExceptionResolver` 에 의해 `400 BadRequest` 에러가 발생한다. ( [출처](https://mangkyu.tistory.com/174?category=761302) ) 
   - JSR 표준 스펙은 다양한 제약 조건 어노테이션을 제공한다. 대표적인 어노테이션은 아래와 같다.
     - `@NonNull` : 해당 값이 `null`이 아닌지 검증함
@@ -150,10 +145,8 @@
     - `@Min` : 해당 값이 주어진 값보다 작지 않은지 검증함
     - `@Max` : 해당 값이 주어진 값보다 크지 않은지 검증함
     - 더 많은 어노테이션을 보고 싶다면, [자바 공식 문서](https://javaee.github.io/javaee-spec/javadocs/javax/validation/constraints/package-summary.html)(Java 8 기준)를 참고하자.
-
 - **@Validated** : 객체를 검증하는 방법은 경우에 따라 달라질 수 있다. 예를 들어 일반 사용자의 요청과 관리자의 요청을 보내는 경우에 같은 객체로 요청이 오지만 다른 방식의 검증이 필요할 수 있다. 이런 경우에는 검증에 사용할 제약 조건이 2가지로 나뉘어야 한다. JSR-303 에서는 이런 경우를 위해 제약 조건 **어노테이션에 조건이 적용될 검증 그룹을 지정하여 적용** 할 수 있도록 **@Validated** 를 제공한다.  ( [출처](https://mangkyu.tistory.com/174?category=761302) )
-
-
+- **@Repository** : 데이터에 접근하는 클래스임을 명시한다. 스프링이 데이터를 관리하는 클래스라고 인지해서 자바 빈 ( `Java bean` ) 으로 등록해서 관리한다. 
 
 ## Spring Cloud
 

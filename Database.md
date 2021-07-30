@@ -47,42 +47,80 @@
   - `CREATE INDEX` :인덱스 생성 ( 검색 키 )
   - `DROP INDEX` : 인덱스 삭제
 
-- **SELECT DISTINCT문**
+- **SELECT DISTINCT 문**
 
-  - 중복값을 제거하고 컬럼의 **고유한(다른)  값**을 얻기 위해 사용된다.
+  - 중복값을 제거하고 컬럼의 **고유한(다른)  값** 을 얻기 위해 사용된다.
 
-    > 예)  
-    >
     > SELECT  DISTINCT   column1,  column2, ... 
     >
     > FROM   table_name;
     >
+    > 
     >
-    > // 다음 SQL 문은 고객 테이블에서 서로 다른(고유한) 국가의 수를 반환한다.
+    >
+    > --  다음의 SQL 문은 고객 테이블에서 서로 다른(고유한) 국가의 수를 반환한다.
     >
     > SELECT  COUNT(DISTINCT  Country)  
     >
     > FROM  Customers; 
     >
-    > // 결과
+    > --  결과
     >
-    > |  COUNT(DISTINCT Country)  |
+    > 컬럼 이름 : COUNT(DISTINCT Country)  
     >
-    > |  21										 	|
-    >
-    > 
-    >
-    > // 위와 동일한 값을 얻으면서 동시에 컬럼의 이름을 변경한 쿼리는 다음과 같다.
+    > 값 : 21
+
+    
+
+    > --  위와 동일한 값을 얻으면서 동시에 컬럼의 이름을 변경한 쿼리는 다음과 같다.
     >
     > SELECT  Count(*)  AS  DistinctCountries
     >
     > FROM  (SELECT  DISTINCT  Country  FROM  Customers);
     >
-    > // 결과
+    > --  결과
     >
-    > |  DistinctCountries  |
+    > 컬럼 이름 : DistinctCountries   
     >
-    > |  21 						   |
+    > 값 : 21
+
+- **WHERE 문**
+
+  - `WHERE` 절은 레코드를 필터링하는 데 사용된다.
+
+  - `WHERE` 다음에 지정된 조건을 만족하는 레코드만 추출한다. 
+
+    > SELECT  column1,  column2,  ...
+    >
+    > FROM  table_name
+    >
+    > WHERE  condition;
+    >
+    > - `WHERE` 절은  `SELECT`  문 이외에도  `UPDATE`,  `DELETE` 등에서 사용된다.
+
+  - SQL에서는 텍스트 값을 작은 따옴표 ( `' '` ) 로 묶어야 한다. ( 대부분의 데이터베이스 시스템에서는 큰 따옴표 ( `"  "` ) 도 허용한다. )  
+
+  - 하지만 숫자 필드는 따옴표로 묶지 않고 사용한다.
+
+    > SELECT  *  FROM  Customers
+    >
+    > WHERE  CustomerID=1;
+
+- **WHERE 절의 연산자**
+
+  | **연산**                | **설명**                                                     |
+  | ----------------------- | ------------------------------------------------------------ |
+  | **A  =  B**             | **A가  B와 동일한 것을 반환함**                              |
+  | **A  >  B**             | **A가  B보다 큰 것을 반환함**                                |
+  | **A  <  B**             | **A가  B보다 작은 것을 반환함**                              |
+  | **A  >=  B**            | A가  B와 같거나 B보다 큰 것을 반환함                         |
+  | **A  <=  B**            | A가  B와 같거나 B보다 작은 것을 반환함                       |
+  | **A  <>  B**            | A가  B와 다른 것을 반홤함 <br />`NOT A = B`  을 사용할 수 있음<br />일부 SQL 버전에서는   `!=`   연산자를 사용함 |
+  | **BETWEEN   A  AND  B** | A와 B 사이에 있는 것을 반환함  <br />(  A와 B 모두 포함  )   |
+  | **LIKE  A**             | A라는 패턴에 해당하는 것을 반환함<br />`%` 연산을 사용하여 패턴을 만들 수 있음  <br />( `예)  첫 글자가 s로 시작하는 값 검색 -> [컬럼 이름]  LIKE  's%'`  ) |
+  | **IN  ( A,  B,  ... )** | 컬럼에 대해 여러 값을 찾음<br />(  A,  B,  ...  ) 등 각각을 비교값으로 보고 일치하는 값을 찾음<br />여러 개의 값을 하나의 괄호 안에 묶어주어야 함 |
+
+  
 
 
 # References

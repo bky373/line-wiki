@@ -47,7 +47,42 @@
   - `CREATE INDEX` :인덱스 생성 ( 검색 키 )
   - `DROP INDEX` : 인덱스 삭제
 
-  
+- **SELECT DISTINCT문**
+
+  - 중복값을 제거하고 컬럼의 **고유한(다른)  값**을 얻기 위해 사용된다.
+
+    > 예)  
+    >
+    > SELECT  DISTINCT   column1,  column2, ... 
+    >
+    > FROM   table_name;
+    >
+    >
+    > // 다음 SQL 문은 고객 테이블에서 서로 다른(고유한) 국가의 수를 반환한다.
+    >
+    > SELECT  COUNT(DISTINCT  Country)  
+    >
+    > FROM  Customers; 
+    >
+    > // 결과
+    >
+    > |  COUNT(DISTINCT Country)  |
+    >
+    > |  21										 	|
+    >
+    > 
+    >
+    > // 위와 동일한 값을 얻으면서 동시에 컬럼의 이름을 변경한 쿼리는 다음과 같다.
+    >
+    > SELECT  Count(*)  AS  DistinctCountries
+    >
+    > FROM  (SELECT  DISTINCT  Country  FROM  Customers);
+    >
+    > // 결과
+    >
+    > |  DistinctCountries  |
+    >
+    > |  21 						   |
 
 
 # References

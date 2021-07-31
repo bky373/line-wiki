@@ -110,7 +110,7 @@
 
   - `AND`,  `OR`   연산자는 둘 이상의 조건을 기반으로 레코드를 필터링하는 데 사용된다.
 
-    -  `AND`  연산자는  `AND`  양 옆의 조건이 **모두**  `TRUE` 인 레코드를 표시한다.
+    - `AND`  연산자는  `AND`  양 옆의 조건이 **모두**  `TRUE` 인 레코드를 표시한다.
 
       > SELECT  column1,  column2,  ...
       >
@@ -118,7 +118,7 @@
       >
       > WHERE  condition1  AND  condition2  AND  condition3  ... ;
 
-    -  `OR`  연산자는   `OR`  양 옆의 조건 중 **하나라도**  `TRUE`    인 레코드를 표시한다.
+    - `OR`  연산자는   `OR`  양 옆의 조건 중 **하나라도**  `TRUE`    인 레코드를 표시한다.
 
       > SELECT  column1,  column2,  ...
       >
@@ -136,7 +136,7 @@
 
   - `AND`,  `OR`,  `NOT`  연산자를 결합해서 사용할 수도 있다.
 
-    -  다음 SQL 문은 고객 테이블에서 국가가  `독일` 이고,  도시가  `베를린`  또는  `뮌헨` 인  모든 레코드를 얻는다.
+    - 다음 SQL 문은 고객 테이블에서 국가가  `독일` 이고,  도시가  `베를린`  또는  `뮌헨` 인  모든 레코드를 얻는다.
 
       > SELECT  *
       >
@@ -162,7 +162,23 @@
     >
     > FROM  Customers
     >
-    > ORDER BY  Country  ASC,  CustomerName  DESC; 
+    > ORDER BY  Country  AS,  CustomerName; 
+
+- **INSERT INTO 문**
+
+  - `INSERT INTO` 문은 테이블에 새 레코드를 삽입하는 데 사용된다. 아래와 같이 두 가지 방법으로 쿼리를 작성할 수 있다.
+
+    1. 삽입할 컬럼의 이름과 값을 모두 지정한다.
+
+       > INSERT  INTO  table_name  (column1,  column2,  column3,  ... )
+       >
+       > VALUES  (value1,  value2,  value3,  ... );
+
+    2. 테이블의 모든 컬럼에 값을 넣는다면 굳이 컬럼 이름을 나열할 필요가 없다. 단, 값의 순서가 컬럼의 순서와 일치해야 한다.
+
+       > INSERT  INTO  table_name
+       >
+       > VALUES  (value1,  value2,  value3,  ...);
 
 
 # References

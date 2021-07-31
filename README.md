@@ -10,6 +10,7 @@
 - [Spring](https://github.com/bky373/line-wiki/blob/main/Spring.md#Spring)
 - [Network](https://github.com/bky373/line-wiki/blob/main/Network.md#Network)
 - [Database](https://github.com/bky373/line-wiki/blob/main/Database.md#Database)
+- [SQL](https://github.com/bky373/line-wiki/blob/main/SQL.md#SQL)
 
 
 # Rule of 1.01 ( 1.01의 법칙 )

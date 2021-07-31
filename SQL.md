@@ -1,4 +1,3 @@
-
 # SQL
 
 - **SQL**  ( 출처-1 )
@@ -105,7 +104,45 @@
   | **LIKE  A**             | A라는 패턴에 해당하는 것을 반환함<br />`%` 연산을 사용하여 패턴을 만들 수 있음  <br />( `예)  첫 글자가 s로 시작하는 값 검색 -> [컬럼 이름]  LIKE  's%'`  ) |
   | **IN  ( A,  B,  ... )** | 컬럼에 대해 여러 값을 찾음<br />(  A,  B,  ...  ) 등 각각을 비교값으로 보고 일치하는 값을 찾음<br />여러 개의 값을 하나의 괄호 안에 묶어주어야 함 |
 
-  
+- **AND, OR , NOT  연산자**
+
+  - `WHERE` 절은  `AND`,  `OR`,  `NOT`  연산자와 결합하여 사용할 수 있다.
+
+  - `AND`,  `OR`   연산자는 둘 이상의 조건을 기반으로 레코드를 필터링하는 데 사용된다.
+
+    -  `AND`  연산자는  `AND`  양 옆의 조건이 **모두**  `TRUE` 인 레코드를 표시한다.
+
+      > SELECT  column1,  column2,  ...
+      >
+      > FROM  table_name
+      >
+      > WHERE  condition1  AND  condition2  AND  condition3  ... ;
+
+    -  `OR`  연산자는   `OR`  양 옆의 조건 중 **하나라도**  `TRUE`    인 레코드를 표시한다.
+
+      > SELECT  column1,  column2,  ...
+      >
+      > FROM  table_name
+      >
+      > WHERE  condition1  OR   condition2   OR   condition3   ... ;
+
+    - `NOT`  연산자는  `NOT`  다음의 **조건이 일치하지 않는** 레코드를 표시한다. 
+
+      > SELECT  column1,  column2,  ...
+      >
+      > FROM  table_name
+      >
+      > WHERE  NOT  condition;
+
+  - `AND`,  `OR`,  `NOT`  연산자를 결합해서 사용할 수도 있다.
+
+    -  다음 SQL 문은 고객 테이블에서 국가가  `독일` 이고,  도시가  `베를린`  또는  `뮌헨` 인  모든 레코드를 얻는다.
+
+      > SELECT  *
+      >
+      > FROM  Customers
+      >
+      > WHERE  Country='Germany'   AND  (City='Berlin'  OR  City='München');  
 
 
 # References

@@ -35,18 +35,18 @@
 
   - 중복값을 제거하고 컬럼의 **고유한(다른)  값** 을 얻기 위해 사용된다.
 
-    > SELECT  DISTINCT   column1,  column2, ... 
+    > **SELECT  DISTINCT**   column1,  column2, ... 
     >
-    > FROM   table_name;
+    > **FROM**   table_name;
     >
     > 
     >
     >
     > --  다음의 SQL 문은 고객 테이블에서 서로 다른(고유한) 국가의 수를 반환한다.
     >
-    > SELECT  COUNT(DISTINCT  Country)  
+    > **SELECT**  **COUNT**(**DISTINCT**  Country)  
     >
-    > FROM  Customers; 
+    > **FROM**  Customers; 
     >
     > --  결과
     >
@@ -58,9 +58,9 @@
 
     > --  위와 동일한 값을 얻으면서 동시에 컬럼의 이름을 변경한 쿼리는 다음과 같다.
     >
-    > SELECT  Count(*)  AS  DistinctCountries
+    > **SELECT**  **COUNT**(*)  **AS**  DistinctCountries
     >
-    > FROM  (SELECT  DISTINCT  Country  FROM  Customers);
+    > **FROM**  (**SELECT  DISTINCT**  Country  **FROM**  Customers);
     >
     > --  결과
     >
@@ -74,11 +74,11 @@
 
   - `WHERE` 다음에 지정된 조건을 만족하는 레코드만 추출한다. 
 
-    > SELECT  column1,  column2,  ...
+    > **SELECT**  column1,  column2,  ...
     >
-    > FROM  table_name
+    > **FROM**  table_name
     >
-    > WHERE  condition;
+    > **WHERE**  condition;
     >
     > - `WHERE` 절은  `SELECT`  문 이외에도  `UPDATE`,  `DELETE` 등에서 사용된다.
 
@@ -86,9 +86,11 @@
 
   - 하지만 숫자 필드는 따옴표로 묶지 않고 사용한다.
 
-    > SELECT  *  FROM  Customers
+    > **SELECT**  *  
     >
-    > WHERE  CustomerID=1;
+    > **FROM**  Customers
+    >
+    > **WHERE**  CustomerID=1;
 
 - **WHERE 절의 연산자**
 
@@ -112,37 +114,37 @@
 
     - `AND`  연산자는  `AND`  양 옆의 조건이 **모두**  `TRUE` 인 레코드를 표시한다.
 
-      > SELECT  column1,  column2,  ...
+      > **SELECT**  column1,  column2,  ...
       >
-      > FROM  table_name
+      > **FROM**  table_name
       >
-      > WHERE  condition1  AND  condition2  AND  condition3  ... ;
+      > **WHERE**  condition1  AND  condition2  AND  condition3  ... ;
 
     - `OR`  연산자는   `OR`  양 옆의 조건 중 **하나라도**  `TRUE`    인 레코드를 표시한다.
 
-      > SELECT  column1,  column2,  ...
+      > **SELECT**  column1,  column2,  ...
       >
-      > FROM  table_name
+      > **FROM**  table_name
       >
-      > WHERE  condition1  OR   condition2   OR   condition3   ... ;
+      > **WHERE**  condition1  OR   condition2   OR   condition3   ... ;
 
     - `NOT`  연산자는  `NOT`  다음의 **조건이 일치하지 않는** 레코드를 표시한다. 
 
-      > SELECT  column1,  column2,  ...
+      > **SELECT**  column1,  column2,  ...
       >
-      > FROM  table_name
+      > **FROM**  table_name
       >
-      > WHERE  NOT  condition;
+      > **WHERE  NOT**  condition;
 
   - `AND`,  `OR`,  `NOT`  연산자를 결합해서 사용할 수도 있다.
 
     - 다음 SQL 문은 고객 테이블에서 국가가  `독일` 이고,  도시가  `베를린`  또는  `뮌헨` 인  모든 레코드를 얻는다.
 
-      > SELECT  *
+      > **SELECT**  *
       >
-      > FROM  Customers
+      > **FROM**  Customers
       >
-      > WHERE  Country='Germany'   AND  (City='Berlin'  OR  City='München');  
+      > **WHERE**  Country='Germany'   AND  (City='Berlin'  OR  City='München');  
 
 - **ORDER BY  연산자**
 
@@ -150,19 +152,19 @@
 
   - 오름차순 정렬을 하려면  `ASC`,  내림차순 정렬을 하려면 `DESC`  키워드를 사용한다.  ( **기본 ( `DEFAULT` ) 정렬은 오름차순** 이다. ) 
 
-    > SELECT  column1,  column2,  ...
+    > **SELECT**  column1,  column2,  ...
     >
-    > FROM  table_name
+    > **FROM**  table_name
     >
-    > ORDER  BY  column1,  column2,   ...   ASC|DESC;
+    > **ORDER  BY**  column1,  column2,   ...   ASC|DESC;
 
   - 여러 개의 컬럼 정렬 사용 예
 
-    > SELECT  *
+    > **SELECT**  *
     >
-    > FROM  Customers
+    > **FROM**  Customers
     >
-    > ORDER BY  Country  AS,  CustomerName; 
+    > **ORDER BY**  Country  ASC,  CustomerName; 
 
 - **INSERT INTO 문**
 
@@ -170,15 +172,15 @@
 
     1. 삽입할 컬럼의 이름과 값을 모두 지정한다.
 
-       > INSERT  INTO  table_name  (column1,  column2,  column3,  ... )
+       > **INSERT  INTO**  table_name  (column1,  column2,  column3,  ... )
        >
-       > VALUES  (value1,  value2,  value3,  ... );
+       > **VALUES**  (value1,  value2,  value3,  ... );
 
     2. 모든 컬럼에 값을 넣는다면 굳이 컬럼의 이름을 나열할 필요 없이 값만 넣어주면 된다. 단, 이때 값의 순서는 컬럼의 순서와 일치해야 한다.
 
-       > INSERT  INTO  table_name
+       > **INSERT  INTO**  table_name
        >
-       > VALUES  (value1,  value2,  value3,  ...);
+       > **VALUES**  (value1,  value2,  value3,  ...);
 
 - **NULL 값**
 
@@ -194,25 +196,35 @@
 
     - ( Tip )  항상  `IS NULL` 을 사용하여  `NULL` 값을 찾도록 하자.
 
-    > SELECT  column_names
+    > **SELECT**  column_names
     >
-    > FROM  table_name
+    > **FROM**  table_name
     >
-    > WHERE  column_name  IS NULL|IS NOT NULL;
+    > **WHERE**  column_name  IS NULL|IS NOT NULL;
     >
     > (실사용 예시)
     >
-    > SELECT  CustomerName,  ContactName,  Address
+    > **SELECT**  CustomerName,  ContactName,  Address
     >
-    > FROM  Customers
+    > **FROM**  Customers
     >
-    > WHERE  Address  IS NULL;
+    > **WHERE**  Address  IS NULL;
 
     > 이때  `=`,  `<`   또는  `<>` 와 같은 비교 연산자를 통해 `NULL` 값인지 알아낼 수 없다.
 
-    
+- **UPDATE 문**
+
+  - `UPDATE` 문은 테이블의 기존 레코드를 수정하기 위해 사용한다.
+
+    > UPDATE  table_name
+    >
+    > SET  column1  =  value1,  column2  =  value2,  ...
+    >
+    > WHERE  condition;
 
   
+
+
 # References
 
 - [출처-1 : SQL Tutorial  ( w3schools.com )](https://www.w3schools.com/sql/default.asp) 

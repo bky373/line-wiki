@@ -216,7 +216,7 @@
 
   - `UPDATE` 문은 테이블의 기존 레코드를 수정하기 위해 사용한다.
 
-    - ( 주의!!!! )  `UPDATE` 문을 사용할 때 업데이트해야 하는 레코드를 **`WHERE` 절을 통해 지정** 해야 한다.  만약  `WHERE` 절을 생략하면 테이블의 모든 레코드가 업데이트된다!
+    - ( 주의! )  `UPDATE` 문을 사용할 때 업데이트해야 하는 레코드를 **`WHERE` 절을 통해 지정** 해야 한다.  만약  `WHERE` 절을 생략하면 테이블의 모든 레코드가 업데이트된다!
 
     > **UPDATE**  table_name
     >
@@ -237,6 +237,22 @@
     > **UPDATE** Customers
     > **SET** ContactName='Juan'
     > **WHERE** Country='Mexico';
+
+- **DELETE 문**
+
+  - `DELETE` 문은 테이블의 기존 레코드를 삭제하기 위해 사용한다.
+
+  - ( 주의! )  **`WHERE` 절** 을 생략하면 테이블의 모든 레코드가 삭제된다.
+
+    > **DELETE FROM**  table_name
+    >
+    > **WHERE**  condition;
+    >
+    > (실사용 예시)
+    >
+    > **DELETE FROM** Customers 
+    >
+    > **WHERE** CustomerName='Peter Parker';
 
 
 # References

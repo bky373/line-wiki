@@ -262,7 +262,7 @@
 
   - 다만 모든 데이터베이스 시스템이 `SELECT TOP`  절을 지원하지는 않는다. `MySQL` 은 제한된 수의 레코드를 선택하기 위해 `LIMIT` 을 사용하지만,  `Oracle` 은 `FETCH FIRST n ROWS ONLY`  또는  `ROWNUM` 을 사용한다.
 
-  -  **MySQL 문법**
+  - **MySQL 문법**
 
     > **SELECT** column_name(s)
     >
@@ -316,6 +316,24 @@
     > **SELECT TOP** 50 **PERCENT** * 
     >
     > **FROM** Customers;
+
+- **SQL MIN /  MAX 함수**
+
+  - `MIN()` 함수는 선택한 열의 가장 작은 값을 반환한다.
+
+    > **SELECT MIN**(column_name)
+    >
+    > **FROM** table_name
+    >
+    > **WHERE** condition;
+
+  - `MAX()` 함수는 선택한 열의 가장 큰 값을 반환한다.
+
+    > **SELECT MAX**(column_name)
+    >
+    > **FROM** table_name
+    >
+    > **WHERE** condition;
 
 
 # References

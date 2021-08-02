@@ -317,7 +317,7 @@
     >
     > **FROM** Customers;
 
-- **SQL MIN /  MAX 함수**
+- **SQL MIN  /  MAX 함수**
 
   - `MIN()` 함수는 선택한 열의 가장 작은 값을 반환한다.
 
@@ -330,6 +330,32 @@
   - `MAX()` 함수는 선택한 열의 가장 큰 값을 반환한다.
 
     > **SELECT MAX**(column_name)
+    >
+    > **FROM** table_name
+    >
+    > **WHERE** condition;
+
+- **SQL COUNT  /  AVG  /  SUM 함수**
+
+  - `COUNT()` 함수는 지정된 기준과 일치하는 행의 수를 반환한다.
+
+    > **SELECT COUNT**(column_name)
+    >
+    > **FROM** table_name
+    >
+    > **WHERE** condition;
+
+  - `AVG()` 함수는 숫자로 구성된 열의 평균 값을 반환한다.
+
+    > **SELECT AVG**(column_name)
+    >
+    > **FROM** table_name
+    >
+    > **WHERE** condition;
+
+  -  `SUM()` 함수는 숫자로 구성된 열의 총합을 반환한다.
+
+    > **SELECT SUM**(column_name)
     >
     > **FROM** table_name
     >

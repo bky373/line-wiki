@@ -379,15 +379,18 @@
 
   - `LIKE` 연산자와  `%`  및  `_`  와일드카드의 사용 예
 
-    | LIKE 연산자                            | 설명                                          |
-    | -------------------------------------- | --------------------------------------------- |
-    | **WHERE** CustomerName **LIKE** 'a%'   | `a`로 시작하는 모든 값을 찾는다.              |
-    | **WHERE** CustomerName **LIKE** '%a'   | `a`로 끝나는 모든 값을 찾는다.                |
-    | **WHERE** CustomerName **LIKE** '%or%' | 위치에 상관없이 `or` 를 포함하는 값을 찾는다. |
-    | **WHERE** CustomerName **LIKE** '_r%'  | 두 번째 위치에  `r` 이 있는 값을 찾는다.      |
-    | **WHERE** CustomerName **LIKE** 'a_%'  | `a`로 시작하고 길이가 2자 이상인 값을 찾는다. |
-    | **WHERE** CustomerName **LIKE** 'a__%' | `a`로 시작하고 길이가 3자 이상인 값을 찾는다. |
-    | **WHERE** CustomerName **LIKE** 'a%z'  | `a`로 시작하고 `z`로 끝나는 값을 찾는다.      |
+    | LIKE 연산자                               | 설명                                              |
+    | ----------------------------------------- | ------------------------------------------------- |
+    | **WHERE** CustomerName **LIKE** 'a%'      | `a`로 시작하는 모든 값을 찾는다.                  |
+    | **WHERE** CustomerName **LIKE** '%a'      | `a`로 끝나는 모든 값을 찾는다.                    |
+    | **WHERE** CustomerName **LIKE** '%or%'    | 위치에 상관없이 `or` 를 포함하는 값을 찾는다.     |
+    | **WHERE** CustomerName **LIKE** '_r%'     | 두 번째 위치에  `r` 이 있는 값을 찾는다.          |
+    | **WHERE** CustomerName **LIKE** 'a_%'     | `a`로 시작하고 길이가 2자 이상인 값을 찾는다.     |
+    | **WHERE** CustomerName **LIKE** 'a__%'    | `a`로 시작하고 길이가 3자 이상인 값을 찾는다.     |
+    | **WHERE** CustomerName **LIKE** 'a%z'     | `a`로 시작하고 `z`로 끝나는 값을 찾는다.          |
+    | **WHERE** CustomerName **LIKE** '[ace]%'  | `a`, `c` 또는 `e` 로 시작하는 값을 찾는다.        |
+    | **WHERE** CustomerName **LIKE** '[a-f]%'  | `a` 부터  `f` 사이의 문자로 시작하는 값을 찾는다. |
+    | **WHERE** CustomerName **LIKE** '[!ace]%' | `a`, `c` 또는 `e` 로 시작하지 않는 값을 찾는다.   |
 
     
 

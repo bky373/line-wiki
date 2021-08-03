@@ -361,7 +361,7 @@
     >
     > **WHERE** condition;
 
-- **LIKE 연산자 **: `LIKE` 연산자는 `WHERE` 절에서 열에서 지정한 패턴을 검색하는 데 사용된다.
+- **LIKE 연산자** : `LIKE` 연산자는 `WHERE` 절에서 열에서 지정한 패턴을 검색하는 데 사용된다.
 
   > **SELECT** column1, column2, ...
   >
@@ -635,9 +635,11 @@
 
     > 결과적으로 **왼쪽 테이블과 오른쪽 테이블의 접점** 을 가진 레코드들을 결합하여 반환한다.
 
-  - `LEFT (OUTER) JOIN` : **왼쪽 테이블의 모든 레코드** 를 반환하고, 오른쪽 테이블에서는 왼쪽 테이블 컬럼의 값과 일치하는 레코드를 결합하여 반환한다. 
+  - `LEFT (OUTER) JOIN` : **왼쪽 테이블의 모든 레코드** 를 반환하고, 왼쪽 테이블 컬럼의 값과 일치하는 **오른쪽 테이블의 레코드를 결합** 하여 반환한다.
 
-    > 결과적으로 오른쪽 테이블에 일치하는 항목이 없더라도 **왼쪽 테이블의 모든 레코드** 를 반환한다.
+    > - 왼쪽 테이블 컬럼의 값 하나가 있고, 이 값과 일치하는 오른쪽 테이블 컬럼의 레코드가 여러 개일 경우, 오른쪽 테이블의 레코드 수만큼 행이 만들어진다.
+    >
+    > - 만약 오른쪽 테이블에 일치하는 항목이 없다면 왼쪽 테이블의 레코드의 수만큼 행을 반환한다.
 
   - `RIGHT (OUTER) JOIN` : **오른쪽 테이블의 모든 레코드** 를 반환하고, 왼쪽 테이블에서는 오른쪽 테이블 컬럼의 값과 일치하는 레코드를 결합하여 반환한다.
 
@@ -666,7 +668,7 @@
     >
     > **ON** Orders.CustomerID = Customers.CustomerID;
 
-  - 다음 SQL 문은 세 개의 테이블을 `INNER JOIN` 한다.
+  - 다음 SQL 문은 세 개의 테이블을 조인한다.
 
     > **SELECT** Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
     > **FROM** ( (Orders
@@ -676,6 +678,28 @@
     > **INNER JOIN** Shippers 
     >
     > **ON** Orders.ShipperID = Shippers.ShipperID );
+
+- **LEFT (OUTER) JOIN 키워드**
+
+  - `LEFT JOIN` 키워드는 왼쪽 테이블(table1)의 모든 레코드와 오른쪽 테이블(table2)의 일치하는 레코드를 반환한다. 일치하는 항목이 없는 경우 오른쪽에서는 아무 레코드도 결합하지 않는다. ( 이 경우 table2의 컬럼을 표시하고자 한다면 `null` 값을 가짐 )
+
+    > **SELECT** column_name(s)
+    >
+    > **FROM** table1
+    >
+    > **LEFT JOIN** table2
+    >
+    > **ON** table1.column_name = table2.column_name;
+    >
+    > (실사용 예시)
+    >
+    > **SELECT** Customers.CustomerName, Orders.OrderID
+    > **FROM** Customers
+    > **LEFT JOIN** Orders
+    > **ON** Customers.CustomerID=Orders.CustomerID
+    > **ORDER BY** Customers.CustomerName;
+
+    ![image](https://user-images.githubusercontent.com/49539592/128034193-da548c93-8662-4d38-a1f7-de7cfc985291.png)
 
 
 # References

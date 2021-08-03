@@ -353,7 +353,7 @@
     >
     > **WHERE** condition;
 
-  -  `SUM()` 함수는 숫자로 구성된 열의 총합을 반환한다.
+  - `SUM()` 함수는 숫자로 구성된 열의 총합을 반환한다.
 
     > **SELECT SUM**(column_name)
     >
@@ -395,7 +395,9 @@
 - **SQL 와일드카드 문자**
 
   - 와일드카드 문자는 문자열에서 하나 이상의 문자를 대체하기 위해 사용한다.
+
   - 와일드카드 문자는 `LIKE` 연산자와 함께 사용된다. `LIKE` 연산자는 `WHERE` 절에서 열에서 지정된 패턴을 검색하는 데 사용된다.
+
   - 와일드카드 문자는 서로 조합하여 함께 사용할 수 있다.
 
   - **`MS Access`의 와일드카드 문자**
@@ -599,7 +601,37 @@
     - 위의 SQL 문은 `CustomerName`이  `Blondel père et fils`이고,  `CustomerID`가  7번인 고객의 모든 주문을 선택한다. 이때 `Customers` 와  `Orders` 테이블이 사용되는데,  각각  `c` 와  `o`라는 별칭을 갖는다.
     - 여기서 `c` 와  `o`라는 별칭을 사용함으로써  SQL 문을 더 짧게 만들어 사용할 수 있다.
 
-    
+- **SQL JOIN 절**
+
+  - `JOIN` 절은 두 개 이상의 테이블에서, 서로 연결된 열에 근거하여 관련된 행들을 결합하기 위해 사용한다.
+
+  - 예를 들어, 아래 두 가지 테이블 및 컬럼 정보가 있다.
+
+    -  `Orders` 테이블의 컬럼 : `OrderID`,  `CustomerID`,  `OrderDate`
+
+      ![image](https://user-images.githubusercontent.com/49539592/128020423-72fab655-825c-4824-9dca-f95075ec8bc9.png)
+
+    - `Customers` 테이블의 컬럼 : `CustomerID`,  `CustomerName`,  `ContactName`,  `Country`
+
+      ![image](https://user-images.githubusercontent.com/49539592/128021072-6a88ba40-9982-4f6b-b238-0b140cd0f7d4.png)
+
+  - 여기에서 `Orders` 테이블의 `CustomerID` 열은,  `Customers` 테이블의 `CustomerID`를 참조한다. 따라서 위의 두 테이블에서 `CustomerID` 열은 서로 관계가 있다고 할 수 있다.
+
+  - 그렇다면, 다음 SQL 문 ( `INNER JOIN` )에서는, `CustomerID` 열을 기준으로 두 테이블에서 일치하는 레코드 값을 얻을 수 있다.
+
+    > **SELECT** O.OrderID, C.CustomerName, O.OrderDate
+    >
+    > **FROM** Orders **AS** O
+    >
+    > **INNER JOIN** Customers **AS** C 
+    >
+    > **ON** O.CustomerID=C.CustomerID;
+
+    ![image](https://user-images.githubusercontent.com/49539592/128021005-99b67201-f350-460d-a69b-a55781d9db3b.png)
+
+  
+
+  
 
 
 # References

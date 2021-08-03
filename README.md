@@ -11,7 +11,7 @@
 - [Java](https://github.com/bky373/line-wiki/blob/main/Java.md#Java)
 - [Network](https://github.com/bky373/line-wiki/blob/main/Network.md#Network)
 - [Database](https://github.com/bky373/line-wiki/blob/main/Database.md#Database)
-- [SQL](https://github.com/bky373/line-wiki/blob/main/SQL.md#SQL)
+- [SQL](https://github.com/bky373/line-wiki/blob/main/SQL.md#SQL)  (카테고리 변경 예정)
 
 
 # Rule of 1.01 ( 1.01의 법칙 )

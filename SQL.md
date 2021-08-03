@@ -633,7 +633,7 @@
 
   - `(INNER) JOIN` : 두 테이블에서 **일치하는 값** 을 가진 레코드를 반환한다.
 
-    > 결과적으로 **왼쪽 테이블과 오른쪽 테이블의 접점** 이 있는 레코드만을 반환한다.
+    > 결과적으로 **왼쪽 테이블과 오른쪽 테이블의 접점** 을 가진 레코드들을 결합하여 반환한다.
 
   - `LEFT (OUTER) JOIN` : **왼쪽 테이블의 모든 레코드** 를 반환하고, 오른쪽 테이블에서는 왼쪽 테이블 컬럼의 값과 일치하는 레코드를 결합하여 반환한다. 
 
@@ -649,7 +649,33 @@
 
   ![image](https://user-images.githubusercontent.com/49539592/128021848-cad68bc8-6ceb-405c-ba4d-3458351518c6.png)
 
-  
+- **INNER JOIN 키워드**
+
+  - `INNER JOIN` 키워드는 두 테이블에서 일치하는 값을 가진 레코드를 선택한다.
+
+    > **SELECT** column_name(s)
+    > **FROM** table1
+    > **INNER JOIN** table2
+    > **ON** table1.column_name = table2.column_name;
+    >
+    > (실사용 예시)
+    >
+    > **SELECT** Orders.OrderID, Customers.CustomerName
+    > **FROM** Orders
+    > **INNER JOIN** Customers 
+    >
+    > **ON** Orders.CustomerID = Customers.CustomerID;
+
+  - 다음 SQL 문은 세 개의 테이블을 `INNER JOIN` 한다.
+
+    > **SELECT** Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
+    > **FROM** ( (Orders
+    > **INNER JOIN** Customers 
+    >
+    > **ON** Orders.CustomerID = Customers.CustomerID)
+    > **INNER JOIN** Shippers 
+    >
+    > **ON** Orders.ShipperID = Shippers.ShipperID );
 
 
 # References

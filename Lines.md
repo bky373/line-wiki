@@ -73,7 +73,20 @@
 - **JSP**
   -  `JSP`는  `Java Server Pages` 의 약자로 웹사이트를 보다 쉽게 구축할 수 있게 만들어 주는, **자바 기반 서버 사이드 ( `Server Side` )  스크립트 언어** 이다. 
 
+- **Pageable ** ( [출처](http://devstory.ibksplatform.com/2020/03/spring-boot-jpa-pageable.html) )
 
+  - `org.springframework.data.domain.Pageable` 
+
+    > Abstract interface for pagination information.
+    >
+    > 페이징 정보를 제공하는 추상 인터페이스
+
+  - `Pageable` 을 사용하여 아래와 같은 이점을 얻을 수 있다.
+
+    - 요건에 맞는 `Pagination`을 구현할 수 있다.
+    - 정렬이 필요한 데이터를 쉽게 `Sorting` 할 수 있다.
+
+  
 
 # References
 

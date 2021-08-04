@@ -97,46 +97,7 @@
 
   - Spring REST Docs 는 Spring MVC 의 [테스트 프레임 워크](https://docs.spring.io/spring-framework/docs/5.0.x/spring-framework-reference/testing.html#spring-mvc-test-framework), Spring WebFlux WebTestClient 또는 [Rest Assured 3](http://rest-assured.io/) 로 작성된 테스트 코드에서 생성된 Snippet 을 사용한다. **테스트 기반 접근 방식은 서비스 문서의 정확성을 보장해준다.** Snippet 이 올바르지 않을 경우 테스트가 실패하기 때문이다.
 
-  - **시작하기**
-
-  - **빌드 시스템 설정**
-
-    ```
-    plugins { 
-      	// Asciidoctor 플러그인 적용
-      	id "org.asciidoctor.convert" version "1.5.9.2"
-      }
     
-      dependencies {
-      	/* 
-      		asciidocker 에 대한 spring-restdocs-asciidocker 의존성 추가
-      		Maven 처럼 build/generated-snippets 밑에 생성된 Snippet 을 .adoc 파일이 자동으로
-      		가리키도록 하는 설정 추가.
-      		operation 블록 매크로 사용 가능
-      	*/
-      	asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor:{project-version}' 
-      	// Maven 과 같이 test Scope 에 대한 mockMvc 의존성을 추가 (WebClient, Assured 사용가능) 
-      	testCompile 'org.springframework.restdocs:spring-restdocs-mockmvc:{project-version}' 
-      }
-    
-      ext { 
-      	// Snippet 의 생성 위치를 지정
-      	snippetsDir = file('build/generated-snippets')
-      }
-    
-      test { 
-      	// Snippets 디렉토리를 출력으로 작업하도록 설정
-      	outputs.dir snippetsDir
-      }
-    
-      asciidoctor { 
-      	// Snippets 디렉토리를 Input 디렉토리로 설정
-      	inputs.dir snippetsDir 
-      	// 문서 생성 전 테스트가 실행되도록 test 에 종속 설정
-      	dependsOn test 
-      }
-    ```
-
 
 # References
 

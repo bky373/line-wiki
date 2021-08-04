@@ -94,10 +94,13 @@
 - **Spring REST Docs**  ( [출처](https://subji.github.io/posts/2021/01/06/springrestdocsexample) )
 
   - RESTful 서비스의 문서화를 도와주는 도구이다. 문서 작성 도구로 기본적으로  [Asciidoctor](https://asciidoctor.org/) 를 사용하며,  [Asciidoctor](https://asciidoctor.org/)는 쉽게 텍스트 처리하여 HTML 등의 문서를 만들어주는 툴이다. Spring REST Docs도 이것을 사용해 HTML 을 생성한다. 필요에 따라 Markdown 으로 변경할 수 있다.
-
   - Spring REST Docs 는 Spring MVC 의 [테스트 프레임 워크](https://docs.spring.io/spring-framework/docs/5.0.x/spring-framework-reference/testing.html#spring-mvc-test-framework), Spring WebFlux WebTestClient 또는 [Rest Assured 3](http://rest-assured.io/) 로 작성된 테스트 코드에서 생성된 Snippet 을 사용한다. **테스트 기반 접근 방식은 서비스 문서의 정확성을 보장해준다.** Snippet 이 올바르지 않을 경우 테스트가 실패하기 때문이다.
 
-    
+- **RFC( `Request for Comments` ) 문서**  ( [출처](https://ko.wikipedia.org/wiki/RFC) )
+
+  - 컴퓨터 네트워크 공학 등에서 인터넷 기술에 적용 가능한 새로운 연구, 혁신, 기법 등을 아우르는 메모이다. 동시에 **비평을 기다리는 문서** 라는 의미를 갖는다.
+  - 인터넷 협회(Internet Society)에서 **기술자 및 컴퓨터 과학자들은 RFC 메모의 형태로 생각을 출판** 한다. 이러한 출판의 목적은 자신의 새로운 생각 및 정보에 대해 전문가 비평을 바라는 것, 혹은 그러한 생각을 단순히 전달하는 것이다. 인터넷국제표준화기구(IETF)는 일부 RFC를 인터넷 표준으로 받아들이기도 한다.
+  - RFC 편집자는 매 RFC 문서에 일련 번호를 부여한다. 일단 일련 번호를 부여 받고 출판되면, RFC는 절대 폐지되거나 수정되지 않는다. 만약 어떤 RFC 문서가 수정이 필요하다면, 저자는 수정된 문서를 다른 RFC 문서로 다시 출판해야 한다. 그러므로, 일부 RFC는 이전 버전의 RFC를 개선한 문서이며, 이전 버전의 RFC를 무효화하기도 한다. 이러한 덮어쓰는 방식을 통해, 번호 순으로 나열된 일련의 RFC는 인터넷 표준의 역사를 나타내기도 한다.
 
 # References
 

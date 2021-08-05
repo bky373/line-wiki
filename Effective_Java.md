@@ -14,7 +14,17 @@
 
 ## 1장. 들어가기
 - **JLS** : **자바 8용 언어 명세**(The Java Language Specification, Java SE 8 Edition)를 말한다. 제임스 고슬링(James Gosling, 자바의 아버지), 빌 조이(Bill Joy, vi 편집기 개발자) 등에 의해 작성되었다. ( [링크](https://docs.oracle.com/javase/specs/jls/se8/html/index.html) )
+
+- **자바 타입(type) 4가지**
+  - **인터페이스** ( `interface` ) - 애너테이션(annotation)은 인터페이스의 일종
+  - **클래스** ( `class` ) - 열거 타입(enum)은 클래스의 일종
+  - **배열** ( `array` )
+  - **기본 타입** ( `primitive` )
+  - 네 가지 타입 중 처음 세 가지는 참조 타입(reference type)이다. 즉, 클래스의 인스턴스와 배열은 객체(object)이나, 기본 타입 값은 그렇지 않다.
+  - 클래스의 **멤버**로는 **필드**(field), **메서드**(method), **멤버 클래스**, **멤버 인터페이스**가 있다. 
+
 - **메서드 시그니처** : 메서드 이름과 입력 매개변수(parameter)의 타입으로 이뤄진다(반환값의 타입은 시그니처에 포함되지 않는다).
+
 - **공개 API**(exported API)
   - 줄여서 API(Application Programming Interface)는 **프로그래머가 클래스, 인터페이스, 패키지를 통해 접근할 수 있는 모든 클래스, 인터페이스, 생성자, 멤버, 직렬화된 형태(serialized form)** 를 말한다. (언어 구성 요소 중 하나인 인터페이스와 헷갈리지 않게 하기 위해 흔히 쓰는 인터페이스 대신 API를 쓴다.) 
   - API를 사용하는 프로그램 작성자(사람)를 그 API의 **사용자**(user)라 하고, API를 사용하는 클래스(코드)는 그 API의 **클라이언트**(client)라 한다.

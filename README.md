@@ -8,6 +8,7 @@
 
 - [Lines](https://github.com/bky373/line-snipets/blob/main/Lines.md#Lines)
 - [Spring](https://github.com/bky373/line-wiki/blob/main/Spring.md#Spring)
+- [Effective Java](https://github.com/bky373/line-wiki/blob/main/Effective_Java.md#Effective-Java)
 - [Java](https://github.com/bky373/line-wiki/blob/main/Java.md#Java)
 - [Network](https://github.com/bky373/line-wiki/blob/main/Network.md#Network)
 - [Database](https://github.com/bky373/line-wiki/blob/main/Database.md#Database)

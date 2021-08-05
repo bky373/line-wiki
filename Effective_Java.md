@@ -1,10 +1,11 @@
-# Effective Java 3/E
+# Effective Java
 
 - **책 정보**
   - 저자 : 조슈아 블로크
   - 옮긴이 : 개앞맵시(이복연)
   - 출판사 : 프로그래밍인사이트
   - 출간일 : 2018년 11월 01일
+  - 에디션 : 3rd Edition
   - 관련링크
     - 소스 코드 : https://github.com/WegraLee/effective-java-3e-source-code
 

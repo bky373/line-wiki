@@ -1,4 +1,4 @@
-# Effective Java
+# Effective Java 3/
 
 - **책 정보**
   - 저자 : 조슈아 블로크

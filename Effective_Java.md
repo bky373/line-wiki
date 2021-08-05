@@ -13,5 +13,10 @@
   - 내용을 너무 깊이 있게 파고들지 말자. (그렇지만 정리가 필요한 부분은 가능한 꼼꼼히 작성하자)
 
 ## 1장. 들어가기
-- **JLS** : **자바 8용 언어 명세**(The Java Language Specification, Java SE 8 Edition)를 말한다. 제임스 고슬링(James Gosling, 자바의 아버지), 빌 조이(Bill Joy, vi 편집기 개발자) 등에 의해 작성되었다. 이하의 내용은 해당 문서의 명세를 따른다고 볼 수 있다. ( [링크](https://docs.oracle.com/javase/specs/jls/se8/html/index.html) )
+- **JLS** : **자바 8용 언어 명세**(The Java Language Specification, Java SE 8 Edition)를 말한다. 제임스 고슬링(James Gosling, 자바의 아버지), 빌 조이(Bill Joy, vi 편집기 개발자) 등에 의해 작성되었다. ( [링크](https://docs.oracle.com/javase/specs/jls/se8/html/index.html) )
 - **메서드 시그니처** : 메서드 이름과 입력 매개변수(parameter)의 타입으로 이뤄진다(반환값의 타입은 시그니처에 포함되지 않는다).
+- **공개 API**(exported API)
+  - 줄여서 API(Application Programming Interface)는 **프로그래머가 클래스, 인터페이스, 패키지를 통해 접근할 수 있는 모든 클래스, 인터페이스, 생성자, 멤버, 직렬화된 형태(serialized form)** 를 말한다. (언어 구성 요소 중 하나인 인터페이스와 헷갈리지 않게 하기 위해 흔히 쓰는 인터페이스 대신 API를 쓴다.) 
+  - API를 사용하는 프로그램 작성자(사람)를 그 API의 **사용자**(user)라 하고, API를 사용하는 클래스(코드)는 그 API의 **클라이언트**(client)라 한다.
+  - 클래스, 인터페이스, 생성자, 멤버, 직렬화된 형태를 총칭해 **API 요소**(API element)라 한다. 공개 API는 그 API를 정의한 패키지의 밖에서 접근할 수 있는 API 요소로 이뤄진다. 다시 말해 모든 클라이언트가 접근할 수 있고, API 작성자가 지원하기로 약속한 API 요소들이다. 자바독(Javadoc) 유틸리티를 기본 모드로 실행하면 이 API 요소들만 담긴 문서가 만들어진다.
+  - 자바 9에서는 모듈 시스템이라는 개념이 더해졌다. 자바 라이브러리에 이 모듈 개념을 적용하면 공개 API는 `해당 라이브러리의 모듈 선언(module declaration)에서 공개하겠다고 한` 패키지들의 공개 API만으로 이뤄진다. 즉, 공개할 패키지를 선택할 수 있다.

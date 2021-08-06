@@ -1349,7 +1349,7 @@
     | BETWEEN | 피연산자가 비교 범위 내에 있으면 TRUE               |
     | NOT     | 조건이 TRUE가 아닌 경우 레코드를 표시               |
 
-- **SQL CREATE DATABSE 문**
+- **SQL Create DB**
 
   - `CREATE DATABASE` 문은 새 SQL 데이터베이스를 만드는 데 사용된다.
 
@@ -1360,6 +1360,22 @@
     > **CREATE DATABASE** testDB;
 
   - ( 팁! ) 데이터베이스를 생성하기 전에 관리자 권한이 있는지 확인하자. 데이터베이스가 생성되면 다음 SQL 명령을 통해 데이터베이스 목록에서 생성된 DB를 확인할 수 있다.
+
+    > **SHOW DATABASES**;
+
+- **SQL DROP DATABASE 문**
+
+  - `DROP DATABASE` 문은 기존 SQL 데이터베이스를 삭제하는 데 사용된다.
+
+    > **DROP DATABASE** databasename;
+
+  - ( 참고 )  데이터베이스를 삭제하기 전에 주의하자. 데이터베이스를 삭제하면 데이터베이스에 저장된 모든 정보가 손실된다!
+
+  - 다음 SQL 문은 기존 데이터베이스 `"testDB"`를 삭제한다.
+
+    > **DROP DATABASE** testDB;
+
+  - ( 팁 )  데이터베이스를 삭제하기 전에 **관리자 권한**이 있는지 확인하자. 데이터베이스가 삭제되면 다음 SQL 명령을 사용하여 데이터베이스 목록에서 확인할 수 있다. 
 
     > **SHOW DATABASES**;
 

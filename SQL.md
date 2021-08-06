@@ -954,11 +954,11 @@
   >
   > **WHERE** column_name operator **ANY**
   >
-  >  (**SELECT** column_name
+  > (**SELECT** column_name
   >
-  >  **FROM** table_name
+  > **FROM** table_name
   >
-  >  **WHERE** condition);
+  > **WHERE** condition);
 
 - ( 참고 )  연산자는 표준 비교 연산자 ( `=` , `<>` , `!=` , `>` , `>=` , `<` , `<=` ) 여야 한다.
 
@@ -970,11 +970,11 @@
   >
   > **WHERE** ProductID = ANY
   >
-  >  ( **SELECT** ProductID 
+  > ( **SELECT** ProductID 
   >
-  >    **FROM** OrderDetails
+  > **FROM** OrderDetails
   >
-  >   **WHERE** Quantity=10);
+  > **WHERE** Quantity=10);
 
 - **ALL 구문**
 
@@ -1008,11 +1008,11 @@
     >
     > **WHERE** column_name operator **ALL**
     >
-    >  ( **SELECT** column_name
+    > ( **SELECT** column_name
     >
-    >    **FROM** table_name 
+    > **FROM** table_name 
     >
-    >    **WHERE** condition );
+    > **WHERE** condition );
 
   - ( 참고 )  연산자는 표준 비교 연산자 ( `=` , `<>` , `!=` , `>` , `>=` , `<` , `<=` ) 여야 한다.
 
@@ -1348,6 +1348,20 @@
     | LIKE    | 피연산자가 패턴과 일치하면 TRUE                     |
     | BETWEEN | 피연산자가 비교 범위 내에 있으면 TRUE               |
     | NOT     | 조건이 TRUE가 아닌 경우 레코드를 표시               |
+
+- **SQL CREATE DATABSE 문**
+
+  - `CREATE DATABASE` 문은 새 SQL 데이터베이스를 만드는 데 사용된다.
+
+    > **CREATE DATABASE** databasename;
+
+  - 다음 SQL 문은 `"testDB"`라는 데이터베이스를 생성한다.
+
+    > **CREATE DATABASE** testDB;
+
+  - ( 팁! ) 데이터베이스를 생성하기 전에 관리자 권한이 있는지 확인하자. 데이터베이스가 생성되면 다음 SQL 명령을 통해 데이터베이스 목록에서 생성된 DB를 확인할 수 있다.
+
+    > **SHOW DATABASES**;
 
 # References
 

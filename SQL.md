@@ -1576,6 +1576,32 @@
     - **DEFAULT** - 값이 지정되지 않은 경우 열의 기본값을 설정한다.
     - **CREATE INDEX** - 데이터베이스에서 매우 빠르게 데이터를 생성하고 검색하는 데 사용된다.
 
+- **SQL NOT NULL 제약 조건**
+
+  - 기본적으로 열은 NULL 값을 보유할 수 있다. NOT NULL 제약 조건은 열이 NULL 값을 허용하지 않도록 한다.
+
+  - 이렇게 하면 필드에 항상 값이 포함된다. 즉, 이 필드에 값을 추가하지 않고는 새 레코드를 삽입하거나 레코드를 업데이트할 수 없다.
+
+  - **CREATE TABLE에서  NOT NULL 제약 조건 넣기**
+
+    > **CREATE TABLE** Persons (
+    >
+    > 		ID int **NOT NULL**,
+    > 	
+    > 		LastName varchar (255) **NOT NULL**,
+    > 	
+    > 		FirstName varchar (255) **NOT NULL**,
+    > 	
+    > 		Age int
+    >
+    > );
+
+  - **ALTER TABLE에서  NOT NULL 제약 조건 넣기**
+
+    > **ALTER TABLE** Persons
+    >
+    > **MODIFY** Age int **NOT NULL**;
+
 # References
 
 - [출처-1 : SQL Tutorial  ( w3schools.com )](https://www.w3schools.com/sql/default.asp) 

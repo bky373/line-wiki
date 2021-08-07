@@ -1417,13 +1417,13 @@
 
     > **CREATE TABLE** table_name (
     >
-    > ​		column1 datatype,
-    >
-    > ​		column2 datatype,
-    >
-    > ​		column3 datatype,
-    >
-    > ​		...
+    > 		column1 datatype,
+    > 	
+    > 		column2 datatype,
+    > 	
+    > 		column3 datatype,
+    > 	
+    > 		...
     >
     > );
 
@@ -1435,15 +1435,15 @@
 
     > **CREATE TABLE** Persons (
     >
-    > ​		PersonID int,
-    >
-    > ​		LastName varchar(255),
-    >
-    > ​		FirstName varchar(255),
-    >
-    > ​		Address varchar(255),
-    >
-    > ​		City varchar(255)
+    > 		PersonID int,
+    > 	
+    > 		LastName varchar(255),
+    > 	
+    > 		FirstName varchar(255),
+    > 	
+    > 		Address varchar(255),
+    > 	
+    > 		City varchar(255)
     >
     > );
 
@@ -1461,19 +1461,19 @@
 
       > **CREATE TABLE** new_table_name **AS**
       >
-      > ​		**SELECT** column1, column2, ...
-      >
-      > ​		**FROM** existing_table_name
-      >
-      > ​		**WHERE** .... ;
+      > 		**SELECT** column1, column2, ...
+      > 	
+      > 		**FROM** existing_table_name
+      > 	
+      > 		**WHERE** .... ;
 
     - 다음 SQL은 `"TestTable"`(`"Customers"` 테이블의 복사본)라는 새 테이블을 만든다.
 
       > **CREATE TABLE** TestTable **AS**
       >
-      > ​		**SELECT** customername, contactname
-      >
-      > ​		**FROM** Customers;
+      > 		**SELECT** customername, contactname
+      > 	
+      > 		**FROM** Customers;
 
 - **SQL DROP TABLE 문**
 
@@ -1492,6 +1492,57 @@
   - `TRUNCATE TABLE` 문은 테이블 내부의 데이터를 삭제하는 데 사용되지만 테이블 자체는 삭제하지 않는다.
 
     > **TRUNCATE TABLE** table_name;
+
+- **SQL ALTER TABLE 문**
+
+  - `ALTER TABLE` 문은 **기존 테이블의 열을 추가, 삭제 또는 수정** 하는 데 사용된다.
+  - `ALTER TABLE` 문은 또한 기존 테이블에 **다양한 제약 조건을 추가 및 삭제** 하는 데 사용된다.
+
+- **ALTER TABLE - 컬럼 추가**
+
+  > **ALTER TABLE** table_name
+  >
+  > **ADD** column_name datatype;
+
+  - 다음 SQL은 `"Customers"` 테이블에 `"Email"` 열을 추가한다.
+
+  - 새로 만들어진 컬럼의 값은 `null`로 채워진다.
+
+    > **ALTER TABLE** table_name
+    >
+    > **ADD** Email varchar (255);
+
+- **ALTER TABLE - 컬럼 삭제**
+
+  > **ALTER TABLE** table_name
+  >
+  > **DROP COLUMN** column_name;
+
+  - 다음 SQL은 `"Customers"` 테이블에서 `"Email"` 열을 삭제한다.
+
+    > **ALTER TABLE** Customers
+    >
+    > **DROP COLUMN** Email;
+
+- **ALTER TABLE - 컬럼 변경/수정**
+
+  - **SQL Server  /  MS Access**
+
+    > **ALTER TABLE** table_name
+    >
+    > **ALTER COLUMN** column_name datatype;
+
+  - **My SQL  /  Oracle  (10G 이전 버전)**
+
+    > **ALTER TABLE** table_name
+    >
+    > **MODIFY COLUMN** column_name datatype;
+
+  - **Oracle  (10G 버전 이후)**
+
+    > **ALTER TABLE** table_name
+    >
+    > **MODIFY** column_name datatype;
 
 # References
 

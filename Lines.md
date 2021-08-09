@@ -20,6 +20,10 @@
   - MQTT를 사용하여 IoT 장치를 관리할 수 있다.
   - ActiveMQ는 기존 JMS 인프라 및 그 이상을 지원하며, 모든 메시징 유즈케이스를 지원하는 기능과 유연성을 제공한다.
 
+- **JMS(Java Message Service)**  ( [출처](https://www.ibm.com/docs/ko/cics-ts/5.6?topic=server-java-message-service-jms) )
+  - JMS는 Java EE에 기반한 애플리케이션 구성요소에서 **메시지를 작성, 전송, 수신하고 읽을 수 있도록 하는 API** 이다. 
+
+
 ## Architecture
 
 - **시스템** : **소프트웨어**(프로그램)와 **하드웨어**, **인프라**를 포함하는 개념이다.

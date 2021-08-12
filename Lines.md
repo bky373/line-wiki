@@ -13,6 +13,7 @@
 - **JUnit** : Java 기반의 단위 테스트를 위한 프레임워크이다. **Annotation 기반**으로 테스트를 지원하며, **Assert**를 통하여, **(예상, 실제)** 를 비교하여 검증한다.
 
 - **ActiveMQ**  ( [출처](https://dev-jj.tistory.com/entry/MQ-Message-queue%EB%9E%80) )
+
   - 아파치 ActiveMQ는 **가장 널리 사용되는 오픈소스, 다중 프로토콜, Java 기반 메시지 브로커** 이다.
   - 업계 표준 프로토콜을 지원하므로 사용자는 광범위한 언어 및 플랫폼에서 클라이언트 선택의 이점을 얻을 수 있다. (JavaScript, C, C++, Python, .Net 등)
   - 유비쿼터스 AMQP 프로토콜을 사용하여 다중 플랫폼 애플리케이션을 통합할 수 있다.
@@ -21,6 +22,7 @@
   - ActiveMQ는 기존 JMS 인프라 및 그 이상을 지원하며, 모든 메시징 유즈케이스를 지원하는 기능과 유연성을 제공한다.
 
 - **JMS(Java Message Service)**  ( [출처](https://www.ibm.com/docs/ko/cics-ts/5.6?topic=server-java-message-service-jms) )
+
   - JMS는 Java EE에 기반한 애플리케이션 구성요소에서 **메시지를 작성, 전송, 수신하고 읽을 수 있도록 하는 API** 이다. 
 
 
@@ -78,6 +80,11 @@
 
     > 그레고리력 : 현재 전 세계적으로 통용되는 양력
 
+- **CSRF** 
+
+  - Cross-Site Request Forgery
+  - 특정 사용자가 아닌 불특정 다수를 대상으로 하며, 로그인한 사용자는 자신의 의지와는 무관하게 공격자가 의도한 행위(데이터 수집, 삭제, 등록 등)를 하게 된다.
+
 ## 임시 공간
 
 - HTTP 파라미터 : 서버로 전달되는 **키와 값의 쌍** 을 말한다. ( `key` : `value` )
@@ -100,8 +107,6 @@
 
     - 요건에 맞는 `Pagination`을 구현할 수 있다.
     - 정렬이 필요한 데이터를 쉽게 `Sorting` 할 수 있다.
-
-  
 
 - **Spring REST Docs**  ( [출처](https://subji.github.io/posts/2021/01/06/springrestdocsexample) )
 

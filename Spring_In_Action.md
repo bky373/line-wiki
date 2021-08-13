@@ -142,7 +142,27 @@ public class HomeController {
 
 논리적인 뷰 이름(여기에서는 home) 앞에 /templates/가 붙고 끝에는 .html이 추가된 것이 템플릿 경로와 파일 이름이 되기 때문에 여기에서는 /templates/home.html이 된다. 본서의 프로젝트에서는 /src/main/resources/templates/home.html이 home 메서드의 뷰 템플릿 역할을 한다.
 
+## 1.3.2 뷰 정의하기(p20~21)
 
+아래는 타코 클라우드 홈페이지 템플릿이다.
+
+```java
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="EUC-KR">
+	<title>Taco CloudM/title>
+  </head>
+          
+  <body>
+    <h1>Welcome to...</h1>
+    <img th:src="@{/images/TacoCloud.png}"/>
+  </body>
+</html>
+```
+
+ `<img>` 태그 안에 @{...} 표현식을 사용해 컨텍스트의 상대적인 경로에 위치하는 이미지를 참조하는 th:src 속성 값을 지정할 수 있다. 이미지와 같은 정적 콘텐츠는 /src/main/resources/static 폴더에 위치해야 한다. 
 
 ## 도메인 객체에 애노테이션 추가하기(p104~)
 

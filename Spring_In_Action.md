@@ -98,11 +98,45 @@
 
     - @SpringBootConfiguration: 현재 클래스(TacoCloudConfiguration)를 구성 클래스로 지정한다. 필요하다면 자바 기반의 스프링 프레임워크 구성을 현재 클래스에 추가할 수 있다. 실제로는 이 애노테이션은 @Configuration 의 특화된 형태라고 할 수 있다.
     - @EnableAutoConfiguration: 스프링 부트 자동-구성을 활성화한다. 이 애노테이션은 우리가 필요로 하는 컴포넌트들을 자동으로 구성하도록 스프링 부트에 알려준다.
-    - @ComponentScan: 컴포넌트 검색을 활성화한다. 이것은 @Component, @Controller, @Service 등의 애노테이션과 함께 클래스를 선언할 수 있게 해준다. 그러면 스프링은 자동으로 글너 클래스를 찾아 스프링 애플리케이션 컨텍스트에 컴포넌트로 등록한다.
+    - @ComponentScan: 컴포넌트 검색을 활성화한다. 이것은 @Component, @Controller, @Service 등의 애노테이션과 함께 클래스를 선언할 수 있게 해준다. 그러면 스프링은 자동으로 그런 클래스를 찾아 스프링 애플리케이션 컨텍스트에 컴포넌트로 등록한다.
 
   - TacoCloudApplication의 또 다른 중요한 부분은 **main() 메서드** 이다. 이것은 **JAR 파일이 실행될 때 호출되어 실행되는 메서드** 이다. main() 메서드는 실제로 애플리케이션을 시작시키고 스프링 애플리케이션 컨텍스트를 생성하는 run() 메서드를 호출한다. 
 
   - run() 메서드에 전달되는 두 개의 매개변수는 구성 클래스와 명령행(command-line) 인자이다. 구성 클래스가 부트스트랩 클래스와 반드시 같아야 하는 것은 아니지만 대개 동일하게 지정한다.
+
+## 1.3 스프링 애플리케이션 작성하기(p18~)
+
+- 먼저 작성해볼 두 가지 코드
+  - 홈페이지의 웹 요청(request)을 처리하는 컨트롤러(controller) 클래스
+  - 홈페이지의 모습을 정의하는 뷰 템플릿
+
+## 1.3.1 웹 요청 처리하기(p19~20)
+
+- 스프링은 스프링 MVC라는 강력한 웹 프레임워크를 가지고 있다. 스프링 MVC의 중심에는 **웹 요청과 응답을 처리하는 컴포넌트, 컨트롤러** 가 있다. 웹 브라우저를 상대하는 애플리케이션의 컨트롤러는 선택적으로 모델 데이터를 채워서 응답할 수 있다. 여기에서는 루트 경로( `/` )의 웹 요청을 처리한 후 모델 데이터를 채우지 않고 해당 웹 요청을 뷰로 전달하는 컨트롤러 클래스를 아래와 같이 작성할 것이다.
+
+  ```java
+  package tacos;
+  
+  import org.springframework.stereotype.Controller;
+  import org.springframework.web.bind.annotation.GetMapping;
+  
+  @Controller // 컨트롤러
+  public class HomeController {
+      
+      @GetMapping("/") // 루트 경로인 /의 웹 요청을 처리한다.
+      publc String home() {
+          return "home"; // 뷰 이름을 반환한다.
+      }
+  }
+  ```
+
+- @Controller는 해당 클래스가 컴포넌트로 식별되게 해준다. 스프링의 컴포넌트 검색시 HomeController는 스프링 애플리케이션 **컨텍스트의 빈으로서 인스턴스가 생성** 된다. 
+
+- @Controller 외에 @Component, @Service, @Repository 등 소수의 애노테이션도 동일한 기능을 제공한다. 하지만 **@Controller를 사용하는 것으로 애플리케이션 내 해당 컴포넌트의 역할을 더 잘 설명** 할 수 있다.
+
+- 루트 경로인 `/` 로 HTTP GET 요청이 들어오면 home() 메서드가 요청을 처리해야 한다. 여기에서는 home 값을 갖는 String만 반환하고 다른 일은 하지 않는다. 이 값은 뷰의 논리적인 이름이다. 뷰는 JSP나 FreeMarker 등 여러 방법으로 구현할 수 있지만, 본서에서는 Thymeleaf를 사용하여 뷰 템플릿을 정의한다.
+
+- 논리적인 뷰 이름(여기에서는 home) 앞에 /templates/가 붙고 끝에는 .html이 추가된 것이 템플릿 경로와 파일 이름이 되기 때문에 여기에서는 /templates/home.html이 된다. 본서의 프로젝트에서는 /src/main/resources/templates/home.html이 home 메서드의 뷰 템플릿 역할을 한다.20
 
 ## 도메인 객체에 애노테이션 추가하기(p104~)
 

@@ -152,7 +152,7 @@ public class HomeController {
       xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="EUC-KR">
-	<title>Taco CloudM/title>
+	<title>Taco Cloud</title>
   </head>
           
   <body>
@@ -163,6 +163,46 @@ public class HomeController {
 ```
 
  `<img>` 태그 안에 @{...} 표현식을 사용해 컨텍스트의 상대적인 경로에 위치하는 이미지를 참조하는 th:src 속성 값을 지정할 수 있다. 이미지와 같은 정적 콘텐츠는 /src/main/resources/static 폴더에 위치해야 한다. 
+
+## 1.3.3 컨트롤러 테스트하기 (p22~24)
+
+아래에서는 지금까지 작업한 홈페이지를 테스트한다. 아래 코드를 통해 루트 경로인 `/`의 HTTP GET 요청을 성공적으로 수행하는지, 뷰 이름이 home이고 'Welcome to...' 메시지가 포함된 결과가 제대로 나오는지를 확인할 수 있다. 
+
+```java
+package tacos;
+
+import static org.hmacrest.Matchers.containsString;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestMatchers.content;
+import static org.springframework.test.web.servlet.request.MockMvcRequestMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestMatchers.view;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.web.servlet.MockMvc;
+
+@WebMvcTest(HomeController.class) // HomeController의 웹 페이지 테스트
+public class HomeControllerTest {
+    
+    @Autowired
+    private MockMvc mockMvc; // MockMvc를 주입한다.
+    
+    @Test
+    public void testHomePage() throws Exception {
+        mockMvc.perform(get("/"))  // GET /를 수행한다.
+            .andExpect(status().isOk()) // HTTP 200이 되어야 한다.
+            .andExpect(view().name("home")) // home 뷰가 있어야 한다.
+            .andExpect(content().string( // 콘텐츠에 'Welcome to...'가 포함되어야 한다.
+            	containsString("Welcome to..."))); 
+            
+    }
+}
+```
+
+위의 테스트에서는 @SpringBootTest 대신 @WebMvcTest 를 사용한다. 이는 스프링 MVC 애플리케이션의 형태로 테스트가 실행되도록 한다. 즉, HomeController가 스프링 MVC의 컨트롤러로 등록되어 우리는 스프링 MVC에 웹 요청을 보낼 수 있다.
+
+@WebMvcTest 는 또한 스프링 MVC를 테스트 하기 위한 스프링 지원을 설정한다. 테스트에서는 굳이 무거운 실제 서버를 띄우지 않아도 된다. 대신 스프링 MVC의 모의(mocking) 메커니즘을 사용하는 것으로도 충분하다. 위의 테스트 클래스에서는 모의 테스트를 진행하기 위해 MockMvc 객체를 주입(연결)하였다.
 
 ## 도메인 객체에 애노테이션 추가하기(p104~)
 

@@ -64,12 +64,12 @@ JAR(Java ARchive) 패키징은 클라우드를 염두에 둔 선택이다. WAR(W
 아래는 **메이븐 프로젝트 구조** 에서 추가적으로 살펴볼 수 있는 항목들이다.
 
 -  `mvnw`와 `mvnw.cmd`: 메이븐 래퍼 스크립트이다. 각자 컴퓨터에 메이븐이 설치되어 있지 않더라도 이 스크립트를 사용하여 프로젝트를 빌드할 수 있다.
-- `pom.xml`: pom은 project object model의 약자로, **메이븐 빌드 명세** (프로젝트를 빌드할 때 필요한 정보)를 지정한 파일이다.
-- `TacoCloudApplication.java`: 스프링 부트 메인 클래스이다. `Application` 앞의 `TacoCloud`는 본서에서 다루는 프로젝트의 이름이다. 각자 진행하는 프로젝트 이름 뒤에 `Application`이 붙게 되는 자바 파일이다. 
-- `application.properties`: 처음에는 파일 내용이 없지만, 구성 속성을 커스텀하게 지정할 수 있다.
-- `static`: 브라우저에 제공할 정적인 콘텐츠(이미지, 스타일시트, 자바스크립트 등)를 두는 폴더이다. 처음에는 비어 있다.
-- `templates`: 브라우저에 콘텐츠를 보여주는 템플릿 파일을 두는 폴더이다. 처음에는 비어 있다.
-- `TacoCloudApplicationTests.java`: 스프링 애플리케이션이 성공적으로 로드되는지 확인하는 간단한 테스트 클래스이다.
+-  `pom.xml`: pom은 project object model의 약자로, **메이븐 빌드 명세** (프로젝트를 빌드할 때 필요한 정보)를 지정한 파일이다.
+-  `TacoCloudApplication.java`: 스프링 부트 메인 클래스이다. `Application` 앞의 `TacoCloud`는 본서에서 다루는 프로젝트의 이름이다. 각자 진행하는 프로젝트 이름 뒤에 `Application`이 붙게 되는 자바 파일이다. 
+-  `application.properties`: 처음에는 파일 내용이 없지만, 구성 속성을 커스텀하게 지정할 수 있다.
+-  `static`: 브라우저에 제공할 정적인 콘텐츠(이미지, 스타일시트, 자바스크립트 등)를 두는 폴더이다. 처음에는 비어 있다.
+-  `templates`: 브라우저에 콘텐츠를 보여주는 템플릿 파일을 두는 폴더이다. 처음에는 비어 있다.
+-  `TacoCloudApplicationTests.java`: 스프링 애플리케이션이 성공적으로 로드되는지 확인하는 간단한 테스트 클래스이다.
 
 **스프링 부트 스타터(spring-boot-starter)**  의존성을 사용할 때 다음과 같은 장점을 가진다.
 
@@ -261,8 +261,8 @@ DevTools는 모든 템플릿 캐싱을 자동으로 비활성화하여 위의 �
 빌드 명세(예 pom.xml)를 보면 Web과 Thymeleaf 의존성이 선언되어 있다. 이 두 가지 의존성은 다음 내용을 비롯하여 일부 다른 의존성을도 포함한다.
 
 -  스프링의 MVC 프레임워크
-- 내장된 톰캣
-- Thymeleaf와 Thymeleaf 레이아웃 dialect
+-  내장된 톰캣
+-  Thymeleaf와 Thymeleaf 레이아웃 dialect
 
 스프링 부트의 자동-구성 라이브러리도 개입되기 때문에 **애플리케이션이 시작될 때 스프링부트 자동-구성에서 그런 의존성 라이브러리들을 감지하고 자동으로 다음의 일을 수행한다**.
 
@@ -393,6 +393,84 @@ public class Taco {
 }
 ```
 
+## 2.1.2 컨트롤러 클래스 생성하기(p41~44)
+
+컨트롤러는 스프링 MVC 프레임워크의 중심적인 역할을 한다. HTTP 요청을 처리하고, 브라우저에 보여줄 HTML을 뷰에 요청하거나, REST 형태의 응답 Body에 데이터를 전달한다. 우선 이 장에서는 웹 브라우저의 콘텐츠를 생성하기 위해 뷰를 사용하는 컨트롤러에 초점을 둔다.  
+
+타코 클라우드 애플리케이션의 경우 다음 기능을 수행하는 컨트롤러가 필요하다.
+
+-  `/design` 요청 경로로 들어오는 HTTP GET 요청을 처리한다.
+- 식자재의 내역을 생성한다.
+- 식자재 데이터의 HTML 작성을 뷰 템플릿에 요청하고, 작성된 HTML을 웹 브라우저에 전송한다.
+
+이런 요구사항을 처리하는 DesignTacoController 클래스는 다음과 같다.
+
+```java
+package tacos.web;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collections;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import lombok.extern.slf4j.Slf4j;
+import tacos.Taco;
+import tacos.Ingredient;
+import tacos.Ingredient.Type;
+
+@Slf4j
+@Controller
+@RequestMapping("/design")
+public class DesignTacoController {
+    
+    @GetMapping
+    public String showDesignForm(Model model) {
+        List<Ingredient> ingredients = Arrays.asList(
+        	new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
+            new Ingredient("COTO", "Corn Tortilla", Type.WRAP),
+            new Ingredient("GRBF", "Ground Beef", Type.PROTEIN),
+            new Ingredient("CARN", "Carnitas", Type.PROTEIN),
+            new Ingredient("TMTO", "Diced Tomatoes", Type.VEGGIES),
+            new Ingredient("LETC", "Lettuce", Type.VEGGIES),
+            new Ingredient("CHED", "Cheddar", Type.CHEESE),
+            new Ingredient("JACK", "Monterrey Jack", Type.CHEESE),
+            new Ingredient("SLSA", "Salsa", Type.SAUCE),
+            new Ingredient("SRCR", "Sour Cream", Type.SAUCE)
+        );
+        
+        Type[] types = Ingredient.Type.values();
+        for (Type type : types) {
+            models.addAttribute(type.toString().toLowerCase()),
+            	filterByType(ingredients, type));
+        }
+        
+        model.addAttribute("taco", new Taco());
+        
+        return "design";
+    }
+    
+    private List<Ingredient> filterByType(
+    	List<Ingredient> ingredients, Type type) {
+      return ingredients.stream()
+          			.filter(x -> x.getType().equals(type))
+          			.collect(Collectors.toList());
+    }
+}
+```
+
+DesignTacoController 클래스에서 먼저 주목할 부분은 클래스 수준에 적용된 애노테이션들이다. 우선 **@Slf4j** 는 컴파일 시 Lombok에 제공되며, 이 클래스에 **자동으로 SLF4J(자바에 사용하는 Simple Logging Facade) Logger를 생성** 한다. 이 애노테이션은 다음 코드를 추가한 것과 같은 효과를 가진다.
+
+```java
+private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(DesignTacoController.class);
+```
+
+그 다음 살펴볼 애노테이션은 @Controller이다. 이 애노테이션은 DesignTacoController 클래스가 컨트롤러로 식별되게 하며, 컴포넌트 검색을 해야 한다는 것을 나타낸다. 따라서 스프링이 DesignTacoController 클래스를 찾은 후 스프링 애플리케이션 컨텍스트의 빈으로 이 클래스의 인스턴스를 자동 생성한다.
+
+또 다른 애노테이션으로 @RequestMapping이 있다. 이 애노테이션이 클래스 수준으로 적용될 때는 해당 컨트롤러가 처리하는 요청의 종류를 나타낸다. 여기에서는 DesignTacoController에서 /design으로 시작하는 경로의 요청을 처리함을 나타낸다.
+
 ## 도메인 객체에 애노테이션 추가하기(p104~)
 
 특정 클래스를 JPA 개체(entity)로 선언하려면 반드시 @Entity 애노테이션을 추가해야 한다. 그리고 이것의 id 속성에는 반드시 @Id 를 지정하여 이 속성이 데이터베이스의 개체를 고유하게 식별한다는 것을 나타내야 한다. 
@@ -426,4 +504,4 @@ public interface IngredientRepository extends CrudRepository<Ingredient, String>
 
 CrudRepository 인터페이스의 첫 번째 매개변수는 리퍼지터리에 저장되는 개체 타입이고, 두 번째 매개변수는 개체 id 속성의 타입이다. 
 
-인터페이스와 이에 정의된 메소드의 구현을 위해 클래스 구현체를 작성해야 한다고 생각할 수 있다. 하지만 그럴 필요가 없다. 애플리케이션이 시작될 때 스프링 데이터 JPA는 각 인터페이스 구현체(클래스 등)를 자동으로 생성해주기 때문이다. 즉 스프링 데이터 JPA를 사용하면 리퍼지터리만 작성하면 된다. 그리고 JDBC 기반의 구현에서 하듯이 리퍼지터리를 필요한 곳에 주입해주면 된다. 
+인터페이스와 이에 정의된 메소드의 구현을 위해 클래스 구현체를 작성해야 한다고 생각할 수 있다. 하지만 그럴 필요가 없다. 애플리케이션이 시작될 때 스프링 데이터 JPA는 각 인터페이스 구현체(클래스 등)를 자동으로 생성해주기 때문이다. 즉 스프링 데이터 JPA를 사용하면 리퍼지터리만 작성하면 된다. 그리고 JDBC 기반의 구현에서 하듯이 리퍼지터리를 필요한 곳에 주입해주면 된다. 	

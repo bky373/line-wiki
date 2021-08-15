@@ -471,6 +471,33 @@ private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(De
 
 또 다른 애노테이션으로 @RequestMapping이 있다. 이 애노테이션이 클래스 수준으로 적용될 때는 해당 컨트롤러가 처리하는 요청의 종류를 나타낸다. 여기에서는 DesignTacoController에서 /design으로 시작하는 경로의 요청을 처리함을 나타낸다.
 
+## GET 요청 처리하기(p44~45)
+
+ @GetMapping 애노테이션은 /design에 HTTP GET 요청이 수신될 때 그 요청을 처리하기 위해 showDesignForm() 메서드가 호출됨을 나타낸다. 이 애노테이션은 스프링 4.3에서 소개되었다. 그 이전에는 아래와 같이 메서드 수준의 @RequestMapping 애노테이션을 사용하였다. 
+
+```java
+@RequestMapping(method=RequestMethod.GET)
+```
+
+스프링 MVC에서 사용할 수 있는 요청-대응 애노테이션은 다음의 표와 같다.
+
+| 애노테이션      | 설명                         |
+| --------------- | ---------------------------- |
+| @RequestMapping | 다목적 요청을 처리한다.      |
+| @GetMapping     | HTTP GET 요청을 처리한다.    |
+| @PostMapping    | HTTP POST 요청을 처리한다.   |
+| @PutMappping    | HTTP PUT 요청을 처리한다.    |
+| @DeleteMapping  | HTTP DELETE 요청을 처리한다. |
+| @PatchMapping   | HTTP PATCH 요청을 처리한다.  |
+
+컨트롤러 메서드에 대해 요청-대응 애노테이션을 선언할 때는 **가급적 특화된 것을 사용** 하는 것이 좋다. 즉, 경로(또는 클래스 수준의 @RequestMapping에서 경로를 상속받음)를 지정하는 애노테이션과 처리하려는 특정 HTTP 요청을 지정하는 애노테이션 모두 각각 선언한다는 의미이다. 위의 요청-대응 애노테이션들은 @RequestMapping과 같은 속성을 가지므로 @RequestMapping을 사용했던 메서드에도 사용할 수 있다.
+
+이번에는 showDesignForm() 메서드 블록을 살펴보자. 식자재를 나타내는 Ingredient 객체를 저장하는 List를 생성한다. 지금은 Ingredient 객체들을 직접 코드에서 추가하지만 이후 데이터베이스로부터 데이터를 가져와 저장할 것이다. 
+
+그 다음 식자재의 유형(고기, 치즈, 소스 등)을 List에서 필터링(filterByType 메서드)한 후 showDesignForm()의 인자 Model 객체의 속성으로 추가한다. Model은 컨트롤러와 뷰 사이에서 데이터를 운반하는 객체이다. 궁극적으로 Model 객체의 속성에 있는 데이터는 뷰가 알 수 있는 서블릿(servlet) 요청 속성들로 복사된다. showDesignForm() 메서드는 마지막에 "design"을 반혼한다. 이는 모델 데이터를 브라우저에 나타내는 데 사용될 뷰의 논리적인 이름이다.
+
+지금까지 정의한 코드에 따르면 /design 경로에 접속할 때 DesignTacoController의 showDesignFrom() 메서드가 실행된다. 그리고 뷰에 요청이 전달되기 전에 List에 저장된 식자재 데이터를 모델 객체(Model)에 넣을 것이다. 그러나 아직 뷰를 정의하지 않았기 때문에 웹 브라우저는 HTTP 404 (Not Found) 에러를 보여줄 것이다. 이 문제를 해결하기 위해 지금부터 뷰를 알아보기로 하자. 데이터가 HTML 안에 작성되어 사용자의 웹 브라우저에 나타나게 하는 것이 뷰의 역할이다. 
+
 ## 도메인 객체에 애노테이션 추가하기(p104~)
 
 특정 클래스를 JPA 개체(entity)로 선언하려면 반드시 @Entity 애노테이션을 추가해야 한다. 그리고 이것의 id 속성에는 반드시 @Id 를 지정하여 이 속성이 데이터베이스의 개체를 고유하게 식별한다는 것을 나타내야 한다. 

@@ -838,6 +838,86 @@ public class Order {
 
 유효성 검사 API는 몇 가지 애노테이션을 제공한다. 이 애노테이션들은 검사 규칙을 선언하기 위해 **도메인 객체의 속성에 지정** 할 수 있다. 유효성 검사 API를 구현한 Hibernate 컴포넌트에는 더 많은 유효성 검사 애노테이션이 추가되었다. 다음부터 Taco와 Order의 유효성 검사를 하는 애노테이션의 적용법을 알아보기로 하자.
 
+## 2.3.1 유효성 검사 규칙 선언하기(p58~60)
+
+Taco 클래스는 name 속성 값이 없거나 null인지 확인하며, 최소 하나 이상의 식자재 항목을 선택했는지 확인할 것이다. 다음 코드에서는 이와 같은 유효성 검사 규칙을 선언하기 위해 @NotNull과 @Size를 사용하였다.
+
+```java
+package tacos;
+
+import java.util.List;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import lombok.Data;
+
+@Data
+public class Taco {
+  
+  @NotNull
+  @Size(min=5, message="Name must be at least 5 characters long")
+  private String name;
+  
+  @Size(min=1, message="You must choose at least 1 ingredient")
+  private List<String> ingredients;
+}
+```
+
+name 속성 값이 null이 아니어야 한다는 규칙과 함께 최소 5개 문자로 이루어져야 한다는 규칙을 선언하였다.
+
+이번에는 타코 주문의 유효성 검사를 하기 위해 Order 클래스에 애노테이션을 추가할 것이다. 배달 주소 속성들(street, city, state, zip)은 사용자가 입력하지 않은 필드가 있는지 확인하면 되므로 자바 빈 유효성 검사 API의 @NotBlank 애노테이션을 사용할 것이다.
+
+그러나 대금 지불에 관한 필드의 경우 보다 엄격한 유효성 검사가 필요하다. ccNumber 속성 값은 null이 아니어야 하며, 입력 값이 유효한 신용카드 번호인지도 확인해야 한다. ccExpiration 속성은 MM/YY(두 자리 수의 월과 연도) 형식의 값이어야 한다. ccCVV 속성의 값은 세 자리 숫자이어야 한다. 이와 같은 유효성 검사를 하기 위해 다른 자바 빈 유효성 검사 API 애노테이션과 Hibernate Validator의 또 다른 애노테이션을 사용해야 한다. 이제 Order 클래스에 유효성 검사 규칙을 선언하자.
+
+```java
+package tacos;
+
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.CreditCardNumber;
+
+import lombok.Data;
+
+@Data
+public class Order {
+  
+  @NotBlank(message="Name is required")
+  private String deliveryName;
+  
+  @NotBlank(message="Street is required")
+  private String deliveryStreet;
+  
+  @NotBlank(message="City is required")
+  private String deliveryCity;
+    
+  @NotBlank(message="State is required")
+  private String deliveryState;
+  
+  @NotBlank(message="Zip code is required")
+  private String deliveryZip;
+  
+  @CreditCardNumber(message="Not a valid credit card number")
+  private String ccNumber;
+  
+  @Pattern(regexp="^(0[1-9]|1[0-2])([\\/])([1-9][0-9])$",
+           message="Must be formatted MM/YY")
+  private String ccExpiration;
+  
+  @Digits(integer=3, fraction=0, message="Invalid CVV")
+  private String ccCVV;
+}
+```
+
+위의 코드를 보면 ccNumber 속성에는  @CreditCardNumber가 지정되어 있다. 이 애노테이션은 속성 값이 Luhn(룬) 알고리즘 검사를 합격한 유효한 신용 카드 번호인지 확인한다. 단 입력된 카드 번호가 실제로 존재하는 것인지, 또는 대금 지불에 사용될 수 있는 것인지는 검사하지 못한다.(이를 위해서는 실시간으로 금융망과 연동되어야 한다.)
+
+ccExpiration 속성 값은 MM/YY 형식인지를 검사해야 하지만 이에 사용할 수 있는 애노테이션이 없다. 따라서 여기에서는 @Pattern 애노테이션에 정규 표현식을 지정하여 속성 값이 해당 형식을 따르는지 확인하였다.
+
+마지막으 ccCVV 속성에서는 @Digits 애노테이션을 지정하여 입력 값이 정확히 세 자리 숫자인지 검사한다.
+
+모든 유효성 검사 애노테이션은 message 속성을 가지고 있다. 사용자가 입력한 정보가 각 애노테이션의 유효성 규칙을 통과하지 못할 경우 message 속성에 정의된 값을 보여준다.
+
 ## 도메인 객체에 애노테이션 추가하기(p104~)
 
 특정 클래스를 JPA 개체(entity)로 선언하려면 반드시 @Entity 애노테이션을 추가해야 한다. 그리고 이것의 id 속성에는 반드시 @Id 를 지정하여 이 속성이 데이터베이스의 개체를 고유하게 식별한다는 것을 나타내야 한다. 
@@ -855,7 +935,18 @@ JDBC 버전의 리퍼지터리에서는 리퍼지터리가 제공하는 메서�
 하지만 스프링 데이터에서는 그 대신 CrudRepository 인터페이스를 확장(extends)할 수 있다. 예를 들어 다음 코드에서는 새로운 인터페이스인 IngredientRepository를 보여준다. CrudRepository 인터페이스에는 데이터베이스의 CRUD(Create(생성), Read(읽기), Update(변경), Delete(삭제)) 연산을 위한 많은 메서드가 선언되어 있다. 
 
 ```java
-package tacos.data;import org.springframework.data.repository.CrudRepository;import tacos.Ingredient;public interface IngredientRepository extends CrudRepository<Ingredient, String> {        // Iterable<Ingredient> findAll();    // Ingredient findById(String id);    // Ingredient save(Ingredient ingredient);}
+package tacos.data;
+
+import org.springframework.data.repository.CrudRepository;
+
+import tacos.Ingredient;
+
+public interface IngredientRepository extends CrudRepository<Ingredient, String> {
+    
+    // Iterable<Ingredient> findAll();
+    // Ingredient findById(String id);
+    // Ingredient save(Ingredient ingredient);
+}
 ```
 
 CrudRepository 인터페이스의 첫 번째 매개변수는 리퍼지터리에 저장되는 개체 타입이고, 두 번째 매개변수는 개체 id 속성의 타입이다. 

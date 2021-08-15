@@ -1,3 +1,5 @@
+​	
+
 # Spring in Action
 
 ## 책 정보
@@ -400,8 +402,8 @@ public class Taco {
 타코 클라우드 애플리케이션의 경우 다음 기능을 수행하는 컨트롤러가 필요하다.
 
 -  `/design` 요청 경로로 들어오는 HTTP GET 요청을 처리한다.
-- 식자재의 내역을 생성한다.
-- 식자재 데이터의 HTML 작성을 뷰 템플릿에 요청하고, 작성된 HTML을 웹 브라우저에 전송한다.
+-  식자재의 내역을 생성한다.
+-  식자재 데이터의 HTML 작성을 뷰 템플릿에 요청하고, 작성된 HTML을 웹 브라우저에 전송한다.
 
 이런 요구사항을 처리하는 DesignTacoController 클래스는 다음과 같다.
 
@@ -514,7 +516,7 @@ Thymeleaf 템플릿은 요청 데이터를 나타내는 요소 속성을 추가�
 
 이 경우 템플릿이 HTML로 표현될 때 `<p>` 요소의 몸체는 키가 "message"인 서블릿 요청 속성의 값으로 교체된다. th:text는 교체를 수행하는 Thymeleaf 네임스페이스(namespace) 속성이다. ${} 연산자는 요청 속성(여기에서는 "message")의 값을 사용하라는 것을 알려준다.
 
-Thymeleaf는 th:each라는 속성 또한 제공한다. 이는 List와 같은 컬렉션을 반복 처리하며, 컬렉션의 각 요소를 하나씩 HTML로 나타낸다. 따라서 List에 저장된 타코 식자재를 모델 데이터로부터 뷰에 보여줄 때 편리하다. 예를 들어 토르티아(tortilla)를 "wrap" 유형의 식자재 내역을 나타낼 때 다음과 같이 HTML을 사용할 수 있다.
+Thymeleaf는 th:each라는 속성 또한 제공한다. 이는 List와 같은 컬렉션을 반복 처리하며, 컬렉션의 각 요소를 하나씩 HTML로 나타낸다. 따라서 List에 저장된 타코 식자재를 모델 데이터로부터 뷰에 보여ㅇ줄 때 편리하다. 예를 들어 토르티아(tortilla)를 "wrap" 유형의 식자재 내역을 나타낼 때 다음과 같이 HTML을 사용할 수 있다.
 
 ```html
 <h3>Designate your wrap:</h3>
@@ -627,6 +629,202 @@ Thymeleaf는 th:each라는 속성 또한 제공한다. 이는 List와 같은 컬
 실행을 한 이후 웹 브라우저에서 http://localhost:8080/design에 접속해보자. 아까는 404 (Not Found) 에러가 나왔지만 이제는 그럴듯한 페이지가 보일 것이다. 이 /design 페이지에서 사용자는 자신만의 타코를 만들기 위해 원하는 식자재를 선택할 수 있다. 하지만 만약 Submit your taco 버튼을 클릭하면 어떻게 될까?
 
 사용자가 Submit 버튼을 클릭하면 또 다른 요청이 발생한다. 하지만 우리는 아직 DesignTacoController가 이 요청을 어떻게 처리할 것인지 정의하지 않았다. 다음 내용에서는 이 문제를 해결하기 위해 폼 제출이 있을 때 이를 처리하는 컨트롤러 코드를 추가할 것이다.
+
+## 2.2 폼 제출 처리하기(p51~57)
+
+뷰(design.html)의 `<form>` 태그를 다시 보면 method 속성이 POST로 설정되어 있지만 `<form>` 태그에는 action 속성이 선언되지 않았다. 이 경우 폼이 제출되면 브라우저가 폼의 모든 데이터를 모아서 GET 요청과 같은 경로(/design)로 HTTP POST 요청을 서버에 전송한다. 따라서 이 요청을 처리하는 컨트롤러의 메서드가 있어야 한다. 다음의 코드는 /design 경로의 POST 요청을 처리하는 DesignTacoContorller의 새로운 메서드를 포함하고 있다.
+
+```java
+...
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+...
+
+public class DesignTacoController {
+  ...
+  @PostMapping
+  public String processDesign(Taco design) {
+    // 이 지점에서 타코 디자인(선택된 식자재 내역)을 저장한다.
+    // 이 작업은 3장에서 다룰 것이다.
+    log.info("Processing design: " + design);
+    
+    return "redirect:/orders/current";
+  }
+}
+```
+
+타코 디자인 폼이 제출될 때 이 폼의 필드는 processDesign()의 인자로 전달되는 Taco 객체의 속성과 바인딩된다. 따라서 processDesign() 메서드에서는 Taco 객체를 사용하여 어떤 것이든 원하는 처리를 할 수 있다.
+
+타코 디자인 폼에는 checkbox 요소들이 여러 개 존재한다. 이들 요소는 모두 ingredients 라는 이름을 가지고 있고, 텍스트 입력 요소의 이름을 name으로 한다. 이 필드들은 Taco 클래스의 ingredients 및 name 속성 값과 바인딩된다.
+
+폼의 Name 필드는 텍스트 값을 가지기 때문에 Taco의 name 속성은 String 타입을 가진다. 식자재를 나타내는 checkbox들도 텍스트 값을 가지는데, 이는 0개 또는 여러 개가 선택될 수 있기 때문에 이와 바인딩되는 Taco 클래스의 ingredients 속성은 선택된 식자재들의 id를 저장하기 위해 List<String> 타입이어야 한다.
+
+showDesignFrom() 메서드처럼 processDesign()도 String 값을 반환하며, 이 값도 사용자에게 보여주는 뷰를 나타낸다. 그러나 processDesign()에서 반환 값은 리디렉션(redirection, 변경된 경로로 재접속) 뷰를 나타내는 "redirect:"가 제일 앞에 붙는다. 즉, processDesign()의 실행이 끝난 후 사용자의 브라우저는 /orders/current 상대 경로로 재접속할 것이다.
+
+이로써 사용자는 자신이 디자인한 타코를 받기 위해 주문을 처리하는 폼으로 접속할 수 있다. 하지만 /orders/current 경로의 요청을 처리할 컨트롤러가 아직 없다. 다음의 코드를 작성하여 해당 컨트롤러를 만들 수 있다.
+
+```java
+package tacos.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import lombok.extern.slf4j.Slf4j;
+import tacos.Order;
+
+@Slf4j
+@Controller
+@RequestMapping("/orders")
+public class OrderController {
+  
+  @GetMapping("/current")
+  public String orderForm(Model model) {
+    model.addAttribute("order", new Order());
+    return "orderForm";
+  }
+}
+```
+
+참고로 아직 Order 클래스는 정의하지 않았다. 이는 추후에 작성하기로 한다.
+
+orderForm 뷰는 orderForm.html 이라는 이름의 Thymeleaf 템플릿에 의해 제공된다. 코드는 아래와 같다.
+
+```html
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+  <head>
+	<meta charset="EUC-KR">
+	<title>Taco Cloud</title>
+	<link rel="stylesheet" th:href="@{/styles.css}" />
+  </head>
+  <body>
+	
+	<form method="POST" th:action="@{/orders}" th:object="${order}">
+		<h1>Order your taco creations!</h1>
+		
+		<img th:src="@{/images/TacoCloud.png}" /> <a th:href="@{/design}"
+			id="another">Design another taco</a><br />
+		
+		<div th:if="${#fields.hasErrors()}">
+			<span class="validationError"> Please correct the problems
+				below and resubmit. </span>
+		</div>
+		
+		<h3>Deliver my taco masterpieces to...</h3>
+		
+		<label for=" deliveryName">Name: </label> 
+		<input type="text" th:field="*{deliveryName}" /> 
+		<span class="validationError"
+			th:if="${#fields.hasErrors('deliveryName')}"
+			th:errors="*{deliveryName}">Name Error</span>
+		<br /> 
+			
+		<label for="deliveryStreet">Street address: </label> 
+		<input type="text" th:field="*{deliveryStreet}" /> 
+		<span class="validationError"
+			th:if="${#fields.hasErrors('deliveryStreet')}"
+			th:errors="*{deliveryStreet}">Street Error</span>
+		<br /> 
+		
+		<label for="deliveryCity">City: </label> 
+		<input type="text" th:field="*{deliveryCity}" /> 
+		<span class="validationError"
+			th:if="${#fields.hasErrors('deliveryCity')}"
+			th:errors="*{deliveryCity}">City Error</span>
+		<br /> 
+		
+		<label for="deliveryState">State: </label> 
+		<input type="text" th:field="*{deliveryState}" />
+		<span class="validationError"
+			th:if="${#fields.hasErrors('deliveryState')}"
+			th:errors="*{deliveryState}">State Error</span>
+		<br /> 
+		
+		<label for="deliveryZip">Zip code: </label> 
+		<input type="text" th:field="*{deliveryZip}" /> 
+		<span class="validationError"
+			th:if="${#fields.hasErrors('deliveryZip')}"
+			th:errors="*{deliveryZip}">Zip Error</span>
+		<br />
+		
+		<h3>Here's how I'll pay...</h3>
+		<label for="ccNumber">Credit Card #: </label> 
+		<input type="text" th:field="*{ccNumber}" /> 
+		<span class="validationError"
+			th:if="${#fields.hasErrors('ccNumber')}"
+			th:errors="*{ccNumber}">CC Num Error</span>
+		<br /> 
+		
+		<label for="ccExpiration">Expiration: </label> 
+		<input type="text" th:field="*{ccExpiration}" /> 
+		<span class="validationError"
+			th:if="${#fields.hasErrors('ccExpiration')}"
+			th:errors="*{ccExpiration}">CC Num Error</span>
+		<br /> 
+		
+		<label for="ccCVV">CVV: </label> 
+		<input type="text" th:field="*{ccCVV}" /> 
+		<span class="validationError"
+			th:if="${#fields.hasErrors('ccCVV')}"
+			th:errors="*{ccCVV}">CC Num Error</span>
+		<br />
+		
+		<input type="submit" value="Submit order" />
+	</form>
+  </body>
+</html>
+```
+
+위의 `<form>` 태그에서 action 값이 /orders 경로로 지정되어 있다(Thymeleaf의 @{...} 연산자를 사용하여 컨텍스트 상대 경로인 /orders를 지정하였다). 따라서 /order 경로의 POST 요청을 처리하는 또 다른 메서드를 OrderController 클래스에 추가해야 한다. 추가할 코드는 다음과 같다.
+
+```java
+...
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+...
+  
+public class OrderController {
+  ...
+  @PostMapping
+  public String processOrder(Order order) {
+    log.info("Order submitted: " + order);
+    return "redirect:/";
+  }
+}
+```
+
+제출된 주문을 처리하기 위해 processOrder() 메서드가 호출될 때는 제출된 폼 필드와 바인딩된 속성을 갖는 Order 객체가 인자로 전달된다. Order는 주문 정보를 갖는 간단한 클래스로 다음과 같이 정의한다.
+
+```java
+package tacos;
+
+import lombok.Data;
+
+@Data
+public class Order {
+  
+  private String deliveryName;
+  private String deliveryStreet;
+  private String deliveryCity;
+  private String deliveryState;
+  private String deliveryZip;
+  private String ccNumber;
+  private String ccExpiration;
+  private String ccCVV;
+}
+```
+
+이제 OrderController와 주문 폼 뷰의 작성이 끝났으므로 애플리케이션을 실행할 수 있다. 웹 브라우저로 http://localhost:8080/design에 접속하자. 그리고 타코 식자재 중 몇 가지를 선택한 후 Submit your taco 버튼을 클릭하면 방금 작성한 주문 폼을 볼 수 있다. 
+
+폼의 일부 필드에 아무 값이나 입력하고 Submit order 버튼을 누르면 주문 처리가 끝나고 타코 홈페이지로 이동할 것이다.주문 정보를 보기 위해 애플리케이션 로그를 살펴보면 값은 다르지만 다음과 같은 형태의 로그를 확인할 수 있다.
+
+```bash
+2021-08-15 19:36:52.095 INFO 10800 --- [nio-8080-exec-3] tacos.web.OrderController: Order submitted: Order(deliveryName=이보람, deliveryStreet=배송거리, deliveryCity=배송도시, deliveryState=해당없음, deliveryZip=배송우편번호, ccName=cc번호, ccExpiration=cc만료일자, ccCVV=ccCVV)
+```
+
+위의 로그 항목을 살펴보면, processOrder() 메서드가 실행되어 폼 제출이 정상적으로 처리되었지만, 잘못된 정보의 입력을 허용한다는 것을 알 수 있다. 따라서 우리가 필요한 정보에 맞게 데이터를 검사해야 한다.
 
 ## 도메인 객체에 애노테이션 추가하기(p104~)
 

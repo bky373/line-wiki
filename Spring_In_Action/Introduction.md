@@ -498,6 +498,136 @@ private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(De
 
 지금까지 정의한 코드에 따르면 /design 경로에 접속할 때 DesignTacoController의 showDesignFrom() 메서드가 실행된다. 그리고 뷰에 요청이 전달되기 전에 List에 저장된 식자재 데이터를 모델 객체(Model)에 넣을 것이다. 그러나 아직 뷰를 정의하지 않았기 때문에 웹 브라우저는 HTTP 404 (Not Found) 에러를 보여줄 것이다. 이 문제를 해결하기 위해 지금부터 뷰를 알아보기로 하자. 데이터가 HTML 안에 작성되어 사용자의 웹 브라우저에 나타나게 하는 것이 뷰의 역할이다. 
 
+## 2.1.3 뷰 디자인하기(p45~51)
+
+스프링은 뷰를 정의하는 여러 가지 방법을 제공하는데,  JSP(JavaServer Pages), Thymeleaf, FreeMarker, Mustache, 그루비(Groovy) 기반 템플릿 등이다. 여기에서는 이중 Thymeleaf를 사용할 것이고, Thymeleaf를 사용하기 위해 프로젝트의 빌드 구성 파일(pom.xml)에 또 다른 의존성을 추가해야 한다. (본서에서는 1장에서 이미 추가하였다.)  
+
+의존성을 추가하면 스프링 부트의 자동-구성에서 런타임에 classpath의 Thymeleaf를 찾아 빈(스프링 MVC에 Thymeleaf 뷰를 지원하는)을 자동으로 생성한다.
+
+Thymeleaf와 같은 뷰 라이브러리들은 어떤 웹 프레임워크와도 사용 가능하도록 설계되었다. 따라서 스프링으 ㅣ추상화 모델을 알지 못하며, 컨트롤러가 데이터를 넣는 Model 대신 서블릿 요청 속성을 사용한다. 뷰에게 요청을 전달하기에 앞서 스프링은 Thymeleaf와 이외의 다른 뷰 템플릿이 사용하는 요청 속성에 모델 데이터를 복사한다.
+
+Thymeleaf 템플릿은 요청 데이터를 나타내는 요소 속성을 추가로 가지는 HTML이다. 예를 들어 키(key)가 "message"인 요청 속성이 있고, 이를 Thymeleaf를 사용하여 HTML `<p>` 태그로 나타내고자 한다면 다음과 같이 Thymeleaf 템플릿에 작성해야 한다.
+
+```html
+<p th:text="${message}">placeholder message</p>
+```
+
+이 경우 템플릿이 HTML로 표현될 때 `<p>` 요소의 몸체는 키가 "message"인 서블릿 요청 속성의 값으로 교체된다. th:text는 교체를 수행하는 Thymeleaf 네임스페이스(namespace) 속성이다. ${} 연산자는 요청 속성(여기에서는 "message")의 값을 사용하라는 것을 알려준다.
+
+Thymeleaf는 th:each라는 속성 또한 제공한다. 이는 List와 같은 컬렉션을 반복 처리하며, 컬렉션의 각 요소를 하나씩 HTML로 나타낸다. 따라서 List에 저장된 타코 식자재를 모델 데이터로부터 뷰에 보여줄 때 편리하다. 예를 들어 토르티아(tortilla)를 "wrap" 유형의 식자재 내역을 나타낼 때 다음과 같이 HTML을 사용할 수 있다.
+
+```html
+<h3>Designate your wrap:</h3>
+<div th:each="ingredient : ${wrap}">
+    <input name="ingredients" type="checkbox" th:value="${ingredient.id}" />
+    <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+</div>
+```
+
+실제 모델 데이터를 사용했을 때 생성되는 `<div>` 중 하나를 예를 들면 다음과 같다.
+
+```html
+<div>
+    <input name="ingredients" type="checkbox" value="FLTO" />
+    <span>Flour Tortilla</span><br/>
+</div>
+```
+
+ 이제 design.html에 정의할 전체 템플릿 내용을 알아보자. 코드는 다음과 같다.
+
+```html
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="EUC-KR">
+<title>Taco Cloud</title>
+<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+
+<body>
+	<h1>Design your taco!</h1>
+	<img th:src="@{/images/TacoCloud.png}" />
+	
+	<form method="POST" th:object="${taco}">
+		<span class="validationError"
+			th:if="${#fields.hasErrors('ingredients')}"
+			th:errors="*{ingredients}">Ingredient Error</span>
+		
+		<div class="grid">
+			<div class="ingredient-group" id="wraps">
+				<h3>Designate your wrap:</h3>
+				
+				<div th:each="ingredient : ${wrap}">
+					<input name="ingredients" type="checkbox"
+						th:value="${ingredient.id}" /> 
+					<span th:text="${ingredient.name}">INGREDIENT</span><br />
+				</div>
+			</div>
+			
+			<div class="ingredient-group" id="proteins">
+				<h3>Pick your protein:</h3>
+				<div th:each="ingredient : ${protein}">
+					<input name="ingredients" type="checkbox"
+						th:value="${ingredient.id}" /> 
+					<span th:text="${ingredient.name}">INGREDIENT</span><br />
+				</div>
+			</div>
+			
+			<div class="ingredient-group" id="cheeses">
+				<h3>Choose your cheese:</h3>
+				<div th:each="ingredient : ${cheese}">
+					<input name="ingredients" type="checkbox"
+						th:value="${ingredient.id}" /> 
+					<span th:text="${ingredient.name}">INGREDIENT</span><br />
+				</div>
+			</div>
+			
+			<div class="ingredient-group" id="veggies">
+				<h3>Determine your veggies:</h3>
+				<div th:each="ingredient : ${veggies}">
+					<input name="ingredients" type="checkbox"
+						th:value="${ingredient.id}" /> 
+					<span th:text="${ingredient.name}">INGREDIENT</span><br />
+				</div>
+			</div>
+			
+			<div class="ingredient-group" id="sauces">
+				<h3>Select your sauce:</h3>
+				<div th:each="ingredient : ${sauce}">
+					<input name="ingredients" type="checkbox"
+						th:value="${ingredient.id}" /> 
+					<span th:text="${ingredient.name}">INGREDIENT</span><br />
+				</div>
+			</div>
+		</div>
+		
+		<div>
+			<h3>Name your taco creation:</h3>
+			<input type="text" th:field="*{name}" />  
+			<span
+				class="validationError" th:if="${#fields.hasErrors('name')}"
+				th:errors="*{name}">Name Error</span> 
+			<br />
+			<button>Submit your taco</button>
+		</div>
+	</form>
+</body>
+</html>
+```
+
+각 유형의 식자재마다 `<div>` 코드가 반복되어 있고,  마지막 `<div>` 부분에서는 사용자 자신이 생성한 타코의 이름을 지정할 수 있는 필드와 Submit 버튼을 포함하고 있다.
+
+`<body> ` 태그 맨 앞에 있는 타코 클라우드 로고 이미지와 `<head>` 태그 안에 `<link>` 스타일시트 참조도 주목할 필요가 있다. 두 가지에서 모두 Thymeleaf의 @{} 연산자가 사용되었다. 이로써 참조되는 정적 콘텐츠(로고 이미지와 스타일시트)들의 위치(컨텍스트 상대 경로)를 알 수 있다. 스프링 부트 애플리케이션의 **정적 콘텐츠**는 **classpath의 루트 밑에 있는 /static 디렉터리** 에 위치한다. 
+
+스타일시트 내용은 각 유형의 식자재들을 두 개의 컬럼으로 보여주는 스타일만을 포함한다. 자세한 내용은 [이곳](https://github.com/Jpub/SpringInAction5/blob/master/Ch02/taco-cloud/src/main/resources/static/styles.css)을 참조하자.
+
+이제 애플리케이션을 실행하여 뷰와 컨트롤러의 연결을 확인해볼 수 있다. 스프링 부트 애플리케이션을 실행하는 방법은 여러가지다. 예를 들어 애플리케이션을 실행 가능한 JAR 파일로 빌드한 후 java -jar로 JAR를 실행하거나, 또는 mvn spring-boot:run을 사용하여 실행할 수 있다. 또한 IDE의 시작 버튼을 눌러 애플리케이션을 실행할 수 있다. 
+
+실행을 한 이후 웹 브라우저에서 http://localhost:8080/design에 접속해보자. 아까는 404 (Not Found) 에러가 나왔지만 이제는 그럴듯한 페이지가 보일 것이다. 이 /design 페이지에서 사용자는 자신만의 타코를 만들기 위해 원하는 식자재를 선택할 수 있다. 하지만 만약 Submit your taco 버튼을 클릭하면 어떻게 될까?
+
+사용자가 Submit 버튼을 클릭하면 또 다른 요청이 발생한다. 하지만 우리는 아직 DesignTacoController가 이 요청을 어떻게 처리할 것인지 정의하지 않았다. 다음 내용에서는 이 문제를 해결하기 위해 폼 제출이 있을 때 이를 처리하는 컨트롤러 코드를 추가할 것이다.
+
 ## 도메인 객체에 애노테이션 추가하기(p104~)
 
 특정 클래스를 JPA 개체(entity)로 선언하려면 반드시 @Entity 애노테이션을 추가해야 한다. 그리고 이것의 id 속성에는 반드시 @Id 를 지정하여 이 속성이 데이터베이스의 개체를 고유하게 식별한다는 것을 나타내야 한다. 

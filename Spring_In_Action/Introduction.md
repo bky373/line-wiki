@@ -11,7 +11,7 @@
 
 ## Chapter 분류
 
-- [Chapter 01. 스프링 시작하기 내용을 이전하라 (p3~33)](https://github.com/bky373/line-wiki/blob/main/Spring_In_Action/CH_01_%EC%8A%A4%ED%94%84%EB%A7%81%20%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0.md#Chapter-01-%EC%8A%A4%ED%94%84%EB%A7%81-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0)
+- [Chapter 01. 스프링 시작하기 (p3~33)](https://github.com/bky373/line-wiki/blob/main/Spring_In_Action/CH_01_%EC%8A%A4%ED%94%84%EB%A7%81%20%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0.md#Chapter-01-%EC%8A%A4%ED%94%84%EB%A7%81-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0)
 
 - [Chapter 02. 웹 애플리케이션 개발하기 (p34~71)](https://github.com/bky373/line-wiki/blob/main/Spring_In_Action/CH_02_%EC%9B%B9%20%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%20%EA%B0%9C%EB%B0%9C%ED%95%98%EA%B8%B0.md#Chapter-02-%EC%9B%B9-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-%EA%B0%9C%EB%B0%9C%ED%95%98%EA%B8%B0)
 

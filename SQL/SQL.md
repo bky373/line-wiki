@@ -1853,5 +1853,5 @@
 
 # References
 
-- [SQL WHERE - w3schools.com](https://www.w3schools.com/sql/sql_where.asp) 
+- [SQL Tutorial - w3schools.com](https://www.w3schools.com/sql/default.asp) 
 

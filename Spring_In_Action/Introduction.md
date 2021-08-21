@@ -17,16 +17,6 @@
 
 - [Chapter 03. 데이터로 작업하기 (p72~115)](https://github.com/bky373/line-wiki/blob/main/Spring_In_Action/CH_03_%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C%20%EC%9E%91%EC%97%85%ED%95%98%EA%B8%B0.md#Chapter-03-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C-%EC%9E%91%EC%97%85%ED%95%98%EA%B8%B0)
 
-## 도메인 객체에 애노테이션 추가하기(p104~)
-
-특정 클래스를 JPA 개체(entity)로 선언하려면 반드시 @Entity 애노테이션을 추가해야 한다. 그리고 이것의 id 속성에는 반드시 @Id 를 지정하여 이 속성이 데이터베이스의 개체를 고유하게 식별한다는 것을 나타내야 한다. 
-
-JPA에서는 개체가 인자 없는 생성자를 가져야 한다. 이를 위해 Lombok의 @NoArgsConstructor를 지정한다. 하지만 인자 없는 생성자의 사용을 원하지 않을 경우, access 속성을 AccessLevel.PRIVATE으로 설정하여 클래스 외부에서 사용하지 못하게 만들 수 있다. 그리고 초기화가 필요한 final 속성이 있다면 force 속성을 true로 설정한다. 이에 따라 Lombok이 자동 생성한 생성자에서 그 속성들을 null로 설정할 수 있다. 아래 예시처럼 작성하면 된다.
-
-```java
-@NoArgsConstructor(access=AccessLevel.PRIVATE, force=true)
-```
-
 ## JPA 리퍼지터리 선언하기(p108~)
 
 JDBC 버전의 리퍼지터리에서는 리퍼지터리가 제공하는 메서드를 개발자가 명시적으로 선언한다.

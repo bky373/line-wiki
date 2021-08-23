@@ -17,6 +17,9 @@
 
 - [Chapter 03. 데이터로 작업하기 (p72~115)](https://github.com/bky373/line-wiki/blob/main/Spring_In_Action/CH_03_%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C%20%EC%9E%91%EC%97%85%ED%95%98%EA%B8%B0.md#Chapter-03-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C-%EC%9E%91%EC%97%85%ED%95%98%EA%B8%B0)
 
+- [Chapter 04. 스프링 시큐리티 (p116~166)](https://github.com/bky373/line-wiki/blob/main/Spring_In_Action/CH_04_%EC%8A%A4%ED%94%84%EB%A7%81%20%EC%8B%9C%ED%81%90%EB%A6%AC%ED%8B%B0.md#Chapter-04-%EC%8A%A4%ED%94%84%EB%A7%81-%EC%8B%9C%ED%81%90%EB%A6%AC%ED%8B%B0) (정리 중)
+
+
 ## JPA 리퍼지터리 선언하기(p108~)
 
 JDBC 버전의 리퍼지터리에서는 리퍼지터리가 제공하는 메서드를 개발자가 명시적으로 선언한다.

@@ -8,13 +8,16 @@
 
 - [Lines](https://github.com/bky373/line-snipets/blob/main/Lines.md#Lines)
 - [Spring](https://github.com/bky373/line-wiki/blob/main/Spring.md#Spring)
-- [Spring In Action](https://github.com/bky373/line-wiki/blob/main/Spring_In_Action/Introduction.md#Spring-In-Action) (private repository로 이전할 예정)
+- Spring In Action`*`
 - [Effective Java](https://github.com/bky373/line-wiki/blob/main/Effective_Java.md#Effective-Java)
 - [Java](https://github.com/bky373/line-wiki/blob/main/Java.md#Java)
 - [Network](https://github.com/bky373/line-wiki/blob/main/Network.md#Network)
 - [Database](https://github.com/bky373/line-wiki/blob/main/Database.md#Database)
 - [SQL](https://github.com/bky373/line-wiki/tree/main/SQL)  (카테고리 변경 예정)
 
+>  **`*` 표시**
+> - 우선 책의 내용을 챕터별로 나누어 Private Repository에 정리하였습니다. 
+> - 추후 저만의 예제를 만들어 Public하게 관리하는 것을 목표로 하고 있습니다.
 
 # Rule of 1.01 ( 1.01의 법칙 )
 

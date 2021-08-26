@@ -8,7 +8,7 @@
 
 - [Lines](https://github.com/bky373/line-snipets/blob/main/Lines.md#Lines)
 - [Spring](https://github.com/bky373/line-wiki/blob/main/Spring.md#Spring)
-- [Spring In Action](https://github.com/bky373/line-wiki/tree/main/Spring_In_Action#Spring-In-Action)`*`
+- [Spring In Action](https://github.com/bky373/line-wiki/tree/main/Spring_In_Action#Spring-In-Action)`*` (4장. 스프링 시큐리티 공부 중)
 - [Effective Java](https://github.com/bky373/line-wiki/blob/main/Effective_Java.md#Effective-Java)`*`
 - [Java](https://github.com/bky373/line-wiki/blob/main/Java.md#Java)
 - [Network](https://github.com/bky373/line-wiki/blob/main/Network.md#Network)

@@ -13,7 +13,7 @@
 - [Java](https://github.com/bky373/line-wiki/blob/main/Java.md#Java)
 - [Network](https://github.com/bky373/line-wiki/blob/main/Network.md#Network)
 - [Database](https://github.com/bky373/line-wiki/blob/main/Database.md#Database)
-- [SQL](https://github.com/bky373/line-wiki/tree/main/SQL)  (카테고리 변경 예정)
+- [SQL](https://github.com/bky373/line-wiki/tree/main/SQL#SQL)  (카테고리 변경 예정)
 
 >  **`*` 표시**
 > - 책의 내용을 각 챕터별로 나누어 Private Repository에 정리하고 있습니다. 

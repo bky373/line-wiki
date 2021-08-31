@@ -1,31 +1,5 @@
 # SQL
 
-- **SQL COUNT  /  AVG  /  SUM 함수**
-
-  - `COUNT()` 함수는 지정된 기준과 일치하는 행의 수를 반환한다.
-
-    > **SELECT COUNT**(column_name)
-    >
-    > **FROM** table_name
-    >
-    > **WHERE** condition;
-
-  - `AVG()` 함수는 숫자로 구성된 열의 평균 값을 반환한다.
-
-    > **SELECT AVG**(column_name)
-    >
-    > **FROM** table_name
-    >
-    > **WHERE** condition;
-
-  - `SUM()` 함수는 숫자로 구성된 열의 총합을 반환한다.
-
-    > **SELECT SUM**(column_name)
-    >
-    > **FROM** table_name
-    >
-    > **WHERE** condition;
-
 - **LIKE 연산자** : `LIKE` 연산자는 `WHERE` 절에서 열에서 지정한 패턴을 검색하는 데 사용된다.
 
   > **SELECT** column1, column2, ...

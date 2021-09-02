@@ -1,33 +1,5 @@
 # SQL
 
-- **UNION ALL 구문**
-
-  - `UNION` 연산자는 기본적으로 **고유한** ( `distinct` )  값만 선택한다. 
-
-  - **중복 값** 을 허용하려면 `UNION ALL` 을 사용해야 한다.
-
-    > **SELECT** column_name(s) **FROM** table1
-    >
-    > **UNION ALL**
-    >
-    > **SELECT** column_name(s) **FROM** table2;
-
-  - ( 주의! ) 결과 집합의 열 이름은 일반적으로 첫 번째 `SELECT` 문의 열 이름과 같다.
-
-  - 다음 SQL 문은 모든 고객과 공급업체를 나열한다.
-
-    > **SELECT** 'Customer' **AS** Type, ContactName, City, Country
-    >
-    > **FROM** Customers
-    >
-    > **UNION**
-    >
-    > **SELECT** 'Supplier', ContactName, City, Country
-    >
-    > **FROM** Suppliers;
-
-    ![image](https://user-images.githubusercontent.com/87057868/128156725-b7e91501-ff3a-4038-b4fa-4ad900107c62.png)
-
 - **GROUP BY 문**
 
   - `GROUP BY` 문은  `"각 국가의 고객 수 찾기"` 와 같이 **동일한 값을 가진 행을 요약 행으로 그룹화** 한다. 

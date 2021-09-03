@@ -80,3 +80,7 @@
   - 다음 SQL 문은 `OrderDetails` 테이블의 모든 레코드에 `Quantity`가 10인 경우 `ProductName`을 나열한다. 해당 테이블에는 `Quantity` 열에 10 이외에 다양한 값이 있기 때문에 `FALSE`를 반환한다.
 
 
+# References
+
+- [SQL Any, All - w3schools.com](https://www.w3schools.com/sql/sql_any_all.asp) 
+

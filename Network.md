@@ -200,7 +200,22 @@
 
 - **전파 간섭** ( `interference` ) : 같은 주파수의 파동이 **합성**되거나 **상쇄**될 때 나타나는 현상이다. 무선 랜과 무선 랜 또는 무선 랜과 다른 기기 사이의 전파 간섭 때문에 통신 속도가 떨어질 수 있다.
 
+- **Content-Type: multipart/form-data**
+  - **파일 업로드와 같이 바이너리 데이터를 전송할 때 사용한다.** 쉽게 HTML Form으로 데이터를 전송하는 경우를 생각하면 된다. 
+  - 아래와 같이 이미지 파일을 폼에 업로드 하면,
 
+    ![image](https://user-images.githubusercontent.com/49539592/135484955-c723761c-77a4-4aea-9156-3b86f9222c59.png)
+    
+  - 요청 헤더 안에 다음 줄이 포함된다.
+    > Content-Type: multipart/form-data; boundary=----WebKitFormBoundary9MlEpz4jOhCVCA1i
+    
+    ![image](https://user-images.githubusercontent.com/49539592/135482627-df4d51dc-2aec-42ab-8720-0050956734f5.png)
+  - boundary는 이름 그대로 경계선을 의미한다. 다음 사진에서처럼 폼의 데이터를 구분하는 경계선 으로 사용된다.
+  - 만약 폼 안에 필드가 더 있었다면 경계선 표시(`------WebKitFormBoundary9MlEpz4jOhCVCA1i`)의 위(또는 아래)에 다른 필드 정보가 함께 표현되었을 것이다.
+    
+    ![image](https://user-images.githubusercontent.com/49539592/135482751-73edf571-093f-4ddd-9751-71580e7d2514.png)
+    
+  - 결국, `multipart/form-data` 라는 이름은 **폼에 있는 여러 타입의 데이터**를 한꺼번에 전송할 수 있기 때문에 붙여진 이름이다. 예를 들어 하나의 폼을 사용하여 title(문자열 필드)과 image(이미지 파일)을 한번에 전송하는 경우를 생각해볼 수 있다.
 
 
 ## References

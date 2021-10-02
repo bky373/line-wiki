@@ -2,31 +2,32 @@
 
 ## 개념
 
-- **HTTP**는 `HyperText Transfer Protocol`의 약자이다.
+- **HTTP**는 **HyperText Transfer Protocol**의 약자이다.
 
-- **HyperText**와  **Transfer Protocol** 이 뭔지 각각 알아보자. 
+- 그렇다면 **HyperText**와 **Transfer Protocol** 은 무엇일까?
 
   > 1. **HyperText**
   >
   > - 직역: **초월적인 텍스트**
-  > - 의역: **텍스트 간 연결(이동)** 할 때, 순차적 접근 방식이 아닌 **비순차적(초월적) 접근 방식**을 따르는 텍스트를 의미한다. 쉽게 하이퍼링크를 생각하면 된다. 
+  > - 의역: **텍스트 간 이동** 할 때, 순차적 접근 방식이 아닌 **비순차적(초월적) 접근 방식**을 따르는 텍스트를 의미한다. 쉽게 하이퍼링크를 생각하자.
+  - (참고) **하이퍼링크**(Hyper Link): 페이지에서 다른 페이지 혹은 문서 내부에서 다른 문서로 연결되는 참조를 하이퍼링크라고 한다.
 
-  > 2. **Transfer Protocol**: **통신 장비 간 데이터 교환 방식에 대해 합의한 내용**이다. 통신을 원하는 두 개체가 **무엇을, 어떻게 통신할 것인가**에 대해 **약속**하고 이를 **규칙**으로 정의해놓은 것이라 보면 된다. 데이터의 형식(아날로그 or 디지털), 부호화(Unicode, ASCII), 신호 순서, 인증, 오류수정 등을 포함한다.
-  >
-  > - (참고) **Hyper Link**: 페이지에서 다른 페이지 혹은 문서 내부에서 다른 문서로 연결되는 참조를 하이퍼링크라고 한다.
+  > 2. **Transfer Protocol**: 통신 장비 간 **데이터 교환 방식에 대해 합의한 내용**이다. 통신을 원하는 두 개체가 **무엇을, 어떻게 통신할 것인가**에 대해 **약속**하고 이를 **규칙**으로 정의해놓은 것이라 보면 된다. 데이터의 형식(아날로그 or 디지털), 부호화(Unicode, ASCII), 신호 순서, 인증, 오류수정 등을 포함한다.
+  
 
 - 결국, **HTTP**는 **HyperText를 전송하기 위한 통신 규약**을 의미한다.
+- (참고) 하이퍼텍스트는 HTML 에서도 사용된다.
 
   > **HTML** (HyperText Markup Language)
   >
-  > - Hyper Text의 의미는 위와 동일하다.
-  > - Markup은 표시하다는 뜻으로, 제목, 단락, 목록 등 태그를 사용해 구조적 의미를 표현한다. 또한 링크, 인용과 그 밖의 항목으로 [구조적 문서](https://ko.wikipedia.org/wiki/구조적_문서)를 만들 수 있는 방법을 제공한다. 
+  > - HyperText의 의미는 위와 동일하다.
+  > - **Markup은 표시하다** 는 뜻으로, 제목, 단락, 목록 등 태그를 사용해 구조적 의미를 표현한다. 또한 링크, 인용과 그 밖의 항목으로 [구조적 문서](https://ko.wikipedia.org/wiki/구조적_문서)를 만들 수 있는 방법을 제공한다. 
   > - (예, 특정 상품 표기를 [Apple, iPhone 12]로 할 수 있지만, [**Company** : Apple, **Model** : iPhone 12]로 할 수도 있다. Mark Up은 간단히 태그를 달아 놓는 방식이라 할 수 있다. 
-  > - 결론적으로 태그를 이용해 정보와 문서를 구조적으로 표현하는 웹 문서 작성 기술을 의미한다.
+  > - 결론적으로 **태그**를 이용해 정보와 문서를 **구조적으로 표현**하는 웹 문서 작성 기술을 의미한다.
 
 ## 특징
 
-1. HTTP는 **웹에서 이루어지는 모든 데이터 교환의 기초**이다. (HTTP가 웹의 구성 요소이다 )
+1. HTTP는 **웹에서 이루어지는 모든 데이터 교환의 기초**이다(HTTP는 웹의 중요한 구성 요소이다).
 
 2. HTTP는 **클라이언트-서버 프로토콜**이다. 
 
@@ -108,23 +109,22 @@
 ## 공통 구조
 
 - HTTP 요청과 응답의 구조는 서로 유사한 면이 있는데, 구체적으로는 아래와 같다.
+![image](https://user-images.githubusercontent.com/49539592/135721043-123ddb7e-507d-4b43-8bdc-e91679e64621.png)
+> [이미지 출처](https://developer.mozilla.org/ko/docs/Web/HTTP/Messages)
 
-1. **시작 줄(start-line, Request-line)**: **HTTP 요청** / 또는 요청에 대한 **성공 또는 실패**가 기록된다. 항상 한 줄로 끝난다.
+1. **시작 줄**(start-line): **HTTP 요청** / 또는 요청에 대한 **성공 또는 실패**가 기록된다. 항상 한 줄로 끝난다.
 2. **HTTP 헤더**: 시작 줄 다음으로 **요청에 대한 설명** / 또는 **메시지 본문에 대한 설명**이 들어간다.
 3. **빈 줄**: 요청에 대한 모든 메타 정보가 전송되었음을 알리는 빈 줄이 삽입된다. (헤드와 본문 사이)
 4. **본문**(optional): **요청과 관련된 데이터**(HTML form 콘텐츠 등) / 또는 **응답과 관련된 문서**(document)가 **선택적**으로 들어간다. 본문의 존재와 크기는 시작 줄 및 HTTP 헤더에 명시된다.
 
 - HTTP 메시지의 시작 줄과 HTTP 헤더를 묶어서 **요청 헤드(head)** 라고 부르며, 이와 반대로 HTTP 메시지의 페이로드는 **본문(body)** 이라고 한다.
 
-![image-20210517003419560](C:\Users\bobo\AppData\Roaming\Typora\typora-user-images\image-20210517003419560.png)
-
-> [이미지 출처](https://developer.mozilla.org/ko/docs/Web/HTTP/Messages)
 
 # 3. Request
 
-- **요청(request)**은 클라이언트가 **서버로 전달**하는 메시지로, **서버 측 액션을 유도**한다.![image-20210517010606565](C:\Users\bobo\AppData\Roaming\Typora\typora-user-images\image-20210517010606565.png)
-
-  > [이미지 출처](https://developer.mozilla.org/ko/docs/Web/HTTP/Messages)
+- **요청(request)**은 클라이언트가 **서버로 전달하는 메시지로, 서버 측 액션을 유도**한다.
+![image](https://user-images.githubusercontent.com/49539592/135721729-ada35ee3-0d72-4b6d-a846-49338737c89e.png)
+> [이미지 출처](https://developer.mozilla.org/ko/docs/Web/HTTP/Messages)
 
 ## 시작 줄
 
@@ -170,10 +170,9 @@
 - 헤더는 값까지 포함해 한 줄로 구성되지만 꽤 길어질 수 있다.
 
 - 헤더는 아래와 같이 몇몇 그룹으로 나눌 수 있다.
-
-  ![image-20210517010606565](C:\Users\bobo\AppData\Roaming\Typora\typora-user-images\image-20210517010606565.png)
-
-  > [이미지 출처](https://developer.mozilla.org/ko/docs/Web/HTTP/Messages)
+	![image](https://user-images.githubusercontent.com/49539592/135721090-53093011-cec9-4407-ab12-540c114c06f4.png)
+    
+    > [이미지 출처](https://developer.mozilla.org/ko/docs/Web/HTTP/Messages)
 
   - **Request 헤더**: 요청의 내용을 좀 더 **구체화**하고, **컨텍스트를 제공**한다.  조건부로 제한하여 요청 내용을 수정하기도 한다. 
 
@@ -224,8 +223,8 @@
 
 # 4. Response
 
-- **응답(response)**은 요청에 대한 서버의 답변이다.![image-20210517101019797](C:\Users\bobo\AppData\Roaming\Typora\typora-user-images\image-20210517101019797.png)
-
+- **응답(response)은 요청에 대한 서버의 답변** 이다.
+  ![](https://images.velog.io/images/bky373/post/345afb9b-6591-423e-823a-34f51bad83dc/image.png)
   >  [이미지 출처](https://developer.mozilla.org/ko/docs/Web/HTTP/Messages)
 
 ## 상태 줄
@@ -243,16 +242,15 @@
 - 상태 줄은 일반적으로 `HTTP/1.1 200 OK`,  `HTTP/1.1 404 Not Found.` 와 같이 생겼다.
 
 ## 헤더
-
-- 설명은 요청의 헤더와 동일하지만, 복습 차원에서 다시 작성해보면,
+  
+- 설명은 요청의 헤더 설명과 다르지 않지만, 복습 차원에서 다시 작성해보면,
 
 - HTTP 헤더는 대소문자를 구분하지 않는 **이름, 콜론(`:`), 값**으로 구성된다. 값 앞의 공백은 무시된다.
 
 - 헤더는 값까지 포함해 한 줄로 구성되지만 꽤 길어질 수 있다.
 
 - 헤더는 아래와 같이 몇몇 그룹으로 나눌 수 있다.
-
-  ![image-20210517101019797](C:\Users\bobo\AppData\Roaming\Typora\typora-user-images\image-20210517101019797.png)
+	![image](https://user-images.githubusercontent.com/49539592/135721292-0e92faa4-5fd6-4033-9975-71f3fbf79849.png)
 
   >  [이미지 출처](https://developer.mozilla.org/ko/docs/Web/HTTP/Messages)
 

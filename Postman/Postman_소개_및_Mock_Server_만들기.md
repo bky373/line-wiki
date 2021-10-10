@@ -1,3 +1,13 @@
+# Postman 소개 및 Mock Server 만들기
+
+## 목차 
+  1. [Postman](https://github.com/bky373/line-wiki/blob/main/Postman/Postman_%EC%86%8C%EA%B0%9C_%EB%B0%8F_Mock_Server_%EB%A7%8C%EB%93%A4%EA%B8%B0.md#1-Postman)
+  2. [Postman Use Cases](https://github.com/bky373/line-wiki/blob/main/Postman/Postman_%EC%86%8C%EA%B0%9C_%EB%B0%8F_Mock_Server_%EB%A7%8C%EB%93%A4%EA%B8%B0.md#2-Postman-Use-Cases)
+  3. [Mock 서버 설정](https://github.com/bky373/line-wiki/blob/main/Postman/Postman_%EC%86%8C%EA%B0%9C_%EB%B0%8F_Mock_Server_%EB%A7%8C%EB%93%A4%EA%B8%B0.md#3-Mock-서버-설정)
+  4. [API 문서 만들기](https://github.com/bky373/line-wiki/blob/main/Postman/Postman_%EC%86%8C%EA%B0%9C_%EB%B0%8F_Mock_Server_%EB%A7%8C%EB%93%A4%EA%B8%B0.md#4-API-문서-만들기)
+  5. [Postman Mock 서버 장단점](https://github.com/bky373/line-wiki/blob/main/Postman/Postman_%EC%86%8C%EA%B0%9C_%EB%B0%8F_Mock_Server_%EB%A7%8C%EB%93%A4%EA%B8%B0.md#5-Postman-Mock-서버-장단점)
+  6. [References](https://github.com/bky373/line-wiki/blob/main/Postman/Postman_%EC%86%8C%EA%B0%9C_%EB%B0%8F_Mock_Server_%EB%A7%8C%EB%93%A4%EA%B8%B0.md#6-References)
+
 # 1. Postman
 
 - 공식 페이지에서는 Postman을 아래와 같이 소개하고 있다.
@@ -25,26 +35,36 @@
 > [이미지 출처](https://www.postman.com/use-cases/api-first-development/)
 
 1. **명세서 단계 (항목화 단계)**
+
    - 새로운 API를 생성한다.
    - 새로운 명세(항목)을 작성하거나 import 한다. (선택사항)
 
 2. **개발 단계**
+
    - `mock` 서버를 생성한다.
    - 문서를 생성한다.
    - API를 디버그한다.
 
 3. **테스트 단계**
+
    - API를 탐구한다.
+
    - `Javascript`를 사용해 테스트를 작성한다.
+
    - `Collection Runner`를 활용해 테스트를 돌리며 결과물을 검증한다.
+
      > [Collection Runner](https://learning.postman.com/docs/running-collections/intro-to-collection-runs/)를 사용하면 지정된 순서로 일련의 요청을 실행할 수 있다.
 
-4.  **개발 단계**
+4. **개발 단계**
+
    - `Newman`을 통해 빌드 시스템 안에서 테스트들을 통합한다.
-   -  준비된 `CI/CD` 파이프라인을 통해 `production` (운영 모드)로 배포한다.
+
+   - 준비된 `CI/CD` 파이프라인을 통해 `production` (운영 모드)로 배포한다.
+
      > [Newman](https://support.postman.com/hc/en-us/articles/115003710329-What-is-Newman-)은 Postman을 위한 명령줄 컬렉션이다. 명령줄에서 직접 Postman 컬렉션을 실행하고 테스트 할 수 있다.
 
    - 알림을 받기 위해 모니터를 설정한다.
+
 > 2단계와 3단계에서 팀원들을 workspace에 초대하여 업데이트된 내용, 테스트 결과물, 디버깅 정보를 공유할 수 있다.
 
  ## Application Development
@@ -57,11 +77,15 @@
 > [이미지 출처](https://www.postman.com/use-cases/api-first-development/)
 
 1. **명세서 단계 (항목화 단계)**
+
    - product 명세서(항목 문서)를 만든다.
 
 2. **프론트엔드 개발 단계**
+
    - `mock` 서버를 이용해 API 호출을 시뮬레이션해본다.
+
    - UI 코드와 `mock` 서버를 통합시킨다.
+
    - `mock` 과 `staging` 서버를 교체하여 사용한다.
 
      > **staging (스테이징 환경)**: **운영 환경과 거의 동일한 환경**을 만들어 놓고, 운영환경으로 이전하기 전에, 여러 가지 비 기능적인 부분 (Security, 성능, 장애 등)을 검증하는 환경이다.
@@ -71,12 +95,14 @@
    - `mock`서버를  `production` 서버로 교체한다. 
 
 3. **백엔드 개발 단계**
+
    - API 명세 또는 `mock` 서버를 작성한다.
    - 코드를 구현하고 `staging` 단계에서 배포해본다.
    - API 테스트를 작성한다.
    - `production` (운영 모드)로 배포한다.
 
 4. **통합 단계**
+
    - API를 디버그해서 `production`까지 넘어간다.
    - `Postman Proxy`를 사용하여 API 호출을 테스트한다.
    - 빌드 시스템과 API 테스트를 통합한다.
@@ -84,9 +110,13 @@
 # 3. Mock 서버 설정
 
 - **`production` API가 준비되지 않았거나, 아직 실제 데이터에 대해 요청을 실행하고 싶지 않은 경우** `mock` 서버를 사용할 수 있다.
+
 - Postman의 `mock` 서버를 사용하면, **가짜(`mock`) 데이터를 반환하는 요청**을 할 수 있다.
+
 - **컬렉션(`collections`)에 `mock` 서버를 추가**하고, **요청에 예제를 추가**하면 실제 API의 동작을 시뮬레이션 할 수 있다.
--  `mock` 서버에 요청을 보낼 때 Postman은 미리 정의된 **예제와 요청 구성(`Configuration`)를 맞춰보고**, 일치할 경우 이에 **맞는 데이터를 응답**해준다.
+
+- `mock` 서버에 요청을 보낼 때 Postman은 미리 정의된 **예제와 요청 구성(`Configuration`)를 맞춰보고**, 일치할 경우 이에 **맞는 데이터를 응답**해준다.
+
 - Postman 왼쪽에 있는 `mock` 서버에서 `workspace`의 가짜 예제 등을 볼 수 있다.
   ![](https://images.velog.io/images/bky373/post/df5c8122-e501-4c2b-bb05-d3d5e09775e7/image.png)
 
@@ -103,14 +133,17 @@
   ![](https://images.velog.io/images/bky373/post/a828ce86-2415-422e-944e-fa80863c6e32/image.png)
 
 - 새로운 컬렉션을 추가하거나(`Create a new collection`) 기존 컬렉션을 선택한다(`Select an existing collection`). 여기에서는 새로운 컬렉션을 추가하도록 한다.
+
 - 컬렉션을 새롭게 추가할 경우, 초기 요청을 작성해주어야 한다. `Request URL`에 임시 `URL`를 작성해준다 (추후 수정 가능). 여기에서는 `test` 라고 입력해주었다.
 
   ![](https://images.velog.io/images/bky373/post/f67067b3-de8b-4954-a56a-4ea5ccf37408/image.png)
 
 - 다음으로 `Next` 버튼을 누르면 `Configuration` 을 작성해야 한다. `Mock server name` 에 `Mock Server Test`라고 입력해주었다. (추후 수정 가능)
+
 - `Mock 서버 URL`을 환경변수로 사용하려면,  `Save the mock server URL as an environment variable` 항목 체크를 유지한다.
+
 - 다음으로 `Create Mock Server` 버튼을 누르면 Mock 서버가 생성된 화면이 나온다. (Mock 서버 생성 끝!)
-   
+
 
   ![](https://images.velog.io/images/bky373/post/7fc70ad8-6123-40c0-8c09-e6b08b1382ef/image.png)
 
@@ -119,8 +152,11 @@
 ![](https://images.velog.io/images/bky373/post/5258b789-dd74-4776-b938-003c1726794c/image.png)
 
 - Mock 서버가 생성되었다면 Postman 왼쪽의 `Collections`를 클릭한다. Mock 서버의 이름과 동일한 이름의 컬렉션이 하나 생성되어 있고, 그 안에는 위에서 Mock 서버를 만들 때 작성한 초기 요청(`GET test`) 템플릿이 생성되어 있다.
+
 - 또한 초기 요청 아래  `Default` 가 하나 있는데, Postman에서는 이를 `example`이라 부른다. API에 대해 Params나 Response 등을 다르게 하여 여러 개의 예제를 생성할 수 있다. `Default`라는 이름은 변경 가능하다.
+
 - 오른쪽 상단에는 API 경로가 나와 있다. `{{url}}/test` 에서 `{{url}}`은 Postman이 관리하는 환경 변수로 왼쪽의 `Environments` 탭에서 확인할 수 있다. 
+
 - 예리한 사람들은 눈치챘겠지만, Mock 서버를 처음 만들 때 사실 환경 세팅을 해주지 않았다. 그래서 오른쪽 우측 상단을 보면 현재 API는 `No Environment`인 상태다. 아래 화살표를 클릭한 후 `Mock Server Test` 환경을 선택한다. (이 설정을 하지 않으면 API 경로에서 `{{url}}`을 인식하지 못해 올바른 API 응답을 받을 수 없다.)
 
   - 환경 변경 전: `No Environment`
@@ -135,9 +171,9 @@
 
   - > {
     >
-    > ​	"menu" : "Americano",
-    >
-    > ​	"price" : 4000
+    > 	"menu" : "Americano",
+    > 	
+    > 	"price" : 4000
     >
     > } 
 
@@ -156,14 +192,14 @@
 
 # 4. API 문서 만들기
 
--  Postman은 컬렉션을 기반으로 문서를 생성, 호스팅하며, 실시간으로 동기화하고 브라우저를 통해 접근할 수 있다. 
+- Postman은 컬렉션을 기반으로 문서를 생성, 호스팅하며, 실시간으로 동기화하고 브라우저를 통해 접근할 수 있다. 
 
 - 문서를 사용하여 팀원들과 공동 작업을 수행할 수 있다.
 
   ![](https://images.velog.io/images/bky373/post/53f9db6e-6df6-4a42-a47b-ce6784b95869/image.png)
 
   > [이미지 출처](https://learning.postman.com/docs/publishing-your-api/documenting-your-api/)
-  
+
 ## 문서 생성
 
 - Postman에서 기존 컬렉션에 대한 문서를 생성하려면 왼쪽 `Collections` 탭에서 문서화하기 원하는 컬렉션을 선택한다. 그 후 오른쪽 `Documentation` 탭을 클릭하면 문서를 작성할 수 있다.
@@ -255,9 +291,8 @@
 
 
 
-# References
+# 6. References
 
 - [POSTMAN](https://www.postman.com/)
 - [POSTMAN Learning Center](https://learning.postman.com/docs/designing-and-developing-your-api/mocking-data/setting-up-mock/)
 - [[Postman] Mock Server / API Documentation 만들기 - 불곰님](https://brownbears.tistory.com/448)
-

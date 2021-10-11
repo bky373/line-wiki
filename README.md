@@ -7,7 +7,7 @@
 ## 📓 기록 공간
 
 - [Lines](https://github.com/bky373/line-snipets/blob/main/Lines.md#Lines)
-- [Spring](https://github.com/bky373/line-wiki/blob/main/Spring.md#Spring)
+- [Spring](https://github.com/bky373/line-wiki/tree/main/Spring)
 - [Spring In Action](https://github.com/bky373/line-wiki/tree/main/Spring_In_Action#Spring-In-Action)`*` (4장. 스프링 시큐리티 공부 중)
 - [Effective Java](https://github.com/bky373/line-wiki/tree/main/Effective_Java#Effective-Java)`*` (2장. 객체 생성과 파괴 공부 중)
 - [Java](https://github.com/bky373/line-wiki/blob/main/Java.md#Java)

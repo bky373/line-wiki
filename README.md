@@ -6,16 +6,17 @@
 
 ## 📓 기록 공간
 
+- [Database](https://github.com/bky373/line-wiki/blob/main/Database.md#Database)
+- [Effective Java](https://github.com/bky373/line-wiki/tree/main/Effective_Java#Effective-Java)`*`
+- [HTTP](https://github.com/bky373/line-wiki/tree/main/HTTP)
+- [Java](https://github.com/bky373/line-wiki/blob/main/Java.md#Java)
 - [Lines](https://github.com/bky373/line-snipets/blob/main/Lines.md#Lines)
+- [Network](https://github.com/bky373/line-wiki/blob/main/Network.md#Network)
+- [Postman](https://github.com/bky373/line-wiki/tree/main/Postman)
 - [Spring](https://github.com/bky373/line-wiki/tree/main/Spring)
 - [Spring In Action](https://github.com/bky373/line-wiki/tree/main/Spring_In_Action#Spring-In-Action)`*` (4장. 스프링 시큐리티 공부 중)
-- [Effective Java](https://github.com/bky373/line-wiki/tree/main/Effective_Java#Effective-Java)`*`
-- [Java](https://github.com/bky373/line-wiki/blob/main/Java.md#Java)
-- [Network](https://github.com/bky373/line-wiki/blob/main/Network.md#Network)
-- [Database](https://github.com/bky373/line-wiki/blob/main/Database.md#Database)
 - [SQL](https://github.com/bky373/line-wiki/tree/main/SQL#SQL)  (카테고리 변경 예정)
-- [HTTP](https://github.com/bky373/line-wiki/tree/main/HTTP)
-- [Postman](https://github.com/bky373/line-wiki/tree/main/Postman)
+
 
 >  **`*` 표시**
 > - 책의 내용을 각 챕터별로 나누어 Private Repository에 정리하고 있습니다. 

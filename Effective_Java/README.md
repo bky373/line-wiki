@@ -13,3 +13,13 @@
 * [아이템 9. try-finally보다는 try-with-resources를 사용하라(p47~50)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/09_try-finally%EB%B3%B4%EB%8B%A4%EB%8A%94%20try-with-resources%EB%A5%BC%20%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC.md)
 
 
+
+## 3장. 모든 객체의 공통 메서드(p51~94)
+
+* [아이템 10. equals는 일반 규약을 지켜 재정의하라(p52~66)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/10_equals%EB%8A%94%20%EC%9D%BC%EB%B0%98%20%EA%B7%9C%EC%95%BD%EC%9D%84%20%EC%A7%80%EC%BC%9C%20%EC%9E%AC%EC%A0%95%EC%9D%98%ED%95%98%EB%9D%BC.md)
+* [아이템 11. equals를 재정의하려거든 hashCode도 재정의하라(p67~72)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/11_equals%EB%A5%BC%20%EC%9E%AC%EC%A0%95%EC%9D%98%ED%95%98%EB%A0%A4%EA%B1%B0%EB%93%A0%20hashCode%EB%8F%84%20%EC%9E%AC%EC%A0%95%EC%9D%98%ED%95%98%EB%9D%BC.md)
+* [아이템 12. toString을 항상 재정의하라(p73~76)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/12_toString%EC%9D%84%20%ED%95%AD%EC%83%81%20%EC%9E%AC%EC%A0%95%EC%9D%98%ED%95%98%EB%9D%BC.md)
+* [아이템 13. clone 재정의는 주의해서 진행하라(p77~86)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/13_clone%20%EC%9E%AC%EC%A0%95%EC%9D%98%EB%8A%94%20%EC%A3%BC%EC%9D%98%ED%95%B4%EC%84%9C%20%EC%A7%84%ED%96%89%ED%95%98%EB%9D%BC.md)
+* [아이템 14. Comparable을 구현할지 고려하라(p87~94)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/14_Comparable%EC%9D%84%20%EA%B5%AC%ED%98%84%ED%95%A0%EC%A7%80%20%EA%B3%A0%EB%A0%A4%ED%95%98%EB%9D%BC.md)
+
+

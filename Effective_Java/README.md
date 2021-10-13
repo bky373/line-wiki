@@ -1,37 +1,15 @@
 # Effective Java
 
-- **책 정보**
-  - 저자 : 조슈아 블로크
-  - 옮긴이 : 개앞맵시(이복연)
-  - 출판사 : 프로그래밍인사이트
-  - 출간일 : 2018년 11월 01일
-  - 에디션 : 3rd Edition
-  - 관련링크
-    - 소스 코드 : https://github.com/WegraLee/effective-java-3e-source-code
+# 2장(p7~50)
 
-- **들어가기 전에** 
-  - 1회독의 경우, 책에서 기억할 만한 내용을 옮겨 적는 정도로만 만족하자. 
-  - 내용을 너무 깊이 있게 파고들지 말자. (그렇지만 정리가 필요한 부분은 가능한 꼼꼼히 작성하자)
+* [아이템 1. 생성자 대신 정적 팩터리 메서드를 고려하라(p8~13)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/01_%EC%83%9D%EC%84%B1%EC%9E%90%20%EB%8C%80%EC%8B%A0%20%EC%A0%95%EC%A0%81%20%ED%8C%A9%ED%84%B0%EB%A6%AC%20%EB%A9%94%EC%84%9C%EB%93%9C%EB%A5%BC%20%EA%B3%A0%EB%A0%A4%ED%95%98%EB%9D%BC.md)
+* [아이템 2. 생성자에 매개변수가 많다면 빌더를 고려하라(p14~22)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/02_%EC%83%9D%EC%84%B1%EC%9E%90%EC%97%90%20%EB%A7%A4%EA%B0%9C%EB%B3%80%EC%88%98%EA%B0%80%20%EB%A7%8E%EB%8B%A4%EB%A9%B4%20%EB%B9%8C%EB%8D%94%EB%A5%BC%20%EA%B3%A0%EB%A0%A4%ED%95%98%EB%9D%BC.md)
+* [아이템 3. private 생성자나 열거 타입으로 싱글턴임을 보증하라(p23~25)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/03_private%20%EC%83%9D%EC%84%B1%EC%9E%90%EB%82%98%20%EC%97%B4%EA%B1%B0%20%ED%83%80%EC%9E%85%EC%9C%BC%EB%A1%9C%20%EC%8B%B1%EA%B8%80%ED%84%B4%EC%9E%84%EC%9D%84%20%EB%B3%B4%EC%A6%9D%ED%95%98%EB%9D%BC.md)
+* [아이템 4. 인스턴스화를 막으려거든 private 생성자를 사용하라(p26~27)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/04_%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%ED%99%94%EB%A5%BC%20%EB%A7%89%EC%9C%BC%EB%A0%A4%EA%B1%B0%EB%93%A0%20private%20%EC%83%9D%EC%84%B1%EC%9E%90%EB%A5%BC%20%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC.md)
+* [아이템 5. 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라(p28~30)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/05_%EC%9E%90%EC%9B%90%EC%9D%84%20%EC%A7%81%EC%A0%91%20%EB%AA%85%EC%8B%9C%ED%95%98%EC%A7%80%20%EB%A7%90%EA%B3%A0%20%EC%9D%98%EC%A1%B4%20%EA%B0%9D%EC%B2%B4%20%EC%A3%BC%EC%9E%85%EC%9D%84%20%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC.md)
+* [아이템 6. 불필요한 객체 생성을 피하라(p31~35)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/06_%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C%20%EA%B0%9D%EC%B2%B4%20%EC%83%9D%EC%84%B1%EC%9D%84%20%ED%94%BC%ED%95%98%EB%9D%BC.md)
+* [아이템 7. 다 쓴 객체 참조를 해제하라(p36~39)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/07_%EB%8B%A4%20%EC%93%B4%20%EA%B0%9D%EC%B2%B4%20%EC%B0%B8%EC%A1%B0%EB%A5%BC%20%ED%95%B4%EC%A0%9C%ED%95%98%EB%9D%BC.md)
+* [아이템 8. finalizer와 cleaner 사용을 피하라(p40~46)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/08_finalizer%EC%99%80%20cleaner%20%EC%82%AC%EC%9A%A9%EC%9D%84%20%ED%94%BC%ED%95%98%EB%9D%BC.md)
+* [아이템 9. try-finally보다는 try-with-resources를 사용하라(p47~50)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/09_try-finally%EB%B3%B4%EB%8B%A4%EB%8A%94%20try-with-resources%EB%A5%BC%20%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC.md)
 
-
-
-## 1장. 들어가기
-
-- **JLS** : **자바 8용 언어 명세**(The Java Language Specification, Java SE 8 Edition)를 말한다. 제임스 고슬링(James Gosling, 자바의 아버지), 빌 조이(Bill Joy, vi 편집기 개발자) 등에 의해 작성되었다. ( [링크](https://docs.oracle.com/javase/specs/jls/se8/html/index.html) )
-
-- **자바 타입(type) 4가지**
-  - **인터페이스** ( `interface` ) - 애너테이션(annotation)은 인터페이스의 일종
-  - **클래스** ( `class` ) - 열거 타입(enum)은 클래스의 일종
-  - **배열** ( `array` )
-  - **기본 타입** ( `primitive` )
-  - 네 가지 타입 중 처음 세 가지는 참조 타입(reference type)이다. 즉, 클래스의 인스턴스와 배열은 객체(object)이나, 기본 타입 값은 그렇지 않다.
-  - 클래스의 **멤버**로는 **필드**(field), **메서드**(method), **멤버 클래스**, **멤버 인터페이스**가 있다. 
-
-- **메서드 시그니처** : 메서드 이름과 입력 매개변수(parameter)의 타입으로 이뤄진다(반환값의 타입은 시그니처에 포함되지 않는다).
-
-- **공개 API**(exported API)
-  - 줄여서 API(Application Programming Interface)는 **프로그래머가 클래스, 인터페이스, 패키지를 통해 접근할 수 있는 모든 클래스, 인터페이스, 생성자, 멤버, 직렬화된 형태(serialized form)** 를 말한다. (언어 구성 요소 중 하나인 인터페이스와 헷갈리지 않게 하기 위해 흔히 쓰는 인터페이스 대신 API를 쓴다.) 
-  - API를 사용하는 프로그램 작성자(사람)를 그 API의 **사용자**(user)라 하고, API를 사용하는 클래스(코드)는 그 API의 **클라이언트**(client)라 한다.
-  - 클래스, 인터페이스, 생성자, 멤버, 직렬화된 형태를 총칭해 **API 요소**(API element)라 한다. 공개 API는 그 API를 정의한 패키지의 밖에서 접근할 수 있는 API 요소로 이뤄진다. 다시 말해 모든 클라이언트가 접근할 수 있고, API 작성자가 지원하기로 약속한 API 요소들이다. 자바독(Javadoc) 유틸리티를 기본 모드로 실행하면 이 API 요소들만 담긴 문서가 만들어진다.
-  - 자바 9에서는 모듈 시스템이라는 개념이 더해졌다. 자바 라이브러리에 이 모듈 개념을 적용하면 공개 API는 `해당 라이브러리의 모듈 선언(module declaration)에서 공개하겠다고 한` 패키지들의 공개 API만으로 이뤄진다. 즉, 공개할 패키지를 선택할 수 있다.
 

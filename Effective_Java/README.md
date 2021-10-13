@@ -40,3 +40,15 @@
 
 
 
+# 5장. 제네릭(p153~206)
+
+* [아이템 26. 로 타입은 사용하지 말라(p154~160)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/26_%EB%A1%9C%20%ED%83%80%EC%9E%85%EC%9D%80%20%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80%20%EB%A7%90%EB%9D%BC.md)
+* [아이템 27. 비검사 경고를 제거하라(p161~163)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/27_%EB%B9%84%EA%B2%80%EC%82%AC%20%EA%B2%BD%EA%B3%A0%EB%A5%BC%20%EC%A0%9C%EA%B1%B0%ED%95%98%EB%9D%BC.md)
+* [아이템 28. 배열보다는 리스트를 사용하라(p164~169)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/28_%EB%B0%B0%EC%97%B4%EB%B3%B4%EB%8B%A4%EB%8A%94%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EB%A5%BC%20%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC.md)
+* [아이템 29. 이왕이면 제네릭 타입으로 만들라(p170~175)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/29_%EC%9D%B4%EC%99%95%EC%9D%B4%EB%A9%B4%20%EC%A0%9C%EB%84%A4%EB%A6%AD%20%ED%83%80%EC%9E%85%EC%9C%BC%EB%A1%9C%20%EB%A7%8C%EB%93%A4%EB%9D%BC.md)
+* [아이템 30. 이왕이면 제네릭 메서드로 만들라(p176~180)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/30_%EC%9D%B4%EC%99%95%EC%9D%B4%EB%A9%B4%20%EC%A0%9C%EB%84%A4%EB%A6%AD%20%EB%A9%94%EC%84%9C%EB%93%9C%EB%A1%9C%20%EB%A7%8C%EB%93%A4%EB%9D%BC.md)
+* [아이템 31. 한정적 와일드카드를 사용해 API 유연성을 높이라(p181~190)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/31_%ED%95%9C%EC%A0%95%EC%A0%81%20%EC%99%80%EC%9D%BC%EB%93%9C%EC%B9%B4%EB%93%9C%EB%A5%BC%20%EC%82%AC%EC%9A%A9%ED%95%B4%20API%20%EC%9C%A0%EC%97%B0%EC%84%B1%EC%9D%84%20%EB%86%92%EC%9D%B4%EB%9D%BC.md)
+* [아이템 32. 제네릭과 가변인수를 함께 쓸 때는 신중하라(p191~197)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/32_%EC%A0%9C%EB%84%A4%EB%A6%AD%EA%B3%BC%20%EA%B0%80%EB%B3%80%EC%9D%B8%EC%88%98%EB%A5%BC%20%ED%95%A8%EA%BB%98%20%EC%93%B8%20%EB%95%8C%EB%8A%94%20%EC%8B%A0%EC%A4%91%ED%95%98%EB%9D%BC.md)
+* [아이템 33. 타입 안전 이종 컨테이너를 고려하라(p198~205)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/%EC%95%84%EC%9D%B4%ED%85%9C%20%EB%AA%A8%EC%9D%8C/33_%ED%83%80%EC%9E%85%20%EC%95%88%EC%A0%84%20%EC%9D%B4%EC%A2%85%20%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88%EB%A5%BC%20%EA%B3%A0%EB%A0%A4%ED%95%98%EB%9D%BC.md)
+
+

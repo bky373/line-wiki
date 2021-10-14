@@ -66,3 +66,15 @@
 
 
 
+# 7장. 람다와 스트림(p253~296)
+
+* [아이템 42. 익명 클래스보다는 람다를 사용하라(p254~258)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/42_익명%20클래스보다는%20람다를%20사용하라.md)
+* [아이템 43. 람다보다는 메서드 참조를 사용하라(p259~262)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/43_람다보다는%20메서드%20참조를%20사용하라.md)
+* [아이템 44. 표준 함수형 인터페이스를 사용하라(p263~267)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/44_표준%20함수형%20인터페이스를%20사용하라.md)
+* [아이템 45. 스트림은 주의해서 사용하라(p268~276)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/45_스트림은%20주의해서%20사용하라.md#아이템-45-스트림은-주의해서-사용하라p268276)
+* [아이템 46. 스트림에서는 부작용 없는 함수를 사용하라(p277~283)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/46_스트림에서는%20부작용%20없는%20함수를%20사용하라.md)
+* [아이템 47. 반환 타입으로는 스트림보다 컬렉션이 낫다.(p284~290)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/47_반환%20타입으로는%20스트림보다%20컬렉션이%20낫다.md)
+* [아이템 48. 스트림 병렬화는 주의해서 적용하라(p291~296)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/48_스트림%20병렬화는%20주의해서%20적용하라.md)
+
+
+

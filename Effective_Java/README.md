@@ -78,3 +78,14 @@
 
 
 
+# 8장. 메서드(p297~342)
+
+* [아이템 49. 아이템 49. 매개변수가 유효한지 검사하라(p298~301)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/49_매개변수가%20유효한지%20검사하라.md)
+* [아이템 50. 적시에 방어적 복사본을 만들라(p302~307)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/50_적시에%20방어적%20복사본을%20만들라.md)
+* [아이템 51. 메서드 시그니처를 신중히 설계하라(p308~311)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/51_메서드%20시그니처를%20신중히%20설계하라.md)
+* [아이템 52. 다중정의는 신중히 사용하라(p312~319)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/52_다중정의는%20신중히%20사용하라.md)
+* [아이템 53. 가변인수는 신중히 사용하라(p320~322)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/53_가변인수는%20신중히%20사용하라.md)
+* [아이템 54. null이 아닌, 빈 컬렉션이나 배열을 반환하라(p323~325)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/54_null이%20아닌%2C%20빈%20컬렉션이나%20배열을%20반환하라.md#8장-메서드p297342)
+* [아이템 55. 옵셔널 반환은 신중히 하라(p326~331)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/55_옵셔널%20반환은%20신중히%20하라.md)
+* [아이템 56. 공개된 API 요소에는 항상 문서화 주석을 작성하라(p332~342)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/56_공개된%20API%20요소에는%20항상%20문서화%20주석을%20작성하라.md)
+

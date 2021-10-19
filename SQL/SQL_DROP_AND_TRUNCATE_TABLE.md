@@ -11,6 +11,12 @@
   - 다음 SQL 문은 기존 테이블 "Shippers"를 삭제한다.
 
     > **DROP TABLE** Shippers;
+
+## SQL TRUNCATE TABLE 문
+
+  - `TRUNCATE TABLE` 문은 테이블 내부의 데이터를 삭제하는 데 사용되지만 테이블 자체는 삭제하지 않는다.
+
+    > **TRUNCATE TABLE** table_name;
     
 # References
 

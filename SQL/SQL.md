@@ -1,25 +1,5 @@
 # SQL
 
-- **SQL NOT NULL 제약 조건**
-
-  - 기본적으로 열은 NULL 값을 보유할 수 있다. NOT NULL 제약 조건은 열이 NULL 값을 허용하지 않도록 한다.
-
-  - 이렇게 하면 필드에 항상 값이 포함된다. 즉, 이 필드에 값을 추가하지 않고는 새 레코드를 삽입하거나 레코드를 업데이트할 수 없다.
-
-  - **CREATE TABLE에서  NOT NULL 제약 조건 넣기**
-
-    > **CREATE TABLE** Persons (
-    >
-    > 		ID int **NOT NULL**,	LastName varchar (255) **NOT NULL**,	FirstName varchar (255) **NOT NULL**,	Age int
-    >
-    > );
-
-  - **ALTER TABLE에서  NOT NULL 제약 조건 넣기**
-
-    > **ALTER TABLE** Persons
-    >
-    > **MODIFY** Age int **NOT NULL**;
-
 - **SQL UNIQUE 제약 조건**
 
   - UNIQUE 제약 조건은 **열의 모든 값이 서로 다른지 확인** 한다.

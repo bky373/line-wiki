@@ -11,7 +11,7 @@
 - [HTTP](https://github.com/bky373/line-wiki/tree/main/HTTP)
 - [Java](https://github.com/bky373/line-wiki/blob/main/Java.md#Java)
 - [Lines](https://github.com/bky373/line-snipets/blob/main/Lines.md#Lines)
-- [Network](https://github.com/bky373/line-wiki/blob/main/Network.md#Network)
+- [Network](https://github.com/bky373/line-wiki/blob/main/Network/Network.md#Network)
 - [Postman](https://github.com/bky373/line-wiki/tree/main/Postman)
 - [Spring](https://github.com/bky373/line-wiki/tree/main/Spring)
 - [Spring In Action](https://github.com/bky373/line-wiki/tree/main/Spring_In_Action#Spring-In-Action)`*` (4장. 스프링 시큐리티 공부 중)

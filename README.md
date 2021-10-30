@@ -10,6 +10,7 @@
 - [Effective Java 3E](https://github.com/bky373/line-wiki/tree/main/Effective_Java#Effective-Java)`*`
 - [HTTP](https://github.com/bky373/line-wiki/tree/main/HTTP)
 - [Java](https://github.com/bky373/line-wiki/blob/main/Java.md#Java)
+- [Kafka](https://github.com/bky373/line-wiki/tree/main/Kafka)
 - [Lines](https://github.com/bky373/line-snipets/blob/main/Lines.md#Lines)
 - [Network](https://github.com/bky373/line-wiki/blob/main/Network/Network.md#Network)
 - [Postman](https://github.com/bky373/line-wiki/tree/main/Postman)

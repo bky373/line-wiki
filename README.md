@@ -6,7 +6,7 @@
 
 ## 📓 기록 공간
 
-- [Database](https://github.com/bky373/line-wiki/blob/main/Database.md#Database)
+- [Database](https://github.com/bky373/line-wiki/blob/main/Database/Database.md)
 - [Effective Java 3E](https://github.com/bky373/line-wiki/tree/main/Effective_Java#Effective-Java)`*`
 - [HTTP](https://github.com/bky373/line-wiki/tree/main/HTTP)
 - [Java](https://github.com/bky373/line-wiki/blob/main/Java.md#Java)

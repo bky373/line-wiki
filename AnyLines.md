@@ -121,6 +121,13 @@
 
 - **cron**:  소프트웨어 유틸리티로, 유닉스 계열 컴퓨터 운영 체제의 시간 기반 잡 스케줄러이다. 소프트웨어 환경을 설정하고 관리하는 사람들은 작업을 고정된 시간, 날짜, 간격에 주기적으로 실행할 수 있도록 스케줄링하기 위해 cron을 사용한다. ( [출처](https://ko.wikipedia.org/wiki/Cron) )
 
+- **TCP 3-Way Handshake** [출처](https://mindnet.tistory.com/entry/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%89%BD%EA%B2%8C-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-22%ED%8E%B8-TCP-3-WayHandshake-4-WayHandshake): 
+  - TCP/IP 프로토콜을 사용하는 응용프로그램이 데이터를 전송하기 전에 먼저 정확한 전송을 보장하기 위해 상대방 컴퓨터와 사전에 세션을 수립하는 과정을 의미한다.
+  - **SYN**는 'Synchronize sequence numbers' 를 의미하고,
+  - **ACK**는 'Acknowledgement'를 의미한다.
+    ![image](https://user-images.githubusercontent.com/87057868/139587926-0f3e2632-88a2-4b94-9240-38d9f32ab6e0.png)
+    [이미지 출처](https://mindnet.tistory.com/entry/네트워크-쉽게-이해하기-22편-TCP-3-WayHandshake-4-WayHandshake)
+
 
 # References
 

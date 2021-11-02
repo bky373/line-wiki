@@ -89,3 +89,22 @@
 * [아이템 55. 옵셔널 반환은 신중히 하라(p326~331)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/55_옵셔널%20반환은%20신중히%20하라.md)
 * [아이템 56. 공개된 API 요소에는 항상 문서화 주석을 작성하라(p332~342)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/56_공개된%20API%20요소에는%20항상%20문서화%20주석을%20작성하라.md)
 
+
+
+# 9장. 일반적인 프로그래밍 원칙(p343~384)
+
+* [아이템 57. 지역변수의 범위를 최소화하라(p344~346)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/57_지역변수의%20범위를%20최소화하라.md)
+* [아이템 58. 전통적인 for 문보다는 for-each 문을 사용하라(p347~350)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/58_전통적인%20for%20문보다는%20for-each%20문을%20사용하라.md)
+* [아이템 59. 라이브러리를 익히고 사용하라(p351~354)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/59_라이브러리를%20익히고%20사용하라.md)
+* [아이템 60. 정확한 답이 필요하다면 float와 double은 피하라(p355~357)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/60_정확한%20답이%20필요하다면%20float와%20double은%20피하라.md)
+* [아이템 61. 박싱된 기본 타입보다는 기본 타입을 사용하라(p358~361)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/61_박싱된%20기본%20타입보다는%20기본%20타입을%20사용하라.md)
+* [아이템 62. 다른 타입이 적절하다면 문자열 사용을 피하라(p362~365)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/62_다른%20타입이%20적절하다면%20문자열%20사용을%20피하라.md)
+* [아이템 63. 문자열 연결은 느리니 주의하라(p366~367)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/63_문자열%20연결은%20느리니%20주의하라.md)
+* [아이템 64. 객체는 인터페이스를 사용해 참조하라(p368~370)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/64_객체는%20인터페이스를%20사용해%20참조하라.md)
+* [아이템 65. 리플렉션보다는 인터페이스를 사용하라(p371~374)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/65_리플렉션보다는%20인터페이스를%20사용하라.md)
+* [아이템 66. 네이티브 메서드는 신중히 사용하라(p375~376)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/66_네이티브%20메서드는%20신중히%20사용하라.md)
+* [아이템 67. 최적화는 신중히 하라(p377~380)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/67_최적화는%20신중히%20하라.md)
+* [아이템 68. 일반적으로 통용되는 명명 규칙을 따르라(p381~384)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/68_일반적으로%20통용되는%20명명%20규칙을%20따르라.md)
+
+
+

@@ -108,3 +108,18 @@
 
 
 
+# 10장. 예외(p385~412)
+
+* [아이템 69. 예외는 진짜 예외 상황에만 사용하라(p386~389)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/69_예외는%20진짜%20예외%20상황에만%20사용하라.md)
+* [아이템 70. 복구할 수 있는 상황에는 검사 예외를, 프로그래밍 오류에는 런타임 예외를 사용하라(p390~392)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/70_복구할%20수%20있는%20상황에는%20검사%20예외를%2C%20프로그래밍%20오류에는%20런타임%20예외를%20사용하라.md#아이템-70-복구할-수-있는-상황에는-검사-예외를-프로그래밍-오류에는-런타임-예외를-사용하라p390392)
+* [아이템 71. 필요 없는 검사 예외 사용은 피하라(p393~395)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/71_필요%20없는%20검사%20예외%20사용은%20피하라.md)
+* [아이템 72. 표준 예외를 사용하라(p396~398)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/72_표준%20예외를%20사용하라.md)
+* [아이템 73. 추상화 수준에 맞는 예외를 던지라(p399~401)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/73_추상화%20수준에%20맞는%20예외를%20던지라.md)
+* [아이템 74. 메서드가 던지는 모든 예외를 문서화하라(p402~403)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/74_메서드가%20던지는%20모든%20예외를%20문서화하라.md)
+* [아이템 75. 예외의 상세 메시지에 실패 관련 정보를 담으라(p404~406)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/75_예외의%20상세%20메시지에%20실패%20관련%20정보를%20담으라.md)
+* [아이템 76. 가능한 한 실패 원자적으로 만들라(p407~409)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/76_가능한%20한%20실패%20원자적으로%20만들라.md)
+* [아이템 77. 예외를 무시하지 말라(p410~411)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/77_예외를%20무시하지%20말라.md)
+
+
+
+

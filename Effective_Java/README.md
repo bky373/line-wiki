@@ -122,4 +122,14 @@
 
 
 
+# 11장. 동시성(p413~448)
 
+* [아이템 78. 공유 중인 가변 데이터는 동기화해 사용하라(p414~419)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/78_공유%20중인%20가변%20데이터는%20동기화해%20사용하라.md)
+* [아이템 79. 과도한 동기화는 피하라(p420~427)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/79_과도한%20동기화는%20피하라.md)
+* [아이템 80. 스레드보다는 실행자, 태스크, 스트림을 애용하라(p428~430)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/80_스레드보다는%20실행자%2C%20태스크%2C%20스트림을%20애용하라.md)
+* [아이템 81. wait와 notify보다는 동시성 유틸리티를 애용하라(p431~437)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/81_wait와%20notify보다는%20동시성%20유틸리티를%20애용하라.md)
+* [아이템 82. 스레드 안전성 수준을 문서화하라(p438~441)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/82_스레드%20안전성%20수준을%20문서화하라.md)
+* [아이템 83. 지연 초기화는 신중히 사용하라(p442~445)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/83_지연%20초기화는%20신중히%20사용하라.md)
+* [아이템 84. 프로그램의 동작을 스레드 스케줄러에 기대지 말라(p446~448)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/84_프로그램의%20동작을%20스레드%20스케줄러에%20기대지%20말라.md)
+
+  

@@ -132,4 +132,16 @@
 * [아이템 83. 지연 초기화는 신중히 사용하라(p442~445)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/83_지연%20초기화는%20신중히%20사용하라.md)
 * [아이템 84. 프로그램의 동작을 스레드 스케줄러에 기대지 말라(p446~448)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/84_프로그램의%20동작을%20스레드%20스케줄러에%20기대지%20말라.md)
 
-  
+
+
+# 12장. 직렬화(p449~482)
+
+* [아이템 85. 자바 직렬화의 대안을 찾으라(p450~454)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/85_자바%20직렬화의%20대안을%20찾으라.md)
+* [아이템 86. Serializable을 구현할지는 신중히 결정하라(p455~458)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/86_Serializable을%20구현할지는%20신중히%20결정하라.md)
+* [아이템 87. 커스텀 직렬화 형태를 고려해보라(p459~466)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/87_커스텀%20직렬화%20형태를%20고려해보라.md)
+* [아이템 88. readObject 메서드는 방어적으로 작성하라(p467~473)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/88_readObject%20메서드는%20방어적으로%20작성하라.md)
+* [아이템 89. 인스턴스 수를 통제해야 한다면 readResolve 보다는 열거 타입을 사용하라(p474~478)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/89_인스턴스%20수를%20통제해야%20한다면%20readResolve%20보다는%20열거%20타입을%20사용하라.md)
+* [아이템 90. 직렬화된 인스턴스 대신 직렬화 프록시 사용을 검토하라(p479~482)](https://github.com/bky373/line-wiki/blob/main/Effective_Java/아이템%20모음/90_직렬화된%20인스턴스%20대신%20직렬화%20프록시%20사용을%20검토하라.md)
+
+
+

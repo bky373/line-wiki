@@ -106,6 +106,31 @@
   System.out.println(period.getDays()); // 결과 : 1
   ```
 
+**isEmpty**
+
+- 선언
+
+  ```java
+  public static boolean isEmpty(CharSequence cs)
+  ```
+
+- 설명
+
+  - Checks if a CharSequence is empty ("") or null.
+
+- 실행 및 결과
+
+  ```java
+  StringUtils.isEmpty(null)      = true
+  StringUtils.isEmpty("")        = true
+  StringUtils.isEmpty(" ")       = false
+  StringUtils.isEmpty("bob")     = false
+  StringUtils.isEmpty("  bob  ") = false
+  ```
+
+- 결론
+  - `""` 와 `null` 만 `true` 이고, 나머지는 `false` 이다.
+
 # References
 
 - [출처-1](https://java119.tistory.com/52)

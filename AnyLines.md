@@ -158,6 +158,10 @@
     ![image](https://user-images.githubusercontent.com/87057868/139587926-0f3e2632-88a2-4b94-9240-38d9f32ab6e0.png)
     [이미지 출처](https://mindnet.tistory.com/entry/네트워크-쉽게-이해하기-22편-TCP-3-WayHandshake-4-WayHandshake)
 
+- **Parameter Vs. Argument**
+  - 파라미터와 아규먼트의 차이
+  - Parameter(매개변수) 는 함수를 선언할 때 사용하는 변수이다.
+  - Argument(인수) 는 함수가 호출되었을 때 함수 매개변수에 넘겨주는 실제 값이다.
 
 # References
 

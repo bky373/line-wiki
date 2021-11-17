@@ -167,6 +167,12 @@
   - SQL 삽입 또는 주입 이라고 한다.
   - 애플리케이션의 보안상 허점을 노리고 악의적인 SQL 문을 추가, 실행하도록 하는 코드 인젝션 공격 방식이다.
 
+- **Nginx의 기본 파일과 폴더들**
+  - sites-available: 가상 서버 환경들에 대한 설정 파일들이 위치하는 부분이다. 가상 서버를 사용하거나 사용하지 않던간에 그에 대한 설정 파일들이 위치하는 곳이다.
+  - sites-enabled: sites-available에 있는 가상 서버 파일들 중 실행시키고 싶은 파일을 symlink로 연결한 폴더다. 실제로 이 폴더에 위치한 가상서버 환경 파일들을 읽어서 서버를 세팅한다.
+  - nginx.conf: Nginx에 관한 설정파일로 Nginx 설정에 관한 블록들이 작성되어 있으며 이 파일에서 sites-enabled 폴더에 있는 파일들을 가져온다.
+  > [출처](https://twpower.github.io/50-make-nginx-virtual-servers) 
+
 # References
 
 - [출처-1](https://java119.tistory.com/52)

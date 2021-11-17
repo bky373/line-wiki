@@ -106,6 +106,34 @@
   System.out.println(period.getDays()); // 결과 : 1
   ```
 
+**StringUtils.isBlank**
+
+- 선언
+
+  ```java
+  public static boolean isBlank(CharSequence cs)
+  ```
+
+- 설명
+
+  - Checks if a CharSequence is empty (""), null or whitespace only.
+
+    > Whitespace 는 [`Character.isWhitespace(char)`](https://docs.oracle.com/javase/7/docs/api/java/lang/Character.html?is-external=true#isWhitespace-char-)를 참고하자.
+
+- 실행 및 결과
+
+  ```java
+  StringUtils.isBlank(null)      = true
+  StringUtils.isBlank("")        = true
+  StringUtils.isBlank(" ")       = true
+  StringUtils.isBlank("bob")     = false
+  StringUtils.isBlank("  bob  ") = false 
+  ```
+
+- 결론
+  - `""` 와 `null`, `whitespace` 만 있는 문자열 만 true
+  - 나머지는 `false`
+
 **StringUtils.isEmpty**
 
 - 선언

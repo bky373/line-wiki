@@ -106,7 +106,7 @@
   System.out.println(period.getDays()); // 결과 : 1
   ```
 
-**isEmpty**
+**StringUtils.isEmpty**
 
 - 선언
 

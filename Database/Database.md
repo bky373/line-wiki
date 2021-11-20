@@ -58,12 +58,13 @@
 
   > [출처](https://ko.wikipedia.org/wiki/%EA%B4%80%EA%B3%84%ED%98%95_%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4)
 
+**관계형 데이터베이스 관리 시스템(RDBMS)**
 
+- Relational Database Management System
+- 관계형 데이터베이스(RDB)를 관리하기 위한 소프트웨어 또는 그것이 설치된 시스템을 말한다.
+- 주요 제품으로는 Oracle, MySQL, MS SQL Server, MS Access, IBM DB2 등이 있다.
 
-- **RDBMS**  ( 출처-1 ) 
-  - `RDBMS` 는 관계형 데이터베이스 관리 시스템 ( `Relational Database Management System` ) 의 약자이다.
-  - `RDBMS` 는 `SQL` 과 `MS SQL Server`,  `IBM DB2`,  `Oracle`,  `MySQL`  및  `Microsoft Access` 와 같은 모든 최신 데이터베이스 시스템의 기반이다.
-  - `RDBMS` 의 데이터는 `테이블` 이라는 데이터베이스 개체 ( `object` ) 에 저장된다. `테이블`은 관련 데이터 항목 ( `entries` ) 의 모음이며 열과 행으로 구성된다.
+> [출처](https://ko.wikipedia.org/wiki/%EA%B4%80%EA%B3%84%ED%98%95_%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4)
 
 - **SQL 용어와 관계형 데이터베이스 용어 비교**
 

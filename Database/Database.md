@@ -45,6 +45,21 @@
   - 일관성 (`Consistency`)
   - 독립성 (`Isolation`)
   - 지속성 (`Durability`) 
+
+- **관계형 데이터베이스**
+
+  - Relational Database, RDB
+
+  - 키(key)와 값(value)들의 관계를 테이블화 시킨 데이터베이스다.
+
+  - 데이터 [관계형 모델](https://ko.wikipedia.org/wiki/%EA%B4%80%EA%B3%84%ED%98%95_%EB%AA%A8%EB%8D%B8)에 기초한 디지털 데이터베이스이다.
+
+    > **데이터 관계형 모델**: 데이터를 컬럼(column)과 로우(row)로 이루어진 테이블(관계)로 정리하고, 고유 키(primary key)가 각 로우를 식별하는 모델
+
+  > [출처](https://ko.wikipedia.org/wiki/%EA%B4%80%EA%B3%84%ED%98%95_%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4)
+
+
+
 - **RDBMS**  ( 출처-1 ) 
   - `RDBMS` 는 관계형 데이터베이스 관리 시스템 ( `Relational Database Management System` ) 의 약자이다.
   - `RDBMS` 는 `SQL` 과 `MS SQL Server`,  `IBM DB2`,  `Oracle`,  `MySQL`  및  `Microsoft Access` 와 같은 모든 최신 데이터베이스 시스템의 기반이다.
@@ -62,8 +77,6 @@
   <img width="893" alt="image" src="https://user-images.githubusercontent.com/49539592/142728368-87adc580-9b45-4dc0-ae55-78578349ff31.png">
   
   > [이미지 출처](https://ko.wikipedia.org/wiki/%EA%B4%80%EA%B3%84%ED%98%95_%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4)
-
-
 
 - **데이터 무결성(Data Integrity)**
 

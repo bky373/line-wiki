@@ -195,7 +195,13 @@
 
   > Feign is a Java to HTTP client binder inspired by [Retrofit](https://github.com/square/retrofit), [JAXRS-2.0](https://jax-rs-spec.java.net/nonav/2.0/apidocs/index.html), and [WebSocket](http://www.oracle.com/technetwork/articles/java/jsr356-1937161.html). Feign's first goal was reducing the complexity of binding [Denominator](https://github.com/Netflix/Denominator) uniformly to HTTP APIs regardless of [ReSTfulness](http://www.slideshare.net/adrianfcole/99problems). 
 
+- **Artifact**
+  - 프로젝트 메타데이터 중 하나로, 프로젝트 빌드 명이 된다.
 
+- **Package Name**
+  - 패키지 이름은 Group과 Artifact로 이루어진다.
+  - 예컨대 Group 값이 `hello`이고 Artifact 값이 `world`이면, 패키지 이름은 `hello.world`가 된다.
+  
 
 # References
 

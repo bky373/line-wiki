@@ -202,6 +202,8 @@
   - 패키지 이름은 Group과 Artifact로 이루어진다.
   - 예컨대 Group 값이 `hello`이고 Artifact 값이 `world`이면, 패키지 이름은 `hello.world`가 된다.
   
+- **@Value 어노테이션**
+  - 스프링이 관리하는 빈의 필드에 값을 주입하거나, 생성자/메서드의 매개변수에 값을 주입하는 데 사용된다.
 
 # References
 

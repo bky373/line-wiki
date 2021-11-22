@@ -173,6 +173,10 @@
   - nginx.conf: Nginx에 관한 설정파일로 Nginx 설정에 관한 블록들이 작성되어 있으며 이 파일에서 sites-enabled 폴더에 있는 파일들을 가져온다.
   > [출처](https://twpower.github.io/50-make-nginx-virtual-servers) 
 
+- **트랜잭션 스크립트(Transaction Script)**
+  - 스크립트를 짜듯이 `트랜잭션을 단위로 코드를 짜는 방식`을 의미하며 `절차 지향적`이다.
+  - 참고로 서비스 레이어의 동작이 절차 지향적이고 매우 긴 로직을 가지는 경우가 많다. 긴 로직을 피하기 위해 메서드를 쪼개긴 하지만 특별하 원칙이 있는 것이 아니다. 그러다 보니 코드를 분석하거나 수정하는 게 어려워지는 단점이 있다.
+
 # References
 
 - [출처-1](https://java119.tistory.com/52)

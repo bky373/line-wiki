@@ -52,5 +52,27 @@
         * Person 클래스 까지 작성했다면 Spring Application 을 실행(run)하자.
         * 로그를 확인하면 다음처럼 `name = mark` 가 출력된 것을 확인할 수 있다.
         <img width="478" alt="image" src="https://user-images.githubusercontent.com/49539592/143594538-5bc97237-1867-4a44-bf53-98a8e9167224.png">
-          
-  > [출처](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/PropertySource.html)
+
+* ${...} 사용
+  * @PropertySource 리소스 위치 내 모든 ${...} 자리 표시자는 환경에 이미 등록된 속성 소스 로 값이 채워진다. 다음 예시를 보자.
+  ```java
+    @Configuration
+    @PropertySource("classpath:/${mydirectorypath:default/path}/application.properties")
+    public class AppConfig {
+    
+        @Autowired
+        Environment env;
+        
+        @Bean
+        public Person testBean() {
+            Person person = new Person();
+            person.setName(env.getProperty("person.name"));
+            System.out.println("name = " + person.getName());
+            return person;
+        }
+    }
+  ```
+  * `mydirectorypath`가 이미 등록된 속성 소스 중 하나(시스템 속성 또는 환경 변수)라고 가정하면 자리 표시자는 해당 값으로 확인된다. 
+  * 그렇지 않은 경우 콜론(:)으로 구분된 `default/path`가 기본값으로 사용된다. 기본값을 표시하는 것은 선택 사항이다.
+  * 기본값이 지정되지 않고 속성을 확인할 수 없으면 IllegalArgumentException이 발생한다.
+> [출처](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/PropertySource.html)

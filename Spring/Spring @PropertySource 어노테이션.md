@@ -75,4 +75,27 @@
   * `mydirectorypath`가 이미 등록된 속성 소스 중 하나(시스템 속성 또는 환경 변수)라고 가정하면 자리 표시자는 해당 값으로 확인된다. 
   * 그렇지 않은 경우 콜론(:)으로 구분된 `default/path`가 기본값으로 사용된다. 기본값을 표시하는 것은 선택 사항이다.
   * 기본값이 지정되지 않고 속성을 확인할 수 없으면 IllegalArgumentException이 발생한다.
+
+* @PropertySource 오버라이딩(속성 재정의)
+  * 지정된 속성 키가 둘 이상의 `.properties` 파일에 있는 경우 마지막 @PropertySource 이 '승리'하고 동일한 이름의 키를 재정의한다.
+  * 예를 들어 두 개의 속성 파일 `a.properties` 및 `b.properties`가 있는 경우를고려해보자.
+    ```java
+    @Configuration
+    @PropertySource("classpath:/my/path/a.properties")
+    public class ConfigA { }
+    
+    @Configuration
+    @PropertySource("classpath:/my/path/b.properties")
+    public class ConfigB { }
+    ```
+    * 재정의 순서는 이러한 클래스가 애플리케이션 컨텍스트에 등록되는 순서에 따라 다르다.
+    ```java
+    AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+    ctx.register(ConfigA.class);
+    ctx.register(ConfigB.class);
+    ctx.refresh();
+    ```
+    * 위의 시나리오에서 `b.properties`의 속성은 ConfigB가 마지막에 등록되었기 때문에 `a.properties`에 있는 모든 중복 항목을 재정의한다.
+    * 특정 상황에서는 @PropertySource 를 사용할 때 속성 소스 순서를 엄격하게 제어하는 것이 불가능하거나 실용적이지 않을 수 있다. 예를 들어 위의 @Configuration 클래스가 구성 요소 스캔을 통해 등록된 경우 순서를 예측하기가 어렵다. 이러한 경우(재정의가 중요한 경우)라면 프로그래밍 방식 PropertySource API를 사용하는 것이 좋다. 자세한 내용은 ConfigurableEnvironment 및 MutablePropertySources javadoc을 참조하자.
+    
 > [출처](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/PropertySource.html)

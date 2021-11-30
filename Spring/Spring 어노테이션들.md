@@ -28,3 +28,18 @@
     - 런타임에 빈이 동적으로 새로 고쳐지도록 하는 구현체이다. 빈이 고쳐진 후 빈에 접근하면 새로운 인스턴스가 생성된다.
     - Spring boot에서는 Config 를 쓰는 서버에서 내용을 변경할 때가 있다. @RefreshScope 어노테이션과 Actuator를 사용한다면 해당 변경사항을 클라이언트에 반영할 수 있다.
     - 이를 위해 Config 변경으로 영향을 받는 부분(클래스)에 @RefreshScope를 추가한다.  
+
+* **@JsonProperty** :
+    * 기존의 속성 또는 메서드를 논리적 속성 또는 메서드로 정의하여 사용할 때 쓰는 어노테이션이다. 
+    * 직렬화/역직렬화 시 비정적(non-static) 객체 필드를 논리적 속성으로 정의할 수 있고, 
+    * (시그니처에 따라) 논리적 속성에 대해 getter/setter 와 같은 비정적(non-static) 메서드를 정의할 수 있다.
+    * 기본값("")일 경우 필드 이름 그대로 속성 이름이 되고, 값을 지정할 경우 필드 이름과 다른 이름을 지정할 수 있다. 속성 이름은 JSON 개체의 필드 이름으로 외부에서 사용되는 이름을 나타낸다.
+    * com.fasterxml.jackson.annotation 에 속한다.
+      ```java
+        @Target(value={ANNOTATION_TYPE,FIELD,METHOD,PARAMETER})
+        @Retention(value=RUNTIME)
+        public @interface JsonProperty
+      ```
+    > [출처](https://fasterxml.github.io/jackson-annotations/javadoc/2.6/com/fasterxml/jackson/annotation/JsonProperty.html)
+
+

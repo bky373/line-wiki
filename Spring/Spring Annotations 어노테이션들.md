@@ -42,4 +42,20 @@
       ```
     > [출처](https://fasterxml.github.io/jackson-annotations/javadoc/2.6/com/fasterxml/jackson/annotation/JsonProperty.html)
 
+* **@JsonInclude**
+    * 주석이 달려 있는 요소(필드/메서드/생성자 매개변수)나 주석이 달린 클래스의 모든 속성이 직렬화되는 시점에 사용된다.
+    * 주석이 달려 있지 않은 경우 속성 값은 항상 포함된다. 하지만 이 주석을 사용하면 간단한 제외 규칙을 지정하여 직렬화할 속성의 양을 줄일 수 있다.
+    * `JsonInclude.Include`는 직렬화 시 자바 빈의 어떤 속성을 포함할 것인지를 결정하는 열거 타입이다.
+      * ALWAYS: 값과 상관없이 속성을 항상 포함한다.
+      * NON_NULL: null 이 아닌 속성 만 포함한다.
+      * NON_ABSENT: null 이 아닌 속성과 특정 참조 타입(자바 8의 Optional 또는 AtomicReference)의 absent value 가 아닌 속성 을 포함한다(NON_NULL에 포함되지 않는 요소들도 걸러준다.)
+      * NON_EMPTY: null 또는 emtpty 로 여겨지는 속성을 제외한다. 이는 NON_NULL과 NON_ABSENT의 제외 범위에 더하여 데이터 타입 별로 empty 값이라 여겨질 만한 속성들을 제외한다. 예를 들어, Collection, Map의 isEmpty 에 해당하는 속성, 빈 배열, 빈 문자열 등이 그러하다.
+      * 이외에도 NON_DEFAULT, CUSTOM, USE_DEFAULTS 상수가 있다.
+    * com.fasterxml.jackson.annotation 에 속한다.
+      ```java
+      @Target(value={ANNOTATION_TYPE,METHOD,FIELD,TYPE,PARAMETER})
+      @Retention(value=RUNTIME)
+      public @interface JsonInclude
+      ```
+    > [출처](https://fasterxml.github.io/jackson-annotations/javadoc/2.9/com/fasterxml/jackson/annotation/JsonInclude.html)
 

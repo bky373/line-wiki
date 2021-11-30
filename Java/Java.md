@@ -117,6 +117,22 @@
   - 이 패턴을 통해 애플리케이션이 생성하는 스레드의 수와 수명 주기를 제어할 수 있다. 또한 작업 실행을 예약하고, 들어오는 작업을 대기열(큐)에 보관할 수 있다.
   > [출처](https://www.baeldung.com/thread-pool-java-and-guava)
 
+* **H2 데이터베이스 엔진**
+  * H2는 자바로 작성된 관계형 데이터베이스 관리 시스템이며, 다음의 주요 기능들을 가지고 있다.
+  * 주요 기능
+    * 매우 빠른 JDBC API 지원
+    * 표준 SQL, JDBC API 지원
+    * 자바 애플리케이션에 임베드 하거나 클라이언트-서버 모드로 구동 가능
+    * 브라우저 기반의 콘솔 애플리케이션 지원
+    * 강력한 보안 기능
+    * PostgreSQL ODBC 드라이버 사용 가능
+    * 오픈 소스
+    * 작은 설치 용량(약 2.5MB jar 파일 크기)
+  > [출처](http://www.h2database.com/html/features.html#connection_modes)
+
+
+
+
 # References
 
 - [출처-1](https://java119.tistory.com/52)

@@ -90,3 +90,16 @@
       ```
   > [출처](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/RestControllerAdvice.html)
 
+
+* **@ControllerAdvice**
+    * @Controller 이 달린 클래스들에 공유할 메서드들을 갖는 클래스에 붙이는 어노테이션이다. 공유할 메서드란  @ExceptionHandler, @InitBinder, @ModelAttribute 메서드들을 말한다. @Component에 전문성을 더했다고 보면 된다. 
+      * org.springframework.web.bind.annotation 에 속한다.
+      ```java
+        @Target(value=TYPE)
+        @Retention(value=RUNTIME)
+        @Documented
+        @Component
+        public @interface ControllerAdvice
+      ```
+  > [출처](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/ControllerAdvice.html)
+

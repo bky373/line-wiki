@@ -60,7 +60,7 @@
     > [출처](https://fasterxml.github.io/jackson-annotations/javadoc/2.9/com/fasterxml/jackson/annotation/JsonInclude.html)
 
 * **@RestController**
-    * @Controller 과 @ResponseBody 를 합친 어노테이션이다.
+    * @Controller 와 @ResponseBody 를 합쳐놓은 어노테이션이다.
     * 이 주석이 달린 타입은 하나의 컨트롤러 로 처리된다. 
     * 해당 컨트롤러에서 @RequestMapping 메서드들은 @ResponseBody의 의미체계(semantics)를 디폴트로 인지하고 동작한다.
     * org.springframework.web.bind.annotation 에 속한다.
@@ -73,3 +73,20 @@
         public @interface RestController
       ```
     > [출처](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/RestController.html)
+
+* **@RestControllerAdvice**
+    * @ControllerAdvice 와 @ResponseBody 를 합쳐놓은 어노테이션이다.
+    * 이 주석이 달린 타입은 하나의 컨트롤러 어드바이스(controller advice) 로 처리된다.
+    * 해당 컨트롤러에서 @ExceptionHandler 메서드들은 @ResponseBody의 의미체계(semantics)를 디폴트로 인지하고 동작한다.
+    * 참고로, 이 주석은 HandlerMapping-HandlerAdapter 와 같은 페어(pair)가 적절히 구성된 경우에 처리된다(예를 들어 RequestMappingHandlerMapping-RequestMappingHandlerAdapter 과 같은 한 쌍).
+    * org.springframework.web.bind.annotation 에 속한다.
+      ```java
+        @Target(value=TYPE)
+        @Retention(value=RUNTIME)
+        @Documented
+        @ControllerAdvice
+        @ResponseBody
+        public @interface RestControllerAdvice
+      ```
+  > [출처](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/RestControllerAdvice.html)
+

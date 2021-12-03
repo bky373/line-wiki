@@ -130,7 +130,9 @@
     * 작은 설치 용량(약 2.5MB jar 파일 크기)
   > [출처](http://www.h2database.com/html/features.html#connection_modes)
 
-
+* **Java Persistence**
+  * Java Persistence는 영속성(persistence) 및 객체/관계형 매핑 관리(object/relational mapping)를 위한 API다.
+  > [출처](https://docs.oracle.com/javaee/7/api/javax/persistence/package-summary.html#package.description)
 
 
 # References

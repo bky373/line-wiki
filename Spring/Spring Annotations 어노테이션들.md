@@ -119,3 +119,15 @@
         public @interface Retention
       ```
     > [출처](https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/Retention.html)
+
+    
+* **RetentionPolicy**
+    * 어노테이션 보존 정책으로 열거 타입이다. 이 열거형의 상수는 어노테이션을 유지하기 위한 정책을 설명한다. 
+    * 어노테이션이 유지되는 기간을 지정하기 위해 Retention 메타 주석 유형과 함께 사용한다.
+    * java.lang.annotation 에 속한다.
+    * 상수의 종류 및 설명
+      * CLASS: 어노테이션이 컴파일러에 의해 클래스 파일에 기록된다. 하지만 런타임에는 VM에 의해 유지될 필요가 없다.
+      * RUNTIME: 어노테이션이 컴파일러에 의해 클래스 파일에 기록되고 런타임에 VM에 의해 유지되므로 반사적으로(reflectively) 읽을 수 있다.
+      * SOURCE: 어노테이션이 컴파일러에 의해 삭제된다.
+    > [출처](https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/RetentionPolicy.html)
+

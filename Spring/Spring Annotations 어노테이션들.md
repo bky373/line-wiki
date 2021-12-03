@@ -107,3 +107,15 @@
     * repository 메서드에서 직접 파인더 쿼리(finder queries)를 선언하는 데 사용되는 어노테이션이다.
     * org.springframework.data.annotation 에 속한다.
     
+* **@Retention**
+    * 이 주석이 달린 타입의 어노테이션들이 얼마나 유지되는지를 나타낸다. 
+    * 어노테이션 타입 선언에 Retention 주석이 없다면 기본적으로 보존 정책은 RetentionPolicy.CLASS로 설정된다.
+    * Retention 메타 주석은 메타 주석 유형이 어노테이션에 직접 사용될 때만 효과가 있다. 메타 주석 유형이 다른 주석 유형의 멤버 유형으로 사용되는 경우에는 효과가 없다.
+    * java.lang.annotation 에 속한다.
+      ```java
+        @Documented
+        @Retention(value=RUNTIME)
+        @Target(value=ANNOTATION_TYPE)
+        public @interface Retention
+      ```
+    > [출처](https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/Retention.html)

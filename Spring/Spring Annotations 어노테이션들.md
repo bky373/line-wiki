@@ -103,3 +103,7 @@
       ```
   > [출처](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/ControllerAdvice.html)
 
+* **@Query**
+    * repository 메서드에서 직접 파인더 쿼리(finder queries)를 선언하는 데 사용되는 어노테이션이다.
+    * org.springframework.data.annotation 에 속한다.
+    

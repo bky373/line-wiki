@@ -131,3 +131,21 @@
       * SOURCE: 어노테이션이 컴파일러에 의해 삭제된다.
     > [출처](https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/RetentionPolicy.html)
 
+* **@Target**
+    * 어노테이션 타입이 적용될 수 있는 컨텍스트를 나타낸다. 
+    * 어노테이션 타입이 적용될 수 있는 선언 컨텍스트 및 유형 컨텍스트는 JLS 9.6.4.1에 지정되어 있으며 소스 코드에서 java.lang.annotation.ElementType의 열거형 상수로 표시된다(아래 예시 참고).
+    * java.lang.annotation 에 속한다.
+      ```java
+        @Documented
+        @Retention(value=RUNTIME)
+        @Target(value=ANNOTATION_TYPE)
+        public @interface Target
+      ```
+    * 예를 들어 @Target 메타 주석 자체는 선언된 타입 자체가 메타 주석 타입(meta-annotation type)임을 나타낸다. 따라서 이는 어노테이션 타입 선언(annotation type declaration)에만 사용할 수 있다.
+      ```java
+        @Target(ElementType.ANNOTATION_TYPE)
+        public @interface MetaAnnotationType {
+          ...
+        }
+      ```
+    > [출처](https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/Target.html)

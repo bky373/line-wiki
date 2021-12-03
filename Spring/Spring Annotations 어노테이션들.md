@@ -159,3 +159,13 @@
         public @interface DynamicUpdate
       ```
     > [출처](https://docs.jboss.org/hibernate/orm/6.0/javadocs/org/hibernate/annotations/DynamicUpdate.html)
+
+* **@DynamicInsert**
+    * 인서트(insert) 시 null이 아닌 컬럼만을 사용하여 동적 SQL 문을 생성하는 어노테이션 이다. 엔티티 클래스 위에 붙여 사용한다.
+    * org.hibernate.annotations 패키지에 속해 있다.
+      ```java
+        @Target(value=TYPE)
+        @Retention(value=RUNTIME)
+        public @interface DynamicInsert
+      ```
+    > [출처](https://docs.jboss.org/hibernate/orm/5.2/javadocs/org/hibernate/annotations/DynamicInsert.html)

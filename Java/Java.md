@@ -134,7 +134,31 @@
   * Java Persistence는 영속성(persistence) 및 객체/관계형 매핑 관리(object/relational mapping)를 위한 API다.
   > [출처](https://docs.oracle.com/javaee/7/api/javax/persistence/package-summary.html#package.description)
 
-
+* **AttributeConverter<X,Y>**
+  * 이 인터페이스를 구현하는 클래스는 엔터티 속성 상태(attribute state)를 데이터베이스 컬럼이 표현하는 방식으로 변환하거나 이를 역변환할 수 있다. 
+  * 타입 매개변수(type parameters)
+    * X: 엔티티 속성의 유형(the type of the entity attribute)
+    * Y: 데이터베이스 컬럼의 유형(the type of the database column)
+    * X 및 Y 유형은 동일한 Java 유형일 수 있다.
+  * AttributeConverter는 다음 두 가지 메서드를 가지고 있다.
+    * **convertToDatabaseColumn**
+      * 엔터티 속성에 저장된 값을 데이터베이스에 저장할 데이터 표현으로 변환한다.
+      ```java
+      Y convertToDatabaseColumn(X attribute)
+      ```
+    * **convertToEntityAttribute** 
+      * 데이터베이스 컬럼에 저장된 데이터를 엔터티 속성에 저장할 값으로 변환한다.
+      * JDBC 드라이버에서 사용할 해당 컬럼에 대해 올바른 dbData 유형을 지정하는 것은 컨버터를 작성자의 책임이다.
+      * 이러한 컨버터 작성자의 역할을 영속성 공급자(persistence providers)들은 책임지지 않는다.
+      ```java
+      X convertToEntityAttribute(Y dbData)
+      ```
+  * javax.persistence 패키지에 속해 있다.
+    ```java
+    public interface AttributeConverter<X,Y>
+    ```
+  > [출처](https://docs.oracle.com/javaee/7/api/javax/persistence/AttributeConverter.html)
+  
 # References
 
 - [출처-1](https://java119.tistory.com/52)

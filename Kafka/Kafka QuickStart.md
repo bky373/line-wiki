@@ -18,7 +18,7 @@
   ```shell
   # Start the ZooKeeper service
   # Note: Soon, ZooKeeper will no longer be required by Apach Kafka
-  ~ zookeeper-server-stop /usr/local/etc/kafka/zookeeper.properties
+  ~ zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
   ```
 
 - 카프카 브로커 서비스 시작

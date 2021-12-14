@@ -172,6 +172,13 @@
   - 패키지 이름은 Group과 Artifact로 이루어진다.
   - 예컨대 Group 값이 `hello`이고 Artifact 값이 `world`이면, 패키지 이름은 `hello.world`가 된다.
 
+* JPA를 사용하여 데이터베이스 초기화 하기
+  * JPA에는 DDL 생성 기능이 있으며 데이터베이스를 시작할 때 해당 기능이 실행되도록 설정할 수 있다. 다음 두 가지 외부 속성으로 기능을 제어할 수 있다.
+    * spring.jpa.generate-ddl (boolean): 해당 기능을 켜고 끌 수 있다. 벤더(vendor, 공급업체)에 대해 독립적이다.
+    * spring.jpa.hibernate.ddl-auto (enum): Hibernate 기능으로 보다 세분화된 방식으로 동작을 제어할 수 있다.
+  
+  > [출처](https://docs.spring.io/spring-boot/docs/1.1.0.M1/reference/html/howto-database-initialization.html)
+
 # References
 
 - [출처-1 : 스프링 MVC 하루만에 배우기 ( 연서은 지음 )](https://wikidocs.net/book/5792)

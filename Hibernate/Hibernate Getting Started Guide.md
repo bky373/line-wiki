@@ -1,5 +1,7 @@
 # Hibernate Getting Started Guide
 
+> 이번 가이드에서 참조하는 실습 코드는 [이곳 Preface 하단](https://docs.jboss.org/hibernate/orm/5.6/quickstart/html_single/#preface) 에서 다운로드할 수 있다.
+
 ## 머리말
 
 * 사용하고자 하는 데이터의 개체(Objects) 표현 방식과 관계형 데이터베이스(Relational databases)의 표현 방식이 일치하지 않을 경우 개발 시간 및 비용이 많이 소모된다.
@@ -7,7 +9,7 @@
   > 개체/관계형 매핑(Object/Relational Mapping) 이라는 용어는 개체 모델 표현과 관계형 데이터 모델 표현 간의 데이터를 매핑하는 기술을 의미한다.
 * Hibernate 는 Java 클래스에서 데이터베이스 테이블로, Java 데이터 유형에서 SQL 데이터 유형으로 매핑을 처리한다.
 * 또한 데이터 쿼리 및 검색 기능을 제공하기 때문에 SQL 및 JDBC에서 수동 데이터 처리 시간을 크게 단축시킨다.
-* Hibernate의 설계 목표는 개발자의 수동적인 데이터 영속성 관련 프로그래밍 작업을 95% 덜어주는 것에 있다. 
+* Hibernate의 설계 목표는 개발자의 수동적인 데이터 영속성 관련 프로그래밍 작업을 95% 덜어주는 것에 있다.
 
 ## 1. Hibernate 설치 및 기본 설명
 ### 1.1. Hibernate 모듈/아티팩트(Modules/Artifacts)

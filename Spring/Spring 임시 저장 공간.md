@@ -176,7 +176,19 @@
   * JPA에는 DDL 생성 기능이 있으며 데이터베이스를 시작할 때 해당 기능이 실행되도록 설정할 수 있다. 다음 두 가지 외부 속성으로 기능을 제어할 수 있다.
     * spring.jpa.generate-ddl (boolean): 해당 기능을 켜고 끌 수 있다. 벤더(vendor, 공급업체)에 대해 독립적이다.
     * spring.jpa.hibernate.ddl-auto (enum): Hibernate 기능으로 보다 세분화된 방식으로 동작을 제어할 수 있다.
-  
+  > [출처](https://docs.spring.io/spring-boot/docs/1.1.0.M1/reference/html/howto-database-initialization.html)
+
+* Hibernate 를 사용하여 데이터베이스 초기화 하기
+  * 다음의 값들로 spring.jpa.hibernate.ddl-auto 을 명시적으로 설정할 수 있다.
+    * `none`
+    * `validate`
+    * `update`
+    * `create-drop`
+  * 스프링 부트는 데이터베이스가 내장(임베디드)되어 있는지에 따라 기본값을 다르게 설정한다.
+    * 데이터베이스가 내장(임베디드)되어 있는 경우의 기본값: `create-drop`
+    * 내장되어 있지 않은 경우의 기본값: `none`
+  * 임베디드 데이터베이스인지의 여부는 `Connection` 타입에 의해 결정된다. `Connection` 타입이 `hsqldb`, `h2`, `derby` 라면 임베디드 데이터베이스에 포함되고, 그렇지 않으면 포함되지 않는다.
+  * 또한 시작 시 classpath의 루트에 있는 `import.sql` 파일이 실행된다. 데모와 테스트를 위해 유용할 수 있지만 프로덕션에서는 필요하지 않을 수 있다. 이 기능은 스프링과 상관없는 Hibernate의 기능이다.    
   > [출처](https://docs.spring.io/spring-boot/docs/1.1.0.M1/reference/html/howto-database-initialization.html)
 
 # References

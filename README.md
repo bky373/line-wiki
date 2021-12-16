@@ -9,6 +9,7 @@
 - [Database](https://github.com/bky373/line-wiki/blob/main/Database/Database.md)
 - [Effective Java 3E](https://github.com/bky373/line-wiki/tree/main/Effective_Java#Effective-Java)`*`
 - [Git](https://github.com/bky373/line-wiki/tree/main/Git)
+- [Hibernate](https://github.com/bky373/line-wiki/tree/main/Hibernate)
 - [HTTP](https://github.com/bky373/line-wiki/tree/main/HTTP)
 - [Java](https://github.com/bky373/line-wiki/blob/main/Java/Java.md)
 - [Kafka](https://github.com/bky373/line-wiki/tree/main/Kafka)

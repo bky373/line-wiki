@@ -201,7 +201,7 @@
     <img width="1642" alt="image" src="https://user-images.githubusercontent.com/49539592/146234189-11172a4c-8f32-436b-97cb-454c190f9ab5.png">
 
 
-## 3. 네이티브 Hibernate API 및 어노테이션 매핑을 사용하는 튜토리
+## 3. 네이티브 Hibernate API 및 어노테이션 매핑을 사용하는 튜토리얼
 
 > 이 튜토리얼은 다운로드한 번들의 `annotations/` 아래에 있다.
 
@@ -212,8 +212,18 @@
 
 ### 3.1. Hibernate 구성 파일
 
-* 구성파일의 내용은 아래 한 가지 차이점을 제외하고 [이곳](https://docs.jboss.org/hibernate/orm/5.6/quickstart/html_single/#hibernate-gsg-tutorial-basic-config) 의 내용과 동일하다.
-* 차이점: `class` 속성을 사용하여 엔티티 클래스의 이름을 지정하는 맨 끝에 있는 `<mapping/>` 요소
+* 구성파일의 내용은 아래 한 가지 차이점을 제외하고 [2.1.의 구성 파일](https://docs.jboss.org/hibernate/orm/5.6/quickstart/html_single/#hibernate-gsg-tutorial-basic-config) (`hibernate.cfg.xml`)의 내용과 동일하다.
+* 차이점
+  * 앞선 예제에서는 엔티티 매핑을 위해 `<mapping/>` 요소 안에 `resource` 속성을 사용하였다. 
+    ```xml
+      <!-- Names the annotated entity class -->
+      <mapping resource="org/hibernate/tutorial/hbm/Event.hbm.xml"/>
+    ```
+  * 이번 예제에서는 그 대신 `class` 속성을 사용하여 어노테이션이 달린 엔티티 클래스의 이름을 지정해주었다.
+    ```xml
+      <!-- Names the annotated entity class -->
+      <mapping class="org.hibernate.tutorial.annotations.Event"/>
+    ```
 
 
 ### 3.2. 어노테이션이 달린 엔티티 Java 클래스
@@ -275,8 +285,9 @@
 
 ### 3.4 예제 테스트 코드
 
-* `org.hibernate.tutorial.annotations.AnnotationsIllustrationTest` 는 기본적으로 앞의 [2.4. 예제 테스트 코드](https://docs.jboss.org/hibernate/orm/5.6/quickstart/html_single/#hibernate-gsg-tutorial-basic-test) 에서 논의된 `org.hibernate.tutorial.hbm.NativeApiIllustrationTest` 와 동일하다.
-
+* `org.hibernate.tutorial.annotations.AnnotationsIllustrationTest` 는 기본적으로 앞의 [2.4. 예제 테스트 코드](https://docs.jboss.org/hibernate/orm/5.6/quickstart/html_single/#hibernate-gsg-tutorial-basic-test) 에서 살펴본 `org.hibernate.tutorial.hbm.NativeApiIllustrationTest` 와 동일한 결과를 보여준다.
+  <img width="1561" alt="image" src="https://user-images.githubusercontent.com/49539592/146379296-15c4ae06-44db-4ef5-a5e2-e8410cd3f653.png">
+  
 
 
 ## 참고 자료

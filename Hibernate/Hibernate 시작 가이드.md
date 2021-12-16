@@ -378,5 +378,59 @@
 
 
 
+## 5. Envers를 사용한 튜토리얼
+
+> 이 튜토리얼은 다운로드한 번들의 `envers/` 아래에 있다.
+
+* 이번 섹션의 목표는 다음과 같다.
+  * 엔티티를 historical 로 어노테이션 처리한다.
+  * Envers 를 구성한다.
+  * Envers API를 사용하여 historical 데이터를 보고 분석한다.
+
+
+### 5.1. persistence.xml
+
+* 이 파일은 [JPA 튜토리얼 4.1.](https://docs.jboss.org/hibernate/orm/5.6/quickstart/html_single/#hibernate-gsg-tutorial-jpa-config) `persistence.xml`의 내용과 동일하다.
+
+
+### 5.2. 어노테이션이 달린 엔티티 Java 클래스
+
+* 엔티티는 어노테이션이 달린 엔티티 Java 클래스와 거의 동일하다. 주요 차이점은 `@org.hibernate.envers.Audited` 주석이 추가되었다는 것인데, 이는 Envers가 이 엔티티에 대한 변경 사항을 자동으로 추적하도록 지시한다.
+
+
+### 5.3. 예제 테스트 코드
+
+* 코드는 일부 엔터티를 저장하고 엔터티 중 하나를 변경한 다음 Envers API를 사용하여 초기 변경(revision)과 업데이트된 변경(revision)을 풀백(pull back)한다. 변경사항(revision)은 엔터티의 historical 스냅샷을 나타낸다.
+* 기본적으로 엔티티들을 저장하는 단계까지는 앞의 테스트들과 동일하다.
+  <img width="1005" alt="image" src="https://user-images.githubusercontent.com/49539592/146386428-82a8a771-8348-44c4-8fb3-85626f21172c.png">
+* 엔티티들 중 하나를 변경하는 코드는 다음과 참고하자.
+  ```java
+    // first lets create some revisions
+    entityManager = entityManagerFactory.createEntityManager();
+    entityManager.getTransaction().begin();
+    Event myEvent = entityManager.find(Event.class, 2L); // we are using the increment generator, so we know 2 is a valid id
+    myEvent.setDate(new Date());
+    myEvent.setTitle(myEvent.getTitle() + " (rescheduled)");
+    entityManager.getTransaction().commit();
+    entityManager.close();
+  ```
+  * id가 2인 엔티티의 `date` 와 `title` 을 변경하면서 해당 엔티티는 두 개의 버전을 갖게 된다. AuditReader 를 사용하면 해당 엔티티의 두 개의 버전 이력을 모두 확인할 수 있다. 
+
+* 예제 14. `org.hibernate.envers.AuditReader` 사용하기
+  ```java
+    public void testBasicUsage() {
+        ...
+        AuditReader reader = AuditReaderFactory.get( entityManager );
+        Event firstRevision = reader.find( Event.class, 2L, 1 );
+        ...
+        Event secondRevision = reader.find( Event.class, 2L, 2 );
+        ...
+    }
+  ```
+  * `org.hibernate.envers.AuditReader` 는 `javax.persistence.EntityManager` 를 감싸는 `org.hibernate.envers.AuditReaderFactory` 에서 생성한다.
+  * 다음으로 find 메소드는 엔티티의 특정 변경(revision) 버전을 숫자로 검색한다. 첫 번째 호출은 id가 2인 이벤트의 변경 1 버전 조회를 시도하고, 두 번째 호출은 변경 2 버전 조회를 시도한다.
+
+* 보다 자세한 내용은 아래 출처에 접속하여 살펴보자.
+
 ## 참고 자료
 * [출처](https://docs.jboss.org/hibernate/orm/5.6/quickstart/html_single/)

@@ -1,4 +1,4 @@
-# Hibernate Getting Started Guide
+# Hibernate 시작 가이드 (Getting Started Guide)
 
 > 이번 가이드에서 사용하는 실습 코드는 [이곳 Preface 하단](https://docs.jboss.org/hibernate/orm/5.6/quickstart/html_single/#preface) 에서 다운로드할 수 있다.
 

@@ -137,7 +137,7 @@
     > Hibernate는 매핑 파일이 처리될 때 리플렉션을 사용하여 매핑 유형을 결정한다. 이 프로세스는 시간과 리소스 측면에서 오버헤드를 더한다. 시작 시 성능이 중요한 경우 사용할 유형을 명시적으로 정의하자.
 
 
-### 2.4. 예제 코드
+### 2.4. 예제 테스트 코드
 
 * `org.hibernate.tutorial.hbm.NativeApiIllustrationTest` 클래스는 Hibernate 네이티브 API를 사용하는 것을 보여준다.
   > 튜토리얼 예제에서는 편의성을 위해 JUnit 테스트를 사용한다. <br> 
@@ -199,6 +199,84 @@
   * 그리고 이를 데이터베이스로 보내어 Event 객체를 결과 세트(result set) 데이터로 받는다. 이때 결과 세트 데이터를 받기 위해 Hibernate Query Language(HQL)를 사용한 것을 볼 수 있다.
   * 결국 `testBasicUsage()` 테스트 실행 결과는 아래와 같다. 데이터베이스에 삽입한 이벤트 두 개가 의도한 대로 잘 출력되는 것을 볼 수 있다.
     <img width="1642" alt="image" src="https://user-images.githubusercontent.com/49539592/146234189-11172a4c-8f32-436b-97cb-454c190f9ab5.png">
+
+
+## 3. 네이티브 Hibernate API 및 어노테이션 매핑을 사용하는 튜토리
+
+> 이 튜토리얼은 다운로드한 번들의 `annotations/` 아래에 있다.
+
+* 이번 섹션의 목표는 다음과 같다.
+  * Hibernate SessionFactory 를 부트스트랩(로드) 한다.
+  * 어노테이션을 사용하여 매핑 정보를 제공한다.
+  * Hibernate Native API 를 사용한다.
+
+### 3.1. Hibernate 구성 파일
+
+* 구성파일의 내용은 아래 한 가지 차이점을 제외하고 [이곳](https://docs.jboss.org/hibernate/orm/5.6/quickstart/html_single/#hibernate-gsg-tutorial-basic-config) 의 내용과 동일하다.
+* 차이점: `class` 속성을 사용하여 엔티티 클래스의 이름을 지정하는 맨 끝에 있는 `<mapping/>` 요소
+
+
+### 3.2. 어노테이션이 달린 엔티티 Java 클래스
+
+* 이 튜토리얼에서 엔티티 클래스는 JavaBean 규칙을 따르는 `org.hibernate.tutorial.annotations.Event` 다.
+* 클래스 내용 자체는 위에서 사용한 엔티티 자바 클래스와 동일하고, 메타 데이터를 제공하는 방식만 달라졌다. 이번에는 별도의 매핑 파일을 사용하지 않고 어노테이션을 사용하여 메타데이터를 제공한다.
+
+* 예제 7. 클래스를 엔터티로 식별하기
+  ```java
+    @Entity
+    @Table( name = "EVENTS" )
+    public class Event {
+      private Long id;
+    
+      private String title;
+      private Date date;
+  
+      public Event() {
+        // this form used by Hibernate
+      }
+    
+      public Event(String title, Date date) {
+        // for application use, to create new events
+        this.title = title;
+        this.date = date;
+      }
+    }
+  ```
+  * `@javax.persistence.Entity` 어노테이션은 클래스를 엔터티로 표시하는 데 사용된다(이 기능은 [매핑 파일](https://docs.jboss.org/hibernate/orm/5.6/quickstart/html_single/#hibernate-gsg-tutorial-basic-mapping) 에서 설명한 `<class/>` 매핑 요소와 동일한 기능이다). 
+  * 또한 `@javax.persistence.Table` 어노테이션은 테이블 이름을 명시적으로 지정한다. 이 사양이 없으면 기본 테이블 이름은 `EVENT` 가 된다.
+
+* 예제 8. 식별자 속성을 식별하기
+  ```java
+    @Id
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
+    public Long getId() {
+      return id;
+    }
+  ```
+  * `@javax.persistence.Id` 는 엔티티의 식별자를 정의하는 속성을 표시한다.
+  * `@javax.persistence.GeneratedValue` 와 `@org.hibernate.annotations.GenericGenerator` 는 Hibernate가 이 엔티티의 식별자 값에 대해 Hibernate의 `increment` 생성 전략을 사용해야 함을 나타내기 위해 함께 작동한다.
+  
+* 예제 9. 기본 속성(properties) 식별하기
+  ```java
+    public String getTitle() {
+        return title;
+    }
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "EVENT_DATE")
+    public Date getDate() {
+    return date;
+    }
+  ```
+  * 매핑 파일에서와 같이 날짜(`date`) 속성은 특별한 이름 지정(예약어 사용 방지)과 SQL 유형을 설명하기 위해 특별한 처리가 필요하다.
+  * 어노테이션으로 매핑할 때 엔티티 클래스의 속성은 기본적으로 영속적인 것으로 간주된다. 따라서 Event 엔티티에서 제목(`title`)과 관련된 매핑 정보를 따로 표시하지 않는다.
+  
+
+### 3.4 예제 테스트 코드
+
+* `org.hibernate.tutorial.annotations.AnnotationsIllustrationTest` 는 기본적으로 앞의 [2.4. 예제 테스트 코드](https://docs.jboss.org/hibernate/orm/5.6/quickstart/html_single/#hibernate-gsg-tutorial-basic-test) 에서 논의된 `org.hibernate.tutorial.hbm.NativeApiIllustrationTest` 와 동일하다.
+
 
 
 ## 참고 자료

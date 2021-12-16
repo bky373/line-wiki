@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="unmanaged-native" />
+        <module name="unmanaged-jpa" />
+        <module name="hibernate-tutorial-envers" />
+        <module name="hibernate-tutorial-annotations" />
+        <module name="hibernate-tutorial-hbm" />
+        <module name="hibernate-tutorial-entitymanager" />
+        <module name="managed-jpa" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hibernate-tutorial-annotations" target="11" />
+      <module name="hibernate-tutorial-entitymanager" target="11" />
+      <module name="hibernate-tutorial-envers" target="11" />
+      <module name="hibernate-tutorial-hbm" target="11" />
+      <module name="hibernate-tutorial-osgi" target="1.5" />
+      <module name="hibernate-tutorials" target="1.5" />
+      <module name="managed-jpa" target="1.5" />
+      <module name="unmanaged-jpa" target="1.5" />
+      <module name="unmanaged-native" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

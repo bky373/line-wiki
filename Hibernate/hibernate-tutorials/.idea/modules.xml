@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/annotations/hibernate-tutorial-annotations.iml" filepath="$PROJECT_DIR$/annotations/hibernate-tutorial-annotations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/entitymanager/hibernate-tutorial-entitymanager.iml" filepath="$PROJECT_DIR$/entitymanager/hibernate-tutorial-entitymanager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/envers/hibernate-tutorial-envers.iml" filepath="$PROJECT_DIR$/envers/hibernate-tutorial-envers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basic/hibernate-tutorial-hbm.iml" filepath="$PROJECT_DIR$/basic/hibernate-tutorial-hbm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/osgi/hibernate-tutorial-osgi.iml" filepath="$PROJECT_DIR$/osgi/hibernate-tutorial-osgi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hibernate-tutorials.iml" filepath="$PROJECT_DIR$/hibernate-tutorials.iml" />
+      <module fileurl="file://$PROJECT_DIR$/osgi/managed-jpa/managed-jpa.iml" filepath="$PROJECT_DIR$/osgi/managed-jpa/managed-jpa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/osgi/unmanaged-jpa/unmanaged-jpa.iml" filepath="$PROJECT_DIR$/osgi/unmanaged-jpa/unmanaged-jpa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/osgi/unmanaged-native/unmanaged-native.iml" filepath="$PROJECT_DIR$/osgi/unmanaged-native/unmanaged-native.iml" />
+    </modules>
+  </component>
+</project>

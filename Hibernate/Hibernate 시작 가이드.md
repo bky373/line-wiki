@@ -287,7 +287,95 @@
 
 * `org.hibernate.tutorial.annotations.AnnotationsIllustrationTest` 는 기본적으로 앞의 [2.4. 예제 테스트 코드](https://docs.jboss.org/hibernate/orm/5.6/quickstart/html_single/#hibernate-gsg-tutorial-basic-test) 에서 살펴본 `org.hibernate.tutorial.hbm.NativeApiIllustrationTest` 와 동일한 결과를 보여준다.
   <img width="1561" alt="image" src="https://user-images.githubusercontent.com/49539592/146379296-15c4ae06-44db-4ef5-a5e2-e8410cd3f653.png">
+
+
+
+## 4. JPA(Java Persistence API)를 사용한 튜토리얼
+
+> 이 튜토리얼은 다운로드한 번들의 `entitymanager/` 아래에 있다.
+
+* 이번 섹션의 목표는 다음과 같다.
+  * JPA EntityManagerFactory 를 부트스트랩(로드) 한다.
+  * 어노테이션을 사용하여 매핑 정보를 제공한다.
+  * JPA API 호출을 사용한다.
+
+
+## 4.1. persistence.xml
+
+* 이전 튜토리얼은 Hibernate 고유의 `hibernate.cfg.xml` 구성 파일을 사용하였다. 
+* 그러나 JPA는 다른 부트스트랩 프로세스로 `persistence.xml` 이라는 자체 구성 파일을 사용한다. 
+* 이 부트스트래핑 프로세스는 JPA 사양(specification)에 의해 정의된다. 
+* Java™ SE 환경에서 영속성 공급자(이 경우 Hibernate)는 `META-INF/persistence.xml` 라는 리소스 이름의 classpath 조회를 통해 모든 JPA 구성 파일을 찾는 데 필요하다.
+* 예제 10. persistence.xml
+  ```xml
+    <persistence xmlns="http://java.sun.com/xml/ns/persistence"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+            version="2.0">
+        <persistence-unit name="org.hibernate.tutorial.jpa">
+            ...
+            <class>org.hibernate.tutorial.em.Event</class>
   
+            <properties>
+              <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+              <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE" />
+              <property name="javax.persistence.jdbc.user" value="sa" />
+              <property name="javax.persistence.jdbc.password" value="" />
+  
+              <property name="hibernate.show_sql" value="true" />
+              <property name="hibernate.hbm2ddl.auto" value="create" />
+          </properties>
+        </persistence-unit>
+    </persistence>
+  ```
+  * `persistence.xml` 파일은 각각의 "영속성 단위(persistence unit)"에 대해 고유한 이름을 제공해야 한다. 애플리케이션은 `javax.persistence.EntityManagerFactory` 참조를 얻을 때 구성을 참조하기 위해 이 이름을 사용한다(아래 4.3. 코드 참고).
+  * `<properties/>` 요소에 정의된 설정은 [Hibernate 구성 파일](https://docs.jboss.org/hibernate/orm/5.6/quickstart/html_single/#hibernate-gsg-tutorial-basic-config) 에서 논의된 내용이다. 여기에서는 가능한 `javax.persistence` 접두사를 사용하고, Hibernate에 특화된 나머지 구성 설정 이름에는 `hibernate.` 접두사를 사용한다.
+  * `<class/>` 요소는 Hibernate 구성 파일에서 본 것과 동일한 기능을 한다.
+
+
+### 4.2. 어노테이션이 달린 엔티티 Java 클래스
+
+* 엔티티는 [어노테이션이 달린 엔티티 Java 클래스](https://docs.jboss.org/hibernate/orm/5.6/quickstart/html_single/#hibernate-gsg-tutorial-annotations-entity) 와 정확히 일치한다.
+
+
+### 4.3. 예제 테스트 코드
+
+* 이전 튜토리얼은 Hibernate 네이티브 API를 사용하였다. 이번 튜토리얼에서는 JPA API를 사용한다.
+
+* 예제 11. `javax.persistence.EntityManagerFactory` 얻기
+  ```java
+    protected void setUp() throws Exception {
+        sessionFactory = Persistence.createEntityManagerFactory( "org.hibernate.tutorial.jpa" );
+    }
+  ```
+  * 영속성 단위 이름은 `persistence.xml` 에서 사용한 `org.hibernate.tutorial.jpa` 이름과 일치해야 한다.
+
+* 예제 12. (영속성) 엔티티 저장
+  ```java
+    EntityManager entityManager = sessionFactory.createEntityManager();
+    entityManager.getTransaction().begin();
+    entityManager.persist( new Event( "Our very first event!", new Date() ) );
+    entityManager.persist( new Event( "A follow up event", new Date() ) );
+    entityManager.getTransaction().commit();
+    entityManager.close();
+  ```
+  * 코드는 2.4의 예제 5 에서 살펴본 [엔티티 저장](https://docs.jboss.org/hibernate/orm/5.6/quickstart/html_single/#hibernate-gsg-tutorial-basic-test-saving) 코드와 유사하다. 
+  * `javax.persistence.EntityManager` 인터페이스는 `org.hibernate.Session` 인터페이스 대신 사용된다. **JPA는 이 작업을 "저장(`save`)" 대신 "지속(`persist`)"이라고 부른다.**
+  
+* 예제 13. 엔터티 목록 가져오기
+  ```java
+    entityManager = sessionFactory.createEntityManager();
+    entityManager.getTransaction().begin();
+    List<Event> result = entityManager.createQuery( "from Event", Event.class ).getResultList();
+    for ( Event event : result ) {
+    System.out.println( "Event (" + event.getDate() + ") : " + event.getTitle() );
+    }
+    entityManager.getTransaction().commit();
+    entityManager.close();
+  ```
+  * 코드는 2.4의 예제 6 에서 살펴본 [엔티티 목록 가져오기](https://docs.jboss.org/hibernate/orm/5.6/quickstart/html_single/#hibernate-gsg-tutorial-basic-test-list) 코드와 유사하고 결과도 동일하다.
+    <img width="1615" alt="image" src="https://user-images.githubusercontent.com/49539592/146384342-5a1a34ba-4e2a-460c-89fa-4cb07690c167.png">
+
 
 
 ## 참고 자료

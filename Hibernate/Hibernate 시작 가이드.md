@@ -1,6 +1,6 @@
 # Hibernate Getting Started Guide
 
-> 이번 가이드에서 참조하는 실습 코드는 [이곳 Preface 하단](https://docs.jboss.org/hibernate/orm/5.6/quickstart/html_single/#preface) 에서 다운로드할 수 있다.
+> 이번 가이드에서 사용하는 실습 코드는 [이곳 Preface 하단](https://docs.jboss.org/hibernate/orm/5.6/quickstart/html_single/#preface) 에서 다운로드할 수 있다.
 
 ## 머리말
 
@@ -69,7 +69,9 @@
 
 
 
-## 2. Native Hibernate API와 hbm.xml 매핑을 사용한 튜토리얼
+## 2. 네이티브 Hibernate API와 hbm.xml 매핑을 사용한 튜토리얼
+
+> 이 튜토리얼은 다운로드 번들의 `basic/` 아래에 있다.
 
 * 이번 섹션의 목표는 다음과 같다.
   * Hibernate SessionFactory 를 부트스트랩(로드) 한다.
@@ -164,7 +166,7 @@
   * 부트스트랩 프로세스의 마지막 단계는 SessionFactory를 빌드하는 것이다. SessionFactory는 애플리케이션 전체에서 사용되는 스레드 안전한 개체(object)이다(인스턴스화가 한 번 이루어진다).
   * SessionFactory는 `org.hibernate.Session` 인스턴스를 위한 팩토리 역할을 한다. 세션은 하나의 "작업 단위(a unit of work)" 결로 생각하고 사용해야 한다.
 
-* 예제 5. 엔티티 저장
+* 예제 5. 엔티티 저장하기
   ```java
   public void testBasicUsage() {
     Session session = sessionFactory.openSession();

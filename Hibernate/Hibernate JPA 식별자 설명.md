@@ -71,5 +71,23 @@
   * Hibernate는 "8dd5f315-9788-4d00-87bb-10eed9eff566" 형식의 ID를 생성한다.
 
 
+### 3.2. IDENTITY 생성
+* 이 유형의 생성은 IdentityGenerator에 의존한다.
+* IdentityGenerator는 데이터베이스 ID 열(column)에 의해 생성되는 값을 예상하여 값을 설정한다(자동으로 증가되는 설정이다).
+* 이 생성 유형을 사용하려면 전략 매개변수(strategy parameter)만 설정하면 된다.
+    ```java
+        @Entity
+        public class Student {
+        
+            @Id
+            @GeneratedValue (strategy = GenerationType.IDENTITY)
+            private long studentId;
+        
+            // ...
+        }
+    ```
+* 한 가지 주의할 점이 있다면, IDENTITY 생성은 일괄 업데이트(batch updates)를 활성화 하지 않는다(disable).
+
+
 ## 참고 자료
 * [출처](https://www.baeldung.com/hibernate-identifiers)

@@ -300,6 +300,39 @@
 * 하지만 이 방법은 엔터티 개체와 식별자가 분리되지 않는다는 단점이 있다.
 
 
+## 5. 파생 식별자(Derived Identifiers)
+* 파생 식별자는 `@MapsId` 주석을 사용하여, 엔터티 간의 연결관계(associations) 에서 얻을 수 있다.
+* 먼저 User 엔터티 와의 one-to-one 연결관계(associations)를 통해 ID를 파생시키는 UserProfile 엔터티를 생성해 보자.
+  ```java
+    @Entity
+    public class UserProfile {
+    
+        @Id
+        private long profileId;
+        
+        @OneToOne
+        @MapsId
+        private User user;
+    
+        // ...
+    }
+  ```
+* 다음으로 UserProfile 인스턴스가 자신과 연결되어 있는 User 인스턴스 와 동일한 ID를 갖고 있는지 확인하자.
+  ```java
+    @Test
+    public void whenSaveDerivedIdEntity_thenOk() {        
+        User user = new User();
+        session.save(user);
+        
+        UserProfile profile = new UserProfile();
+        profile.setUser(user);
+        session.save(profile);
+    
+        assertThat(profile.getProfileId()).isEqualTo(user.getUserId());
+    }
+  ```
+  
+
 ## 참고 자료
 * [출처](https://www.baeldung.com/hibernate-identifiers)
 * [[JPA] 식별자 할당 SEQUENCE(시퀀스) 사용 전략](https://dololak.tistory.com/479)

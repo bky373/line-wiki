@@ -89,5 +89,35 @@
 * 한 가지 주의할 점이 있다면, IDENTITY 생성은 일괄 업데이트(batch updates)를 활성화 하지 않는다(disable).
 
 
+### 3.3. SEQUENCE 생성
+
+* 시퀀스 기반의 id를 사용하기 위해 Hibernate는 SequenceStyleGenerator 클래스를 제공한다.
+* 이 생성기는 데이터베이스가 시퀀스 기능 지원하는 경우에 한해 시퀀스를 사용할 수 있다. 만약 지원하지 않는 경우라면 테이블 생성(table generation) 방식을 사용한다.
+* 시퀀스 이름을 커스텀하게 사용하기 위해 `@GenericGenerator` 주석과 함께 SequenceStyleGenerator 전략을 사용할 수 있다.
+    ```java
+        @Entity
+        public class User {
+            @Id
+            @GeneratedValue(generator = "sequence-generator")
+            @GenericGenerator(
+                name = "sequence-generator",
+                strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+                parameters = {
+                  @Parameter(name = "sequence_name", value = "user_sequence"),
+                  @Parameter(name = "initial_value", value = "4"),
+                  @Parameter(name = "increment_size", value = "1")
+                }
+            )
+            private long userId;
+            
+            // ...
+        }
+    ```
+  * 이 예에서는 시퀀스의 초기 값도 설정했는데, 이는 기본 키 생성이 4에서 시작됨을 의미한다.
+  * SEQUENCE는 Hibernate 문서에서 권장하는 생성 유형이다.
+  * 생성된 값은 시퀀스별로 고유하다. 시퀀스 이름을 지정하지 않으면 Hibernate는 다른 유형에 동일한 hibernate_sequence를 재사용한다.
+
+
 ## 참고 자료
 * [출처](https://www.baeldung.com/hibernate-identifiers)
+* [[JPA] 식별자 할당 SEQUENCE(시퀀스) 사용 전략](https://dololak.tistory.com/479)

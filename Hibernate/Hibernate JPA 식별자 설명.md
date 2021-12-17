@@ -146,6 +146,76 @@
 
 * 요약하여 말하자면 위의 4가지 생성 유형 방식은 서로 유사한 값이 생성되지만 다른 데이터베이스 메커니즘을 사용한다고 할 수 있다.
 
+### 3.5. Custom 생성
+* 기본 생성 전략을 사용하고 싶지 않다면, IdentifierGenerator 인터페이스를 구현하여 커스텀한 생성기를 사용할 수 있다.
+* String 접두사와 숫자를 포함한 식별자를 생성하는 생성기를 만들어보자.
+  ```java
+    public class MyGenerator implements IdentifierGenerator, Configurable {
+
+      private String prefix;
+
+      @Override
+      public Serializable generate(
+        SharedSessionContractImplementor session, Object obj) 
+        throws HibernateException {
+  
+          String query = String.format("select %s from %s", 
+              session.getEntityPersister(obj.getClass().getName(), obj)
+                .getIdentifierPropertyName(),
+              obj.getClass().getSimpleName());
+  
+          Stream ids = session.createQuery(query).stream();
+  
+          Long max = ids.map(o -> o.replace(prefix + "-", ""))
+            .mapToLong(Long::parseLong)
+            .max()
+            .orElse(0L);
+  
+          return prefix + "-" + (max + 1);
+      }
+  
+      @Override
+      public void configure(Type type, Properties properties, 
+          ServiceRegistry serviceRegistry) throws MappingException {
+              prefix = properties.getProperty("prefix");
+      }
+    }
+  ```
+  * 이 예에서는 IdentifierGenerator 인터페이스의 `generate()` 메서드를 재정의한다.
+  * 먼저, `{prefix}-XX` 형식의 기존 기본 키에서 가장 높은 수를 찾는다. 그런 다음 가장 높은 수에 1을 추가하고 접두사 속성을 추가하여 새로운 id 값을 얻는다.
+  * 추가적으로 Configurable 인터페이스를 구현하였기 때문에 `configure()` 메서드에서 접두사 속성 값을 설정할 수 있다.
+  * 다음으로 이 커스텀 생성기를 엔터티에 추가해 보도록 하자.
+  * 이를 위해 `@GenericGenerator` 주석과 함께 생성기 클래스의 전체 클래스 이름을 포함하는 전략 매개변수를 작성한다.
+    ```java
+      @Entity
+      public class Product {
+      
+          @Id
+          @GeneratedValue(generator = "prod-generator")
+          @GenericGenerator(name = "prod-generator", 
+            parameters = @Parameter(name = "prefix", value = "prod"), 
+            strategy = "com.baeldung.hibernate.pojo.generator.MyGenerator"
+          )
+          private String prodId;
+      
+          // ...
+      }
+    ```
+    * 여기에서는 접두사 매개변수를 "prod"로 설정하였다.
+    * 생성된 id 값을 더 명확하게 이해하기 위해 간단히 JUnit 테스트를 수행해본다.
+      ```java
+        @Test
+        public void whenSaveCustomGeneratedId_thenOk() {
+            Product product = new Product();
+            session.save(product);
+            Product product2 = new Product();
+            session.save(product2);
+        
+            assertThat(product2.getProdId()).isEqualTo("prod-2");
+        }
+      ```
+      * 여기에서 "prod" 접두사를 사용하여 생성된 첫 번째 값은 "prod-1"이 되고 그 뒤에 생성된 값은 "prod-2"가 된다.
+
 
 ## 참고 자료
 * [출처](https://www.baeldung.com/hibernate-identifiers)

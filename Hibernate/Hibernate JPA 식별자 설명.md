@@ -217,6 +217,89 @@
       * 여기에서 "prod" 접두사를 사용하여 생성된 첫 번째 값은 "prod-1"이 되고 그 뒤에 생성된 값은 "prod-2"가 된다.
 
 
+## 4. 복합 식별자(Composite Identifiers)
+* Hibernate는 지금까지 살펴본 단순 식별자 외에 복합 식별자 사용을 지원한다.
+* 복합 ID는 기본 키 클래스로 표시되는데, 이 클래스는 하나 이상의 영속적인 속성을 가진다.
+* 기본 키 클래스는 다음의 몇 가지 조건을 충족해야 한다.
+  * `@EmbeddedId` 또는 `@IdClass` 주석을 사용하여 정의되어야 한다.
+  * public 이어야 하고 직렬화 가능해야 하며 public 한 no-arg 생성자가 있어야 한다.
+  * 마지막으로 equals() 및 hashCode() 메서드를 구현해야 한다.
+* 클래스의 속성은 기본적이거나(basic), 복합적(composite) 또는 ManyToOne일 수 있다. 하지만 컬렉션이나 OneToOne 속성은 사용하지 않는다.
+
+### 4.1. @EmbeddedId
+* 이제 `@EmbeddedId` 를 사용하여 id를 정의하는 방법을 살펴보자.
+* 먼저 `@Embeddable` 주석이 달린 기본 키 클래스가 필요하다.
+  ```java
+    @Embeddable
+    public class OrderEntryPK implements Serializable {
+    
+        private long orderId;
+        private long productId;
+    
+        // standard constructor, getters, setters
+        // equals() and hashCode() 
+    }
+  ```
+* 다음으로 `@EmbeddedId` 를 사용하여 엔터티에 OrderEntryPK 유형의 ID를 추가할 수 있다.
+  ```java
+    @Entity
+    public class OrderEntry {
+    
+        @EmbeddedId
+        private OrderEntryPK entryId;
+    
+        // ...
+    }
+  ```
+* 이 유형의 복합 ID를 사용하여 엔터티의 기본 키를 설정하는 방법에 대해 알아보자.
+  ```java
+    @Test
+    public void whenSaveCompositeIdEntity_thenOk() {
+        OrderEntryPK entryPK = new OrderEntryPK();
+        entryPK.setOrderId(1L);
+        entryPK.setProductId(30L);
+    
+        OrderEntry entry = new OrderEntry();
+        entry.setEntryId(entryPK);
+        session.save(entry);
+    
+        assertThat(entry.getEntryId().getOrderId()).isEqualTo(1L);
+    }
+  ```
+  * 여기서 OrderEntry 개체는 `orderId` 와 `productId` 라는 두 가지 속성으로 구성된 OrderEntryPK 기본 ID를 가진다.
+
+### 4.2. @IdClass
+* `@IdClass` 주석은 `@EmbeddedId` 와 유사하다. 다만 `@IdClass` 와의 차이점이 있다면 이는 `@Id` 가 붙은 각각의 속성이 기본 엔터티 클래스에 정의된다는 점이다. 기본 키 클래스는 이전과 동일하다.
+* `@IdClass` 를 사용하여 OrderEntry 예제를 고쳐보자.
+  ```java
+    @Entity
+    @IdClass(OrderEntryPK.class)
+    public class OrderEntry {
+      @Id
+      private long orderId;
+      @Id
+      private long productId;
+    
+      // ...
+    }
+  ```
+* 그런 다음 OrderEntry 개체에서 직접 id 값을 설정할 수 있다.
+  ```java
+    @Test
+    public void whenSaveIdClassEntity_thenOk() {        
+        OrderEntry entry = new OrderEntry();
+        entry.setOrderId(1L);
+        entry.setProductId(30L);
+        session.save(entry);
+        
+        assertThat(entry.getOrderId()).isEqualTo(1L);
+    }
+  ```  
+* 두 가지 유형의 복합 ID에 대해 기본 키 클래스에는 @ManyToOne 속성이 포함될 수도 있다.
+* Hibernate는 `@ManyToOne` 연결관계(associations) 로 구성된 기본 키를 정의할 수 있다(이때 `@Id` 주석이 결합되어 있어야 한다). 이 경우 엔터티 클래스는 기본 키 클래스의 조건도 충족해야 한다.
+* 하지만 이 방법은 엔터티 개체와 식별자가 분리되지 않는다는 단점이 있다.
+
+
 ## 참고 자료
 * [출처](https://www.baeldung.com/hibernate-identifiers)
 * [[JPA] 식별자 할당 SEQUENCE(시퀀스) 사용 전략](https://dololak.tistory.com/479)

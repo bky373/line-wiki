@@ -29,5 +29,47 @@
 
 
 
+## 3. 생성된 식별자(Generated Identifiers)
+* `@GeneratedValue` 주석을 추가하여 기본 키 값을 자동으로 생성할 수 있다.
+* 생성 유형은 다음 네 가지로 나뉜다. 아래 섹션에서 하나씩 살펴보기로 하자.
+  * `AUTO`
+  * `IDENTITY`
+  * `SEQUENCE`
+  * `TABLE`
+* 값을 명시적으로 지정하지 않으면 생성 유형의 기본값은 `AUTO` 다.
+
+### 3.1. AUTO 생성
+
+* 기본(default) 생성 유형을 사용할 때, 영속성 공급자는 기본 키의 속성 타입에 따라 값을 결정한다. 이 타입은 숫자 또는 UUID일 수 있다.
+* 숫자 값의 경우, 생성은 시퀀스 또는 테이블 생성기(table generator)를 기반으로 한다. UUID 값의 경우라면, UUIDGenerator를 사용한다.
+* 먼저 엔터티의 기본 키를 AUTO 생성 전략을 사용하여 매핑해보자.
+    ```java
+      @Entity
+      public class Student {
+    
+        @Id
+        @GeneratedValue
+        private long studentId;
+    
+        // ...
+      }
+    ```
+  * 이 경우 기본 키는 데이터베이스 수준에서 고유한 값을 가진다.
+* 이제 Hibernate 5에서 도입된 UUIDGenerator를 살펴보자.
+* 이 기능을 사용하려면 `@GeneratedValue` 주석으로 UUID 유형의 ID를 선언하기만 하면 된다.
+    ```java
+      @Entity
+      public class Course {
+        
+        @Id
+        @GeneratedValue
+        private UUID courseId;
+    
+        // ...
+      }
+    ```
+  * Hibernate는 "8dd5f315-9788-4d00-87bb-10eed9eff566" 형식의 ID를 생성한다.
+
+
 ## 참고 자료
 * [출처](https://www.baeldung.com/hibernate-identifiers)

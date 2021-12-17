@@ -118,6 +118,35 @@
   * 생성된 값은 시퀀스별로 고유하다. 시퀀스 이름을 지정하지 않으면 Hibernate는 다른 유형에 동일한 hibernate_sequence를 재사용한다.
 
 
+
+### 3.4. TABLE 생성
+* TableGenerator는 식별자 생성 값의 세그먼트를 유지하는 기본 데이터베이스 테이블을 사용한다.
+* `@TableGenerator` 주석을 사용하여 테이블 이름을 커스텀하게 지정할 수 있다.
+  ```java
+    @Entity
+    public class Department {
+      @Id
+      @GeneratedValue(
+        strategy = GenerationType.TABLE,
+        generator = "table-generator"
+      )
+      @TableGenerator(
+        name = "table-generator",
+        table = "dep_ids",
+        pkColumnName = "seq_id",
+        valueColumnName = "seq_value"
+      )
+      private long depId;
+      
+      // ...
+    }
+  ```
+  * pkColumnName 및 valueColumnName과 같은 다른 속성도 커스텀하게 지정할 수 있다.
+  * 그러나 이 방법은 확장에 유리하지 않고 성능에 부정적인 영향을 줄 수 있다는 단점이 있다.
+
+* 요약하여 말하자면 위의 4가지 생성 유형 방식은 서로 유사한 값이 생성되지만 다른 데이터베이스 메커니즘을 사용한다고 할 수 있다.
+
+
 ## 참고 자료
 * [출처](https://www.baeldung.com/hibernate-identifiers)
 * [[JPA] 식별자 할당 SEQUENCE(시퀀스) 사용 전략](https://dololak.tistory.com/479)

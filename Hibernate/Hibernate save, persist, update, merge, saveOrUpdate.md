@@ -67,7 +67,7 @@
 
 ### 3.1. Persist
 * **`persist` 메서드는 영속성 컨텍스트에 새로운 엔티티 인스턴스를 추가하는 데 사용된다.**
-* 즉, 인스턴스를 일시적(`transient`) 상태에서 영속적(`persistent`) 상태로 전환한다.
+* 즉, 인스턴스를 **일시적(`transient`) 상태에서 영속적(`persistent`) 상태로 전환** 한다.
 * `persist` 메서드는 일반적으로 데이터베이스에 새로운 레코드를 추가하고 싶을 때 사용한다.
   ```java
     Person person = new Person();
@@ -94,6 +94,28 @@
     
     session.persist(person); // PersistenceException!
   ```
+
+### 3.2. Save
+* **`save` 메소드는 JPA 사양을 따르지 않는 "원래" Hibernate 메소드** 다.
+* 그 목적은 기본적으로 `persist` 메서드와 동일하지만 세부적인 구현 사항이 다르다. 
+* 메서드 설명 문서에는, "먼저 생성된 식별자를 할당"하여 인스턴스를 영속(persist)한다고 엄격하게 명시되어 있다. 
+* 이 메서드는 식별자의 Serializable 값이 반환되는 것이 보장된다.
+  ```java
+    Person person = new Person();
+    person.setName("John");
+    Long id = (Long) session.save(person);
+  ```
+* 이미 영속된 인스턴스를 저장하는 효과는 `persist` 와 동일하다. 차이점은 분리된(`detached`) 인스턴스를 저장하려고 할 때 발생한다.
+  ```java
+    Person person = new Person();
+    person.setName("John");
+    Long id1 = (Long) session.save(person);
+    
+    session.evict(person); // detached 상태가 되었다
+  
+    Long id2 = (Long) session.save(person);
+  ```
+* id2 변수는 id1과 다르다. **분리된(`detached`) 인스턴스에 대한 `save` 호출은 새로운 영속 인스턴스를 생성하고 새로운 식별자를 할당한다.** 그 결과 커밋 또는 플러시 시 **데이터베이스에 중복 레코드가 생성된다.**
 
 
 ## 참고 자료

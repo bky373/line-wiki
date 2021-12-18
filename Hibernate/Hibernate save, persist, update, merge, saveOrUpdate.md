@@ -117,6 +117,32 @@
   ```
 * id2 변수는 id1과 다르다. **분리된(`detached`) 인스턴스에 대한 `save` 호출은 새로운 영속 인스턴스를 생성하고 새로운 식별자를 할당한다.** 그 결과 커밋 또는 플러시 시 **데이터베이스에 중복 레코드가 생성된다.**
 
+### 3.3. Merge
+* `merge` 메서드의 주요 목적은 **분리된 엔터티 인스턴스의 새 필드 값으로 영속 엔터티 인스턴스를 업데이트 하는 것** 이다.
+* 예를 들어, 호출자(caller)에게 id로 JSON 직렬화 객체를 검색하는 메서드와 호출자(caller)로부터 이 객체의 업데이트된 버전을 수신하는 메서드를 가진 RESTful 인터페이스가 있다고 가정해보자. 이러한 직렬화/역직렬화를 거친 엔터티는 분리된 상태로 나타날 것이다.
+* 이 엔터티 인스턴스를 역직렬화한 후에는, 영속성 컨텍스트에서 영속적 엔터티 인스턴스를 가져와서 분리된 인스턴스의 새 값으로 해당 인스턴스의 필드를 업데이트해야 한다. 이를 위해 `merge` 메서드는 다음의 작업들을 수행한다.
+  * 전달된(passed) 객체의 id로 엔티티 인스턴스를 찾는다.
+    > 전달된 객체란 영속성 컨텍스트에서 검색된 기존 엔티티 인스턴스 나 데이터베이스에서 로드된 새로운 인스턴스 를 말한다.
+  * 전달된 객체에서 이 인스턴스로 필드를 복사한다.
+  * 새로 업데이트된 인스턴스를 반환한다.
+* 다음 예에서는 저장된 엔터티를 컨텍스트에서 퇴출(분리)하고 이름(`name`) 필드를 변경한 다음 분리된 엔터티를 병합(`merge`)한다.
+  ```java
+    Person person = new Person(); 
+    person.setName("John");
+    session.save(person);
+    
+    session.evict(person); // detached 상태가 되었다
+    person.setName("Mary");
+    
+    Person mergedPerson = (Person) session.merge(person);
+  ```
+  * `merge` 메소드는 앞서 말했듯이 업데이트된 객체를 반환한다. 반환된 객체는 영속성 컨텍스트에 로드되고 업데이트된 `mergedPerson` 객체이지, 인수로 전달된 `person` 객체가 아니다. 두 객체는 엄연히 서로 다른 객체이고, `person` 객체는 일반적으로 폐기되어야 한다(무엇이 되었든, 영속성 컨텍스트에 연결되어 있다고 생각해서는 안 된다).
+* `persist` 메서드와 마찬가지로 `merge` 메서드는 JSR-220에 의해 지정되어 있고 신뢰하고 사용할 수 있는 특정 시맨틱(semantics)을 가지고 있다.
+  * 엔티티가 분리되어(`detached`) 있을 경우 기존 영속 엔티티에 복사된다.
+  * 엔티티가 일시적인(`transient`) 경우 새로 생성된 영속 엔티티에 복사된다.
+  * 이 작업은 cascade=MERGE 또는 cascade=ALL 매핑이 있는 모든 관계에 대해 단계적으로 진행된다.
+  * 엔티티가 영속적인(`persistent`) 경우 메소드 호출은 엔티티에 영향을 미치지 않는다(그러나 cascading 은 계속 발생한다).
+
 
 ## 참고 자료
 * [Hibernate: save, persist, update, merge, saveOrUpdate](https://www.baeldung.com/hibernate-save-persist-update-merge-saveorupdate)

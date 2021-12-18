@@ -41,7 +41,7 @@
 * Hibernate 는 가장 성공적인 Java ORM 구현이기 때문에 JPA(Java Persistence API) 사양이 Hibernate API의 영향을 많이 받는 것은 당연한 일이다.
 * 아쉬운 점은 둘이 완전히 동일하지 않다는 사실이고, 때때로 많은 차이점을 가지고 있다는 점이다.
 * 특히 Hibernate API 는 JPA 표준 구현으로 동작하기 위해 손을 조금 봐야 했다. EntityManager 인터페이스와 매칭되게끔 Session 인터페이스에 몇몇 메서드들이 추가되었다.
-* 이러한 메서드들은 본래 메서드의 목적을 동일하게 수행하지만, 주어진 사양을 준수해야 했기 때문에 몇 가지 차이점을 만들었다. 이에 대해선 다음 섹션에서 살펴보자.
+* 이러한 메서드들은 본래 메서드의 목적을 동일하게 수행하지만, 주어진 사양을 준수해야 했기 때문에 몇 가지 차이점을 만들었다. 메서드들 간 주요 차이에 대해선 다음 섹션에서 구체적으로 살펴보도록 하자.
 
 
 ## 3. 작업 간 차이점
@@ -96,7 +96,7 @@
   ```
 
 ### 3.2. Save
-* **`save` 메소드는 JPA 사양을 따르지 않는 "원래" Hibernate 메소드** 다.
+* **`save` 메서드는 JPA 사양을 따르지 않는 "원래" Hibernate 메서드** 다.
 * 그 목적은 기본적으로 `persist` 메서드와 동일하지만 세부적인 구현 사항이 다르다. 
 * 메서드 설명 문서에는, "먼저 생성된 식별자를 할당"하여 인스턴스를 영속(persist)한다고 엄격하게 명시되어 있다. 
 * 이 메서드는 식별자의 Serializable 값이 반환되는 것이 보장된다.
@@ -143,6 +143,28 @@
   * 이 작업은 cascade=MERGE 또는 cascade=ALL 매핑이 있는 모든 관계에 대해 단계적으로 진행된다.
   * 엔티티가 영속적인(`persistent`) 경우 메소드 호출은 엔티티에 영향을 미치지 않는다(그러나 cascading 은 계속 발생한다).
 
+
+### 3.4. Update
+* `persist` 및 `save` 와 마찬가지로 **`update` 메서드는 `merge` 메서드가 추가되기 오래 전부터 존재했던 "원래" Hibernate 메서드** 다. 다만 이 메서드의 시맨틱(semantics)은 몇 가지 핵심 포인트가 다르다.
+  * 이 메서드는 전달된(passed) 객체에 대해 작동한다(반환 타입은 void 이다). `update` 메서드는 전달된 객체를 **분리(`detached`) 상태에서 영속(`persistent`) 상태로 전환** 한다.
+  * 이 메서드에 일시적(`transient`) 엔터티를 전달하면 예외를 던진다.
+* 다음 예제에서는 객체를 저장(save)한 다음 컨텍스트에서 이를 퇴출(분리)한 후, 이름(`name`)을 변경하고 `update` 메서드를 호출한다. `update` 작업은 `person` 개체 자체에서 발생하기 때문에 작업 결과를 별도의 변수에 넣지 않았다.
+  ```java
+    Person person = new Person();
+    person.setName("John");
+    session.save(person);
+  
+    session.evict(person); // detach 상태가 되었다  
+    person.setName("Mary");
+  
+    session.update(person);
+  ```
+* 앞서 말했듯이 일시적인(`transient`) 인스턴스에서 `update` 메서드를 호출하려고 하면 예외가 발생한다. 따라서 다음 코드는 정상적으로 작동하지 않는다.
+  ```java
+    Person person = new Person();
+    person.setName("John");
+    session.update(person); // PersistenceException!
+  ```
 
 ## 참고 자료
 * [Hibernate: save, persist, update, merge, saveOrUpdate](https://www.baeldung.com/hibernate-save-persist-update-merge-saveorupdate)

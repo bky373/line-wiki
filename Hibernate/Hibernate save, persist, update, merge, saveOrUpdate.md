@@ -165,6 +165,19 @@
     person.setName("John");
     session.update(person); // PersistenceException!
   ```
+  
+### 3.5. SaveOrUpdate
+* 이 메서드는 Hibernate API에만 나타나며 표준화된 counterpart 가 없다. 
+* 이 메서드는 `update` 와 유사하게 인스턴스를 다시 연결하는 데 사용할 수도 있다.
+* 실제로 `update` 메서드를 처리하는 내부 `DefaultUpdateEventListener` 클래스는 일부 기능을 재정의하는 `DefaultSaveOrUpdateListener` 의 하위 클래스다. `saveOrUpdate` 메소드의 주요 차이점은 **일시적(`transient`) 인스턴스를 사용할 때 예외가 발생하지 않는다** 는 것이다(대신 **일시적인 인스턴스를 영속적인 상태로 만든다**). 
+* 다음은 새로 생성된 Person 인스턴스를 영속하는(persist) 코드다.
+  ```java
+    Person person = new Person();
+    person.setName("John");
+    session.saveOrUpdate(person);
+  ```
+* 이 메서드는 일시적(`transient`)이거나 분리된(`detached`) 상태에 관계없이 개체를 영속적으로 만들 수 있는 보편적인 도구라고 생각할 수 있다.
+
 
 ## 참고 자료
 * [Hibernate: save, persist, update, merge, saveOrUpdate](https://www.baeldung.com/hibernate-save-persist-update-merge-saveorupdate)

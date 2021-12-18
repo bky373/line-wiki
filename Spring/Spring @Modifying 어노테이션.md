@@ -90,6 +90,26 @@
   * 오류 메시지는 명확하게 해당 쿼리가 DML 작업에 대해 지원되지 않는다고 밝히고 있다.
   
 
+## 4. 영속성 컨텍스트 관리
+* 업데이트 쿼리가 영속성 컨텍스트에 포함된 엔터티를 변경하면 이 컨텍스트가 구식이 된다. 
+* 이 상황을 관리하는 한 가지 방법은 [기존의 영속성 컨텍스트를 지우는 것](https://docs.oracle.com/javaee/7/api/javax/persistence/EntityManager.html#clear--) 이다.
+* 이로써 다음 번 작업을 할 때 영속성 컨텍스트가 데이터베이스로부터 엔티티들을 가져와 싱크를 맞출 수 있다.
+* 그러나 EntityManager 에서 `clear()` 메서드 를 명시적으로 호출할 필요는 없다. 대신 `@Modifying` 주석 에서 `clearAutomatically` 속성 을 사용하면 된다.
+    ```java
+      @Modifying(clearAutomatically = true)
+    ```
+* 이 방식으로 쿼리 실행 후 영속성 컨텍스트가 지워졌는지 확인한다.
+* 하지만 영속성 컨텍스트에 플러시(flush)되지 않은 변경 사항이 포함된 경우, 이를 지우면 저장되지 않은 변경 사항이 삭제된다. 다행히 이 경우를 대비해 `flushAutomatically` 라는 속성을 사용할 수 있다.
+    ```java
+      @Modifying(flushAutomatically = true)
+    ```
+* 이로써 쿼리가 실행되기 전에 EntityManager 가 플러시된다.
+
+
+## 5. 결론
+* @Modifying 주석을 사용하여 INSERT, UPDATE, DELETE 와 같은 업데이트 쿼리 그리고 DDL 등을 실행하는 방법에 대해 살펴보았다.
+* 그런 다음 `clearAutomatically` 와 `fluashAutomatically` 속성을 사용하여 영속성 컨텍스트 상태를 관리하는 방법에 대해서도 알아보았다. 
+
 # 참고 자료
 
 * [Spring Data JPA @Modifying Annotation](https://www.baeldung.com/spring-data-jpa-modifying-annotation)

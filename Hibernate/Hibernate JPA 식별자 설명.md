@@ -9,7 +9,7 @@
 ## 2. 단순 식별자(Simple Identifiers)
 * 식별자를 정의하는 가장 간단한 방법은 `@Id` 주석을 사용하는 것이다.
 * 단일 속성에 `@Id` 주석을 사용할 경우 단순한 ID로 매핑 가능하다.
-  * 단일 속성의 타입으로 다음과 타입을 사용할 수 있다.
+  * 단일 속성의 타입으로 아래와 같은 타입들을 사용할 수 있다.
     * Java Primitive Types
     * Primitive Wrapper Types 
     * String

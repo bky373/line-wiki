@@ -1,4 +1,4 @@
-# Hibernate: save, persist, update, merge, saveOrUpdate
+# Hibernate: Save, Persist, Update, Merge, SaveOrUpdate
 
 ## 1. 개요
 * Session 인터페이스에서 지원하는 다음 메소드들 간 차이에 대해 알아본다.

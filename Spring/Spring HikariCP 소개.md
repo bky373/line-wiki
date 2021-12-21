@@ -211,5 +211,286 @@
   ```
 
 
+## 5. 실행 코드
+* 위에서 템플릿 코드를 봤으니 이제 실행 가능한 코드를 작성해보자. 실행 코드는 [여기](https://github.com/eugenp/tutorials/tree/master/libraries-data-db) 를 참고하였다.
+* 프로젝트 구조는 다음과 같다(`playground.forspring` 이라는 패키지 이름은 전혀 중요하지 않다).
+
+  <img width="248" alt="image" src="https://user-images.githubusercontent.com/49539592/146957785-f9cc32bd-3f7c-4662-b0a0-f5228bcc0ef9.png">
+
+### 5.1. 드라이버 종속성 추가
+* 예시에서는 Gradle 를 사용하였으므로, `build.gradle` 에 H2 드라이버 종속성을 추가한다.
+  ```
+    dependencies {
+      ...
+      implementation 'com.h2database:h2'
+      ...
+  }
+  ```
+* 종속성을 추가하지 않을 경우, 최종 코드 실행 후 다음 오류를 만난다.
+  <img width="1666" alt="image" src="https://user-images.githubusercontent.com/49539592/146956885-f65f55c6-c208-4f88-ab47-dff6562852ff.png">
+
+### 5.2. 데이터소스 구성
+* 실행 가능한 코드로 데이터소스를 구성한다.
+* **DataSource.java** (파일 위치는 위의 프로젝트 구조를 참고하자.)
+  ```java
+    public class DataSource {
+
+      private static HikariConfig config = new HikariConfig();
+      private static HikariDataSource hikariDataSource;
+    
+      static {
+    
+        config.setJdbcUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;INIT=runscript from 'classpath:/db.sql'");
+        config.setUsername("");
+        config.setPassword("");
+        config.addDataSourceProperty("cachePrepStmts", "true");
+        config.addDataSourceProperty("prepStmtCacheSize", "250");
+        config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+        hikariDataSource = new HikariDataSource(config);
+    
+        /*
+         * 대안 1. 속성 파일(.properties) 기반의 구성 - datasource.properties 파일 작성 필수
+         */
+        // config = new HikariConfig("datasource.properties");
+    
+        /*
+         * 대안 2. Properties 기반의 구성
+         */
+        // Properties props = new Properties();
+        // props.setProperty("dataSourceClassName", "org.h2.Driver");
+        // props.setProperty("dataSource.user", "");
+        // props.setProperty("dataSource.password", "");
+        // props.put("dataSource.logWriter", new PrintWriter(System.out));
+        // config = new HikariConfig(props);
+    
+        /*
+         * 대안 2. HikariConfig 를 직접 초기화
+         */
+        // hikariDataSource.setJdbcUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;INIT=runscript from 'classpath:/db.sql'");
+        // hikariDataSource.setUsername("");
+        // hikariDataSource.setPassword("");
+      }
+    
+      private DataSource() {
+      }
+    
+      public static Connection getConnection() throws SQLException {
+        return hikariDataSource.getConnection();
+      }
+    
+    }
+  ```
+
+### 5.3. 테이블 및 데이터 생성
+* `db.sql` 에 `dept` 및 `emp` 테이블 생성 쿼리를 작성한다.
+* 동일한 파일에 샘플 데이터 삽입 쿼리를 작성한다.
+* **db.sql** (파일 위치는 위의 프로젝트 구조를 참고하자.)
+  ```java
+    drop table if exists emp;
+    drop table if exists dept;
+    
+    
+    create table dept(
+      deptno numeric,
+      dname  varchar(14),
+      loc    varchar(13),
+      constraint pk_dept primary key (deptno)
+    );
+    
+    create table emp(
+      empno    numeric,
+      ename    varchar(10),
+      job      varchar(9),
+      mgr      numeric,
+      hiredate date,
+      sal      numeric,
+      comm     numeric,
+      deptno   numeric,
+      constraint pk_emp primary key (empno),
+      constraint fk_deptno foreign key (deptno) references dept (deptno)
+    );
+    
+    insert into dept values(10, 'ACCOUNTING', 'NEW YORK');
+    insert into dept values(20, 'RESEARCH', 'DALLAS');
+    insert into dept values(30, 'SALES', 'CHICAGO');
+    insert into dept values(40, 'OPERATIONS', 'BOSTON');
+    
+    insert into emp values(
+      7839, 'KING', 'PRESIDENT', null,
+      to_date('17-11-1981','dd-mm-yyyy'),
+      7698, null, 10
+    );
+    insert into emp values(
+      7698, 'BLAKE', 'MANAGER', 7839,
+      to_date('1-5-1981','dd-mm-yyyy'),
+      7782, null, 20
+    );
+    insert into emp values(
+      7782, 'CLARK', 'MANAGER', 7839,
+      to_date('9-6-1981','dd-mm-yyyy'),
+      7566, null, 30
+    );
+    insert into emp values(
+      7566, 'JONES', 'MANAGER', 7839,
+      to_date('2-4-1981','dd-mm-yyyy'),
+      7839, null, 40
+    );
+    
+    commit;
+  ```
+
+### 5.4. 데이터소스 연결 및 데이터 확인
+* 앞에서 데이터소스 구성 및 데이터 삽입을 마쳤기 때문에 이제 데이터베이스로부터 실제 데이터를 가져오는지 확인하는 작업이 남았다.
+* HikariCPDemo 클래스 안에 `emp` 테이블의 모든 데이터를 가져오는 `fetchData()` 메서드를 정의하고, 이를 `main()` 메서드에서 호출하자.
+* 그리고 실제로 어떤 결과를 출력하는지 눈으로 확인하자.
+* **HikariCPDemo.java** (파일 위치는 위의 프로젝트 구조를 참고하자.)
+  ```java
+    public class HikariCPDemo {
+
+      public static List<Employee> fetchData() {
+        final String SQL_QUERY = "select * from emp";
+        List<Employee> employees = null;
+    
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pst = con.prepareStatement(SQL_QUERY);
+             ResultSet rs = pst.executeQuery();) {
+    
+          employees = new ArrayList<Employee>();
+          Employee employee;
+          while (rs.next()) {
+            employee = new Employee();
+            employee.setEmpNo(rs.getInt("empno"));
+            employee.setEname(rs.getString("ename"));
+            employee.setJob(rs.getString("job"));
+            employee.setMgr(rs.getInt("mgr"));
+            employee.setHiredate(rs.getDate("hiredate"));
+            employee.setSal(rs.getInt("sal"));
+            employee.setComm(rs.getInt("comm"));
+            employee.setDeptno(rs.getInt("deptno"));
+            employees.add(employee);
+          }
+        } catch (SQLException e) {
+          e.printStackTrace();
+        }
+        return employees;
+      }
+    
+      public static void main(String[] args) {
+        List<Employee> employees = fetchData();
+        employees.forEach(System.out::println);
+      }
+    
+    }
+  ```
+* 위에서 Employee 라는 타입을 사용하므로 Employee 클래스도 따로 정의해준다.
+* **Employee.java** (파일 위치는 위의 프로젝트 구조를 참고하자.)
+  ```java
+    public class Employee {
+
+      private int empNo;
+      private String ename;
+      private String job;
+      private int mgr;
+      private Date hiredate;
+      private int sal;
+      private int comm;
+      private int deptno;
+    
+      public int getEmpNo() {
+        return empNo;
+      }
+    
+      public void setEmpNo(int empNo) {
+        this.empNo = empNo;
+      }
+    
+      public String getEname() {
+        return ename;
+      }
+    
+      public void setEname(String ename) {
+        this.ename = ename;
+      }
+    
+      public String getJob() {
+        return job;
+      }
+    
+      public void setJob(String job) {
+        this.job = job;
+      }
+    
+      public int getMgr() {
+        return mgr;
+      }
+    
+      public void setMgr(int mgr) {
+        this.mgr = mgr;
+      }
+    
+      public Date getHiredate() {
+        return hiredate;
+      }
+    
+      public void setHiredate(Date hiredate) {
+        this.hiredate = hiredate;
+      }
+    
+      public int getSal() {
+        return sal;
+      }
+    
+      public void setSal(int sal) {
+        this.sal = sal;
+      }
+    
+      public int getComm() {
+        return comm;
+      }
+    
+      public void setComm(int comm) {
+        this.comm = comm;
+      }
+    
+      public int getDeptno() {
+        return deptno;
+      }
+    
+      public void setDeptno(int deptno) {
+        this.deptno = deptno;
+      }
+    
+      @Override
+      public String toString() {
+        return String.format(
+            "Employee [empNo=%d, ename=%s, job=%s, mgr=%d, hiredate=%s, sal=%d, comm=%d, deptno=%d]",
+            empNo, ename, job, mgr, hiredate, sal, comm, deptno);
+      }
+    
+    }
+  ```
+* 이제 HikariCPDemo 클래스의 `main()` 메서드를 실행(run)하면 아래의 결과를 볼 수 있다. 삽입한 데이터가 모두 잘 출력되었다.
+  <img width="1186" alt="image" src="https://user-images.githubusercontent.com/49539592/146960997-8fcdcf35-1c67-42d8-9c9e-523b76507f50.png">
+* 참고로, 로그를 위로 올리면 우리가 설정한 데이터소스 구성 정보와 그외의 기타 정보를 얻을 수 있다.
+  <img width="1480" alt="image" src="https://user-images.githubusercontent.com/49539592/146961199-a6f276ea-5945-4e9f-81c7-303d4ff9bbcb.png">
+
+### 5.5. 테스트
+* 마지막으로 간단히 HikariCP 메서드를 테스트하자.
+* **HikariCPIntegrationTest.java** (파일 위치는 위의 프로젝트 구조를 참고하자.)
+  ```java
+    public class HikariCPIntegrationTest {
+
+      @Test
+      public void givenConnection_thenFetchDbData() {
+        List<Employee> employees = HikariCPDemo.fetchData();
+        assertEquals(4, employees.size());
+      }
+    
+    }
+  ```
+* 위의 코드를 실행하면 아래와 같이 테스트 성공 결과를 볼 수 있다.
+  <img width="615" alt="image" src="https://user-images.githubusercontent.com/49539592/146961823-63d34d6d-dd2f-419c-a231-28b8b401ac87.png">
+
+
 ## 참고 자료
 * [Introduction to HikariCP](https://www.baeldung.com/hikaricp)

@@ -42,7 +42,7 @@
 
 ## 4. 사용하기
 * 이제 샘플 애플리케이션을 만들자. 먼저 `pom.xml` 에 H2 등의 JDBC 드라이버 클래스 종속성을 추가해야 한다(Gradle 빌드는 `build.gradle` 에 추가한다). 
-* 종속성이 없을 경우 애플리케이션에서 ClassNotFoundException 이 발생한다.
+* 종속성이 없을 경우 애플리케이션은 ClassNotFoundException 을 던진다.
 > 섹션 4 에서는 단순 설명을 위해 템플릿 코드를 작성하였다. 정상적으로 작동하는 코드를 보려면 섹션 5를 참고하자.
 
 ### 4.1. DataSource 생성
@@ -70,10 +70,10 @@
       }
   }
   ```
-  * 여기서 static 블록 초기화를 주목 하자. [HikariConfig](https://github.com/openbouquet/HikariCP/blob/master/src/main/java/com/zaxxer/hikari/HikariConfig.java) 는 데이터소스를 초기화하는 데 사용되는 구성 클래스다. 
-  * HikariConfig에서는 사용자 이름(`username`), 암호(`password`), jdbcUrl 및 dataSourceClassName 라는 4가지 필수 매개변수를 제공한다.
-  * 일반적으로 jdbcUrl 과 dataSourceClassName 둘 중 하나를 사용한다. 그러나 오래된 드라이버를 사용할 때는 두 가지 속성 설정이 모두 필요할 수도 있다.
-  * 이러한 속성 외에도 다른 풀링 프레임워크에는 없는 다른 속성을 사용할 수 있다.
+  * [HikariConfig](https://github.com/openbouquet/HikariCP/blob/master/src/main/java/com/zaxxer/hikari/HikariConfig.java) 는 데이터소스를 초기화하는 데 사용되는 구성 클래스다.
+  * HikariConfig 에서는 사용자 이름(`username`), 암호(`password`), `jdbcUrl` 및 `dataSourceClassName` 라는 4가지 필수 매개변수를 사용한다. 여기에서는 static 블록에서 `dataSourceClassName`를 제외한 나머지 3가지 필수 매개변수를 초기화하였다.
+  * 일반적으로 `jdbcUrl` 과 `dataSourceClassName`는 둘 중 하나만 사용한다. 하지만 오래된 드라이버를 사용할 때는 두 가지 설정이 모두 필요할 수 있다.
+  * 위의 속성 외에도 다른 풀링(Pooling) 프레임워크에는 없는 다른 속성들을 사용할 수 있다. 자세히 알고 싶다면 [여기](https://github.com/brettwooldridge/HikariCP) 를 참고하자.
     * autoCommit
     * connectionTimeout
     * idleTimeout
@@ -87,20 +87,18 @@
     * readOnly
     * transactionIsolation
     * leakDetectionThreshold
-  * 위의 속성에 대한 자세한 설명은 [여기](https://github.com/brettwooldridge/HikariCP) 에서 찾을 수 있다.
-  * HikariCP는 이제 자체적으로 연결 누수(connection leaks)를 감지할 수 있을 정도로 많이 발전하였다.
-  * 참고로, 리소스(`resources`) 디렉토리에 있는 속성 파일을 사용하여 HikariConfig 를 초기화할 수도 있다.
-  * 이를 위해 다음 자바 코드와 속성 파일 내용을 작성하여 사용하자.
+  * HikariConfig를 초기화하기 위해 리소스(`resources`) 디렉토리에 있는 속성 파일을 사용할 수도 있다(위에서는 자바 코드만 사용하였다).
+  * 이를 위해 다음 자바 코드와 속성 파일을 사용하자.
     ```java
-      private static HikariConfig config = new HikariConfig("datasource.properties" );
+      private static HikariConfig config = new HikariConfig("datasource.properties" ); // 생성자 인수로 속성 파일 경로를 전달한다
     ```
     ```properties
       dataSourceClassName= //TBD
       dataSource.user= //TBD
       // 다른 속성 이름도 dataSource 접두사로 시작해야 한다. 
     ```
-  * `//TBD` 자리에는 원하는 값을 대신 넣어주면 된다(TBD = To Be Determined or Decided, `미정` 이라는 뜻이다).
-  * 또한 `java.util.Properties` 기반의 구성을 사용할 수도 있다.
+  * `//TBD` 자리에는 자신이 원하는 값을 넣어준다(TBD = To Be Determined or Decided, `미정` 이라는 뜻이다).
+  * 한편, `java.util.Properties`를 기반으로 하여 구성할 수도 있다.
     ```java
       Properties props = new Properties();
       props.setProperty( "dataSourceClassName" , //TBD );
@@ -110,15 +108,15 @@
     ```
   * 마지막으로 처음 자바 코드를 살짝 수정하여 데이터소스를 직접 초기화할 수도 있다.
     ```java
-      hikariDataSource.setJdbcUrl( //TBD  );
+      hikariDataSource.setJdbcUrl( //TBD  ); // 앞에서는 config.setJdbcUrl(~) 를 사용하였다
       hikariDataSource.setUsername( //TBD );
       hikariDataSource.setPassword( //TBD );
     ```
 
 ### 4.2. 데이터소스 사용
-* 앞에서 데이터소스를 정의하였기 때문에, 이제 구성된 연결 풀(configured connection pool)에서 **연결(connection) 객체를 얻을 수 있다.** 그리고 **JDBC 와 관련한 작업을 수행할 수 있다.**
+* 앞에서 데이터소스를 정의하였기 때문에, 이제 구성된 연결 풀(configured connection pool)에서 **연결(connection) 객체** 를 얻을 수 있다. 그리고 **JDBC 관련한 작업** 을 수행할 수 있다.
 * 예시로 두 개의 테이블: 부서(`dept`) 와 직원(`emp`) 이 있다고 하자. 
-* 앞서 정의한 HikariCP를 사용하여, 결과적으로 데이터베이스로부터 세부 정보를 가져오는 클래스를 작성할 것이다.
+* 앞서 정의한 HikariCP를 사용하여, 결과적으로 데이터베이스로부터 세부 정보를 가져오는 메서드를 작성할 것이다.
 * 먼저 샘플 데이터를 생성하기 위해 필요한 SQL 문을 작성하자.
   ```sql
     // db.sql
@@ -169,12 +167,12 @@
       7839, null, 40
     );
   ```
-* H2와 같은 인메모리 데이터베이스를 사용하는 경우, 코드를 실행하여 데이터를 가져오기 전에 데이터베이스 스크립트를 자동으로 로드해야 한다. 
-* 다행히 H2에는, 런타임에 클래스 경로(`classpath`)에서 데이터베이스 스크립트를 로드할 수 있는 INIT 매개변수가 있다. 이를 사용하면 JDBC URL을 다음과 같이 설정해야 한다.
+* 인메모리 데이터베이스(예를 들어 H2)를 사용하는 경우, 코드를 실행하여 데이터를 가져오기 전에 데이터베이스 스크립트를 자동으로 로드해야 한다. 
+* 다행히 H2에는, 런타임에 클래스 경로(`classpath`)에서 데이터베이스 스크립트를 로드할 수 있는 INIT 매개변수가 있다. 다음 내용을 참고하자.
   ```java
     jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;INIT=runscript from 'classpath:/db.sql'
   ```
-* 그런 다음, 데이터베이스에서 데이터를 가져오는 메서드를 만들어야 한다.
+* 그 다음, 데이터베이스에서 데이터를 가져오는 메서드를 만든다.
   ```java
     public static List<Employee> fetchData() throws SQLException {
       String SQL_QUERY = "select * from emp";
@@ -202,7 +200,7 @@
       return employees;
   }
   ```
-* 마지막으로 JUnit 테스트를 만들어 메서드를 테스트하자. `emp` 테이블의 행 수를 알고 있으므로 반환된 목록의 크기가 행 수와 같아야 한다.
+* 마지막으로 JUnit 테스트로 메서드를 테스트한다. `emp` 테이블의 행 수를 알고 있으므로 반환된 목록의 크기가 행 수와 같아야 한다.
   ```java
     @Test
     public void givenConnection_thenFetchDbData() throws SQLException {
@@ -211,6 +209,7 @@
         assertEquals( 4, employees.size() );
     }
   ```
+
 
 ## 참고 자료
 * [Introduction to HikariCP](https://www.baeldung.com/hikaricp)

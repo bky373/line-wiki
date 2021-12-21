@@ -1,4 +1,4 @@
-# HikariCP 소개
+# HikariCP 기본 가이드
 
 ## 1. 개요
 * [HikariCP JDBC](https://github.com/brettwooldridge/HikariCP) Connection Pool 프로젝트에 대해 알아본다. 
@@ -6,10 +6,12 @@
 
 
 ## 2. 소개
-* 아래는 HikariCP의 성능을 c3p0, dbcp2, tomcat 및 vibur와 같은 다른 연결 풀링 프레임워크와 비교하였을 때 확인할 수 있는 몇 가지 벤치마크 결과이다. 
-* 이 결과는 HikariCP 팀에서 발표하였다(원본 결과는 [여기](https://github.com/brettwooldridge/HikariCP-benchmark) 에서 확인할 수 있다).
+* HikariCP 팀은, HikariCP의 성능을 다른 연결 풀링 프레임워크(c3p0, dbcp2, tomcat 및 vibur)와 비교하였을 때 확인할 수 있는 몇 가지 유의미한 결과를 발표하였다.
   ![image](https://user-images.githubusercontent.com/49539592/146905029-80b7a9fc-cf74-4e74-a06c-40a8e35ac1ee.png)
-* 아래와 같은 기술들이 적용되었기 때문에 프레임워크는 매우 빠르게 동작한다.
+  > 원본 결과는 [여기](https://github.com/brettwooldridge/HikariCP-benchmark) 에서 확인할 수 있다.
+* ConnectionCycle은 `DataSource.getConnection()/Connection.close()`의 주기(Cycle)를 의미한다. 
+* StatementCycle은 `Connection.prepareStatement()`, `Statement.execute()`, `Statement.close()`의 주기(Cycle)를 의미한다.
+* HikariCP는 아래 기술들이 적용되어 뛰어난 좋은 성능을 보여준다.
   * **바이트코드 수준 엔지니어링(Bytecode-level engineering)**: 어셈블리 수준(assembly level)의 네이티브 코딩을 포함하여 몇 가지 바이트코드 수준의 엔지니어링 작업을 완료하였다.
   * **마이크로 최적화(Micro-optimizations)**: 거의 측정할 수 없긴 하지만 마이크로한 최적화를 결합하면 전체 성능이 향상된다.
   * **Collections 프레임워크의 지능적인 사용**: `ArrayList<Statement>` 를 커스텀 클래스인 `Fast<List>` 로 대체하였다. 해당 클래스는 범위 검사(range checking)를 제거하고 시작부터 끝까지 제거(removal) 스캔을 수행한다.

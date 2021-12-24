@@ -1,4 +1,4 @@
 # Spring
 
-* [Spring @Autowired 어노테이션](Spring/Spring @Autowired 어노테이션.md)
+* [Spring @Autowired 어노테이션](Spring @Autowired 어노테이션.md)
 

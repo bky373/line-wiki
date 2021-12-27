@@ -10,6 +10,7 @@
 * [@Value 어노테이션](https://github.com/bky373/line-wiki/blob/main/Spring/Spring%20%40Value%20어노테이션.md)
 * [Spring Bean Annotations 정리](https://github.com/bky373/line-wiki/blob/main/Spring/Spring%20Bean%20Annotations%20정리.md)
 * [Spring Boot H2 Database 사용](https://github.com/bky373/line-wiki/blob/main/Spring/Spring%20Boot%20H2%20Database%20사용.md)
+* [Spring Core Annotations 정리](https://github.com/bky373/line-wiki/blob/main/Spring/Spring%20Core%20Annotations%20정리.md)
 * [Spring HikariCP 기본 가이드](https://github.com/bky373/line-wiki/blob/main/Spring/Spring%20HikariCP%20기본%20가이드.md)
 * [Spring Profiles](https://github.com/bky373/line-wiki/blob/main/Spring/Spring%20Profiles.md)
 * [Spring REST Docs로 API 문서 만들기](https://github.com/bky373/line-wiki/blob/main/Spring/Spring%20REST%20Docs로%20API%20문서%20만들기.md)

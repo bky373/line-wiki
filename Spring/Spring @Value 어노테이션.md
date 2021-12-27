@@ -50,6 +50,7 @@
   }
   ```
   * 스프링 애플리케이션을 실행(run)하면 stringValue 에 값이 채워져 아래와 같이 로그에 `stringValue = My String Value` 가 출력되는 것을 확인할 수 있다.
+    
     <img width="474" alt="image" src="https://user-images.githubusercontent.com/49539592/143665902-9e1bed7b-3a76-40c0-9123-5af513404756.png">
     
 * @PropertySource 을 사용한 예시 
@@ -69,7 +70,8 @@
   }
   ```
   * 스프링 애플리케이션을 실행(run)하면 [ 2. 애플리케이션 설정 ] 에서 정의한 바에 따라 `valueFromFile = Value got from the file`이 출력되는 것을 확인할 수 있다.
-  <img width="473" alt="image" src="https://user-images.githubusercontent.com/49539592/143666285-4395aa84-8210-4b37-87a1-4ad8506c6bbc.png">
+  
+    <img width="473" alt="image" src="https://user-images.githubusercontent.com/49539592/143666285-4395aa84-8210-4b37-87a1-4ad8506c6bbc.png">
   
 * 기본값 설정 예시
   * 정의되지 않은 속성에 대해 아래와 같이 기본값을 제공할 수도 있다.
@@ -132,7 +134,8 @@
   }
   ```
   * 스프링 애플리케이션을 실행(run)하면 아래와 같은 결과를 확인할 수 있다.
-  <img width="469" alt="image" src="https://user-images.githubusercontent.com/49539592/143667010-afed3d67-3e9b-41fa-97d5-555964c34969.png">
+  
+    <img width="469" alt="image" src="https://user-images.githubusercontent.com/49539592/143667010-afed3d67-3e9b-41fa-97d5-555964c34969.png">
 
 * 맵(Map) 사용 예시
   * 먼저 속성 파일에서 `{ key: 'value' }` 형식으로 속성을 정의해야 한다.
@@ -163,7 +166,9 @@
   }
   ```
   * 스프링 애플리케이션을 실행(run)하면 아래와 같이 맵의 키 / 값, 그리고 클래스 이름이 출력된다.
-  <img width="473" alt="image" src="https://user-images.githubusercontent.com/49539592/143668015-6bc1613c-0788-429b-9da5-7a3e32c407c1.png">
+  
+    <img width="473" alt="image" src="https://user-images.githubusercontent.com/49539592/143668015-6bc1613c-0788-429b-9da5-7a3e32c407c1.png">
+  
   * Map에서 특정 키의 값을 가져와야 하는 경우 표현식에 키 이름을 추가하면 된다.
     ```java
     @Value("#{${valuesMap}.key1}")
@@ -185,7 +190,8 @@
     private Integer unknownMapKeyWithDefaultValue;
     ```
   * unknownMap 과 unknownMapKeyWithDefaultValue 를 출력한 결과는 다음과 같다.
-  <img width="470" alt="image" src="https://user-images.githubusercontent.com/49539592/143668319-d14e3370-7e78-4752-9c52-d0844a93ee4c.png">
+  
+    <img width="470" alt="image" src="https://user-images.githubusercontent.com/49539592/143668319-d14e3370-7e78-4752-9c52-d0844a93ee4c.png">
     
   * Map 항목(Entry)은 주입 전에 필터링할 수도 있다.
   * 예를 들어 값이 1보다 큰 항목만 가져와야 한다고 가정해보자.
@@ -194,7 +200,8 @@
     private Map<String, Integer> valuesMapFiltered;
     ```
     * valuesMapFiltered 를 출력하면 다음과 같다.
-    <img width="473" alt="image" src="https://user-images.githubusercontent.com/49539592/143668390-97f6d91b-0493-4f66-a95b-4093e36a367c.png">
+    
+      <img width="473" alt="image" src="https://user-images.githubusercontent.com/49539592/143668390-97f6d91b-0493-4f66-a95b-4093e36a367c.png">
 
 * 생성자 주입 사용 예시
     * @Value 어노테이션은 필드 외에도 생성자 주입과 함께 사용할 수 있다. 다음 예시를 보자.
@@ -233,7 +240,8 @@
   ```
   * 여기에서는 값 목록을 setValues 메소드에 삽입하기 위해 SpEL 표현식을 사용한다.
 
-> [출처](https://www.baeldung.com/spring-value-annotation)
+## 참고 자료
+* [A Quick Guide to Spring @Value](https://www.baeldung.com/spring-value-annotation)
 
 
 

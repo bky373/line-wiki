@@ -265,5 +265,62 @@ String fuelType;
   ```
 
 
+## 3. 컨텍스트 구성 어노테이션들
+* 이 섹션에서 설명하는 어노테이션으로 애플리케이션 컨텍스트를 구성할 수 있습니다.
+
+### 3.1. @Profile
+* `@Profile` 을 사용하면 **지정된 프로필이 활성화(active)된 경우 `@Component` 클래스 또는 `@Bean` 메서드를 사용할 수 있습니다.** 
+* 프로필 이름은 `@Profile` 의 `value` 인수로 설정할 수 있습니다.
+  ```java
+  @Component
+  @Profile(value = "sportDay")
+  class Bike implements Vehicle {}
+  ```
+* 자세한 내용은 [이곳](https://www.baeldung.com/spring-profiles) 을 참조할 수 있습니다.
+
+### 3.2. @Import
+* `@Import` 어노테이션을 사용하면 **컴포넌트 스캔 없이, 지정한 `@Configuration` 클래스를 사용할 수 있습니다.** 
+* 구성 클래스 목록은 `@Import`의 `value` 인수로 설정할 수 있습니다.
+  ```java
+    @Import(value = VehiclePartSupplier.class)
+    class VehicleFactoryConfig {}
+  ```
+
+### 3.3. @ImportResource
+* 이 어노테이션은 **XML 구성을 가져하는 데** 사용됩니다. 
+* `location` 인수 또는 `value` 인수로 XML 파일 위치를 지정할 수 있습니다.
+  ```java
+    @Configuration
+    @ImportResource("classpath:/annotations.xml")
+    class VehicleFactoryConfig {}
+  ```
+
+### 3.4. @PropertySource
+* 이 어노테이션은 **애플리케이션 설정과 관련한 속성 파일을 정의하는 데** 사용됩니다.
+  ```java
+    @Configuration
+    @PropertySource("classpath:/annotations.properties")
+    class VehicleFactoryConfig {}
+  ```
+* `@PropertySource` 는 자바 8의 어노테이션 반복 기능을 활용하여 여러 번 표시할 수 있습니다.
+  ```java
+    @Configuration
+    @PropertySource("classpath:/annotations.properties")
+    @PropertySource("classpath:/vehicle-factory.properties")
+    class VehicleFactoryConfig {}
+  ```
+
+### 3.5. @PropertySources
+* 이 어노테이션은 한 번에 여러 개의 `@PropertySource`을 정의하는 데 사용됩니다.
+  ```java
+    @Configuration
+    @PropertySources({
+      @PropertySource("classpath:/annotations.properties"),
+      @PropertySource("classpath:/vehicle-factory.properties")
+    })
+    class VehicleFactoryConfig {}
+  ```
+* 어노테이션 반복 기능을 사용하여 `@PropertySource` 를 여러 번 사용한 것과 동일한 효과를 갖습니다. 
+
 ## 참고 자료
 * [Spring Core Annotations](https://www.baeldung.com/spring-core-annotations)

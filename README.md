@@ -4,7 +4,7 @@
 * **모든 걸 최소화** 한 아주 작은 습관이지만, 그렇기 때문에 **지속 가능**하며 <br>
   앞으로 **장기적**으로 이를 지속했을 때 **변화**를 만들어낼 수 있다고 믿습니다.
 
-## 📓 기록 공간
+## 기록 공간
 
 * [Database](https://github.com/bky373/line-wiki/blob/main/Database/Database.md)
 * [Effective Java 3E](https://github.com/bky373/line-wiki/tree/main/Effective_Java#Effective-Java)
@@ -19,6 +19,7 @@
 * [Spring In Action](https://github.com/bky373/line-wiki/tree/main/Spring_In_Action#Spring-In-Action)
 * [SQL](https://github.com/bky373/line-wiki/tree/main/SQL#SQL)
 * [AnyLines](https://github.com/bky373/line-wiki/blob/main/AnyLines.md)
+* [만들면서 배우는 클린 아키텍처](https://github.com/bky373/line-wiki/tree/main/만들면서%20배우는%20클린%20아키텍처#만들면서-배우는-클린-아키텍처)
 
 ## Spring
 

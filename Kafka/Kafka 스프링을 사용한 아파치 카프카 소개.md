@@ -111,7 +111,7 @@ public class KafkaProducerConfig {
     Map<String, Object> configProps = new HashMap<>();
     configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
     
-		// 키(key) 직렬화시 문자열 직렬화 클래스 사용
+    // 키(key) 직렬화시 문자열 직렬화 클래스 사용
     configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
     
     // 값(value) 직렬화시 문자열 직렬화 클래스 사용

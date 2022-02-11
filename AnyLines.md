@@ -195,6 +195,13 @@
   - Martin Fowler은 도메인 모델과 관련하여 다음고 같이 이야기했다.
     > 도메인 모델은 복잡성을 알고리즘에서 분리하고 객체 간의 관계로 만들 수 있다. 유효성 검사, 계산, 파생 등이 포함된 복잡하고 끊임없이 변하는 비즈니스 규칙을 구현해야 한다면 객체 모델을 사용해 비즈니스 규칙을 처리하는 것이 현명하다.
 
+* **Error, Checked Exception, Unchecked Exception**
+  <img width="674" alt="image" src="https://user-images.githubusercontent.com/49539592/153614270-a93ff934-75c6-42a6-8c53-76832d561ac4.png">
+
+* **Error**: OutOfMemoryError나 ThreadDeath 등 애플리케이션 단에서 해결할 없는 시스템 오류
+* 애플리케이셔 단에서는 Checked Exception 또는 Unchecked Exception에 대한 처리가 중요하다.
+> [출처](https://cheese10yun.github.io/checked-exception/)
+
 # References
 
 - [출처-1](https://java119.tistory.com/52)

@@ -198,8 +198,20 @@
 * **Error, Checked Exception, Unchecked Exception**
   <img width="674" alt="image" src="https://user-images.githubusercontent.com/49539592/153614270-a93ff934-75c6-42a6-8c53-76832d561ac4.png">
 
-* **Error**: OutOfMemoryError나 ThreadDeath 등 애플리케이션 단에서 해결할 없는 시스템 오류
-* 애플리케이셔 단에서는 Checked Exception 또는 Unchecked Exception에 대한 처리가 중요하다.
+* **Error**: OutOfMemoryError나 ThreadDeath 등 애플리케이션 단에서 해결할 없는 시스템 오류(try-catch 로 잡아도 할 수 있는 것이 없습니다).
+* 애플리케이셔 단에서는 Checked Exception 또는 Unchecked Exception에 대한 처리가 중요합니다.
+* **Checked Exception**
+	* **처리 여부**: 반드시 처리해야 함 (상위 메서드로 전파됨)
+	* **트랜잭션 Rollback 여부**: Rollback 안됨
+	* **대표적인 Exception**: IOException, SQLException
+
+* **Unchecked Exception**
+	* **처리 여부**: 예외 처리 하지 않아도 됨 (상위 메서드로 전파 X)
+	* **트랜잭션 Rollback 여부**: Rollback 진행
+	* **대표적인 Exception** : NullPointerException, IllegalArgumentException
+* Checked Exception 또는 Unchecked Exception은 개발자들의 애플리케이션 코드에서 예외가 발생했을 경우에 사용합니다.
+* **Unchecked Exception은 RuntimeException을 상속하고, Checked Exception은 RuntimeException을 상속하지 않습니다.**
+
 > [출처](https://cheese10yun.github.io/checked-exception/)
 
 # References

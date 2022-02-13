@@ -214,7 +214,7 @@
 
 > [출처](https://cheese10yun.github.io/checked-exception/)
 
-# 스프링 트랜잭션 롤백 관련
+## 스프링 트랜잭션 롤백 관련
 * `@Trasactional`의 기본 `propagation` 속성은 `PROPAGATION_REQUIRED` 이다.
 * `JpaRepository`를 상속하는 인터페이스의 기본 구현체는 `SimpleJpaRepository`이고 `save` 메서드에는 `@Transactional`이 걸려 있다.
 * 트랜잭션의 완료 처리는 트랜잭션 메서드의 반환시점마다 일어난다.
@@ -226,8 +226,19 @@
 * 하지만, 실제로는 외부 메서드의 반환시점에서 문제가 발생한다. 외부 메서드의 트랜잭션 완료 처리시 최종커밋에서 `roll-back only`가 마킹되어 있기 때문이다. 
 * 이 때문에 트랜잭션에 참여중인 메서드에서 예외를 잡지 않고 위로 던져버리면 롤백이 되어버리고 최종커밋에서 오류가 발생한다. 따라서 그 위에서 예외를 잡아봐야 소용없다.
 * 좀더 요약하면, **참여 중인 트랜잭션이 실패하면 기본정책이 전역롤백** 이다.
-* 트랜잭션 메서드 안에서 RuntimeException을 잡을 경우, 그 이유를 잘 생각해보자. 예외처리가 비즈니스 로직에 어떤 영향으 주는 것인지 생각해보자.
+* 트랜잭션 메서드 안에서 RuntimeException을 잡을 경우, 그 이유를 잘 생각해보자. 해당 예외 처리가 비즈니스 로직과 어떤 관련이 있고, 어떤 영향을 주는지 생각해보자.
 > [출처](https://techblog.woowahan.com/2606/)
+
+## 옵셔널 orElse() vs orElseGet()
+* **orElse는 값(other) 자리에 메서드가 있다면, 해당 메서드는 옵셔널 값이 있든 없든 항상 호출된다.**
+  <img width="530" alt="image" src="https://user-images.githubusercontent.com/49539592/153756830-ed861339-ae01-4079-932c-39abe1fb1b67.png">
+  * orElse는 값(other)을 인수로 갖는다. 
+  * 이때 사용하는 값(other)은 orElse()를 호출하기 전에 채워져 있어야 한다.
+  * 따라서 특정 메서드의 반환값을 값(other)으로 사용할 경우, 해당 메서드는 orElse(T other)를 호출하기 전에 항상 먼저 호출된다. 
+  * 이 사실을 모른 채, 값(other)으로 unique 컬럼을 가진 엔티티의 생성 메서드 반환값을 사용할 경우, 심한 장애로 이어질 수 있다.
+* **orElseGet()은 옵셔널 값이 없을 때만 supplier 자리에 있는 메서드가 내부적으로 호출된다.**
+  <img width="760" alt="image" src="https://user-images.githubusercontent.com/49539592/153756842-387a3214-cc1b-4b92-9b76-749900f1f259.png">
+> [출처](https://cfdf.tistory.com/34)
 
 # References
 

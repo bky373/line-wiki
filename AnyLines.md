@@ -214,6 +214,21 @@
 
 > [출처](https://cheese10yun.github.io/checked-exception/)
 
+# 스프링 트랜잭션 롤백 관련
+* `@Trasactional`의 기본 `propagation` 속성은 `PROPAGATION_REQUIRED` 이다.
+* `JpaRepository`를 상속하는 인터페이스의 기본 구현체는 `SimpleJpaRepository`이고 `save` 메서드에는 `@Transactional`이 걸려 있다.
+* 트랜잭션의 완료 처리는 트랜잭션 메서드의 반환시점마다 일어난다.
+* 트랜잭션 완료 처리시, 트랜잭션을 롤백할지 결정하는 규칙을 사용한다. 기본적으로 RuntimeException, Error 발생시 현재 트랜잭션에 참여한 트랜잭션에 실패를 선언하고, 롤백을 진행한다(roll-back only 마킹함).
+<img width="660" alt="image" src="https://user-images.githubusercontent.com/49539592/153750113-e9387350-2704-4a06-a5cc-de92a6e96085.png">
+
+* 내부 트랜잭션을 완료 처리할 때 RuntimeException를 던져 롤백을 결정했다고 해보자. 내부 메서드를 호출한 외부 메서드에서는 try-catch 문으로 내부 메서드에서 던진 RuntimeException을 잡는다. 그리고 로직으 종료한다.
+* 내부에서 발생한 RuntimeException을 외부 메서드의 catch 문에서 잡았으니 별다른 문제가 없어보인다.
+* 하지만, 실제로는 외부 메서드의 반환시점에서 문제가 발생한다. 외부 메서드의 트랜잭션 완료 처리시 최종커밋에서 `roll-back only`가 마킹되어 있기 때문이다. 
+* 이 때문에 트랜잭션에 참여중인 메서드에서 예외를 잡지 않고 위로 던져버리면 롤백이 되어버리고 최종커밋에서 오류가 발생한다. 따라서 그 위에서 예외를 잡아봐야 소용없다.
+* 좀더 요약하면, **참여 중인 트랜잭션이 실패하면 기본정책이 전역롤백** 이다.
+* 트랜잭션 메서드 안에서 RuntimeException을 잡을 경우, 그 이유를 잘 생각해보자. 예외처리가 비즈니스 로직에 어떤 영향으 주는 것인지 생각해보자.
+> [출처](https://techblog.woowahan.com/2606/)
+
 # References
 
 - [출처-1](https://java119.tistory.com/52)

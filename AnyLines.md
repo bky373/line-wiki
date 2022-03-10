@@ -229,6 +229,15 @@
 * 트랜잭션 메서드 안에서 RuntimeException을 잡을 경우, 그 이유를 잘 생각해보자. 해당 예외 처리가 비즈니스 로직과 어떤 관련이 있고, 어떤 영향을 주는지 생각해보자.
 > [출처](https://techblog.woowahan.com/2606/)
 
+* **Spring Boot Actuator**
+    * 쉽게
+        * Spring Boot Application의 상태를 관리해준다.
+    * 추가하면
+        * 애플리케이션의 상태 정보(health, properties, beans, 구동된 AutoConfiguration 목록 등)를 다룰 수 있도록 도와준다.
+        * 각종 추상화 클래스(HealthIndicator 등)을 제공하여, 상태 정보를 변경할 수 있도록 서비스를 제공한다.
+        * 예를 들어, `GET /actuator/health`를 실행해보자. 아래와 같이 현재 애플리케이션의 health 상태를 알 수 있다.
+            * {"status": "UP"}
+
 ## 옵셔널 orElse() vs orElseGet()
 * **orElse는 값(other) 자리에 메서드가 있다면, 해당 메서드는 옵셔널 값이 있든 없든 항상 호출된다.**
   <img width="530" alt="image" src="https://user-images.githubusercontent.com/49539592/153756830-ed861339-ae01-4079-932c-39abe1fb1b67.png">

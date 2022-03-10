@@ -240,6 +240,27 @@
   <img width="760" alt="image" src="https://user-images.githubusercontent.com/49539592/153756842-387a3214-cc1b-4b92-9b76-749900f1f259.png">
 > [출처](https://cfdf.tistory.com/34)
 
+* [Guzzle](https://docs.guzzlephp.org/en/stable/)
+    * 쉽게
+        * PHP HTTP 클라이언트를 말한다.
+    * 추가하면
+        * HTTP 요청을 쉽게 보내고 웹 서비스와 쉽게 통합할 수 있다.
+    * 예를 들면        
+        ```
+        $client=new GuzzleHttp\Client();
+        $res= $client->request('GET', 'https://api.github.com/user', [
+            'auth'=> ['user', 'pass']
+        ]);
+        echo $res->getStatusCode();
+        // "200"echo $res->getHeader('content-type')[0];
+        // 'application/json; charset=utf8'echo $res->getBody();
+        // {"type":"User"...'// Send an asynchronous request.$request=new \GuzzleHttp\Psr7\Request('GET', 'http://httpbin.org');
+        $promise= $client->sendAsync($request)->then(function ($response) {
+        echo 'I completed! '. $response->getBody();
+        });
+        $promise->wait();
+        ```
+
 # References
 
 - [출처-1](https://java119.tistory.com/52)

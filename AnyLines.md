@@ -278,6 +278,13 @@
         * http, https, ftp, sftps, smtp, telnet 등의 다양한 프로토콜과 Proxy, Header, Cookie 등의 세부 옵션까지 쉽게 설정할 수 있다.
         * 오픈 소스
         
+* [netty](https://netty.io/)
+    * 쉽게
+        * (자바) 비동기식 이벤트 기반 네트워크 애플리케이션 프레임워크를 말한다.
+    * 추가하면
+        * TCP 및 UDP 소켓 서버와 같은 네트워크 프로그래밍을 크게 단순화하고 간소화한다.
+        * netty를 사용하면 고성능의 프로토콜 서버와 클라이언트를 빠르게 개발할 수 있다.
+    
 # References
 
 - [출처-1](https://java119.tistory.com/52)

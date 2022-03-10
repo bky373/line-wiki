@@ -270,6 +270,14 @@
         $promise->wait();
         ```
 
+* [cURL (curl)](https://curl.se/)
+    * 쉽게
+        * URL에 데이터를 담아 전송(요청)할 수 있게 해주는 툴을 말한다.
+        * **C**lient for **URL**
+    * 추가하면
+        * http, https, ftp, sftps, smtp, telnet 등의 다양한 프로토콜과 Proxy, Header, Cookie 등의 세부 옵션까지 쉽게 설정할 수 있다.
+        * 오픈 소스
+        
 # References
 
 - [출처-1](https://java119.tistory.com/52)

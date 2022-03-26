@@ -114,6 +114,21 @@
 * Unique 제약 조건은 두 레코드가 단일 컬럼 또는 컬럼 집합에서 동일한 값을 갖는 것을 방지한다.
 * 특히 이번 문서에서는 JPA에서 어떻게 Unique 제약 조건을 정의하는지에 대해 알아보았다. 특히 `@Column(unique=true)` 및 `@UniqueConstraint` 어노테이션에 대해 알아보았다.
 
+# QnA
+* Q. `@JoinColumn` 으로 외래키를 매핑하는 필드에 `unique` 속성을 추가해야 할까?
+  * A. 주석에는 이렇게 작성되어 있다. 특히 마지막 문장을 보면, **외래 키의 일부인 기본 키에 해당하는 조인 컬럼에 대해 이를 명시적으로 지정할 필요는 없다** 고 한다. 결론적으로 추가하지 않아도 될 것 같다.
+    ```java
+    /**
+     * (Optional) Whether the property is a unique key.  This is a
+     * shortcut for the <code>UniqueConstraint</code> annotation at
+     * the table level and is useful for when the unique key
+     * constraint is only a single field. It is not necessary to
+     * explicitly specify this for a join column that corresponds to a
+     * primary key that is part of a foreign key.
+     */
+    boolean unique() default false;
+    ```
+
 # 출처
 * [Defining Unique Constraints in JPA](https://www.baeldung.com/jpa-unique-constraints)
 

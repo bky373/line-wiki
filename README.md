@@ -12,6 +12,7 @@
 * [Hibernate](https://github.com/bky373/line-wiki/tree/main/Hibernate)
 * [HTTP](https://github.com/bky373/line-wiki/tree/main/HTTP)
 * [Java](https://github.com/bky373/line-wiki/tree/main/Java)
+* [JPA](https://github.com/bky373/line-wiki/tree/main/JPA)
 * [Kafka](https://github.com/bky373/line-wiki/tree/main/Kafka)
 * [Network](https://github.com/bky373/line-wiki/blob/main/Network/Network.md#Network)
 * [Postman](https://github.com/bky373/line-wiki/tree/main/Postman)

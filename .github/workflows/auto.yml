@@ -1,0 +1,12 @@
+on:
+  push:
+  pull_request:
+    types: [ opened ]
+
+  print_title_of_pr:
+    steps:
+      - name: Print Title of PR
+        run: echo The Title of your PR is ${{ github.event.pull_request.title }}
+
+      - name: Print Title of Body
+        run: echo The Title of your PR is ${{ github.event.pull_request.body }}
